@@ -48,6 +48,8 @@ html[lang="ja"] .gamestart .head b,html[lang="ja"] .join-box h3,html[lang="ja"] 
 .topbar .right{display:flex;gap:8px}
 .topbar .right a{font-size:13px;font-weight:700;border:1.5px solid var(--black);border-radius:20px;padding:7px 16px}
 .topbar .right a:hover{background:var(--black);color:#fff}
+.topbar .right a#pdfBtn{border-color:var(--lime);color:#5d7317;background:rgba(168,203,56,.12);font-weight:900}
+.topbar .right a#pdfBtn:hover{background:var(--lime);color:var(--black)}
 .topbar .right a#langBtn{border-color:var(--blue);color:var(--blue)}
 .topbar .right a#langBtn:hover{background:var(--blue);color:#fff}
 
@@ -282,8 +284,14 @@ footer .brand{color:#fff;font-weight:900;letter-spacing:.3em;font-size:15px;marg
 footer a{color:var(--blue)}
 
 /* ── 인쇄(PDF) 대응: Cmd+P로 문서형 출력 ── */
+.print-head{display:none}
 @media print{
-  .topbar,.gnb,.scroller,.gamestart,#topBtn,.side,.cats,.tabs,#joinModal,#lightbox,.hero .stars,.hero .cta{display:none !important}
+  .print-head{display:block;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:14px}
+  .print-head h1{font-size:20px}
+  .print-head p{font-size:12px;color:#333;margin-top:4px}
+  .topbar,.gnb,.scroller,.gamestart,#topBtn,.side,.cats,.tabs,#joinModal,#lightbox,.hero .stars,.hero .cta,.playmark,.hero .kicker{display:none !important}
+  .hero h1{font-size:30px}
+  .sec-head .plus{display:none}
   body,section,#fame{background:#fff !important}
   .hero{background:none !important;color:#000}
   .hero .container{display:block;padding:10px 0 20px}
@@ -316,11 +324,18 @@ footer a{color:var(--blue)}
 </head>
 <body>
 
+<!-- 인쇄(PDF) 전용 헤더 -->
+<div class="print-head">
+  <h1>김우신 (Kim Wooshin) — 일본 라이브 서비스 운영 포트폴리오</h1>
+  <p>검은사막 콘솔 라이브 서비스 운영 7년+ · 일본어 담당 · kimboard@naver.com · +82 10-9707-3701</p>
+  <p>웹 버전: rladntls94-tech.github.io/portfolio · 직접 만든 운영 툴: rladntls94-tech.github.io/OPtools</p>
+</div>
+
 <!-- 최상단 바 -->
 <div class="topbar">
   <div class="container">
     <div class="brand">WOOSHIN</div>
-    <div class="right"><a href="#" id="langBtn">日本語</a><a href="mailto:kimboard@naver.com">Contact</a></div>
+    <div class="right"><a href="#" id="pdfBtn" title="인쇄 화면에서 'PDF로 저장'을 선택하세요">📄 인사담당자용 PDF 저장</a><a href="#" id="langBtn">日本語</a><a href="mailto:kimboard@naver.com">Contact</a></div>
   </div>
 </div>
 
@@ -364,6 +379,7 @@ footer a{color:var(--blue)}
         <div class="sub">
           <a href="mailto:kimboard@naver.com">메일 보내기</a>
           <a href="#" onclick="document.getElementById('joinModal').classList.add('on');return false;">합격 문자 보내기</a>
+          <a href="김우신_경력기술서.pdf" download>경력기술서 PDF</a>
         </div>
       </div>
     </nav>
@@ -452,6 +468,7 @@ footer a{color:var(--blue)}
       <div class="body">
         <a class="b1" href="mailto:kimboard@naver.com">메일 보내기</a>
         <a class="b2" href="https://rladntls94-tech.github.io/OPtools/" target="_blank" rel="noopener">OPtools — 직접 만든 툴 4종</a>
+        <a class="b2" href="김우신_경력기술서.pdf" download>경력기술서 PDF 다운로드</a>
       </div>
       <div class="foot">일본어·한국어 모두 모국어<br>펄어비스 2019.07 ~ 재직 중</div>
     </aside>
@@ -711,7 +728,7 @@ footer a{color:var(--blue)}
   <div class="container">
     <div class="brand">WOOSHIN</div>
     김우신 (Shinozaki Masanobu) · kimboard@naver.com · +82 10-9707-3701<br>
-    직접 만든 운영 자동화 툴 : <a href="https://rladntls94-tech.github.io/OPtools/" target="_blank" rel="noopener">OPtools</a><br>
+    직접 만든 운영 자동화 툴 : <a href="https://rladntls94-tech.github.io/OPtools/" target="_blank" rel="noopener">OPtools</a> · <a href="김우신_경력기술서.pdf" download>경력기술서 PDF 다운로드</a><br>
     <span style="font-size:12px">본 포트폴리오는 넥슨 일본 라이브 서비스 포지션 지원을 위해 제작되었습니다.<br>
     본 사이트는 마비노기 공식 홈페이지의 UI를 오마주하여 직접 구현한 개인 포트폴리오입니다. 게재된 이미지와 업무 자료는 본인이 수행한 업무의 증빙 목적으로만 사용되었습니다. 생성형 AI를 활용해 직접 기획·제작했습니다.</span>
   </div>
@@ -768,6 +785,7 @@ document.querySelectorAll('.evidence img,.gallery img,.wimg img,.devnote .photo 
 lb.addEventListener('click',()=>lb.classList.remove('on'));
 window.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
 window.addEventListener('beforeprint',()=>{document.querySelectorAll('details').forEach(d=>d.open=true)});
+document.getElementById('pdfBtn').addEventListener('click',e=>{e.preventDefault();document.querySelectorAll('details').forEach(d=>d.open=true);window.print();});
 
 document.querySelectorAll('[data-open]').forEach(a=>{
   a.addEventListener('click',()=>{
@@ -887,7 +905,10 @@ const JA = {
 "패시브 스킬 : 반복 업무를 보면 자동화하지 않고는 못 배김":"パッシブスキル：反復業務を見ると自動化せずにはいられない",
 "이 시스템 메시지를 현실로 만드는 버튼 ↓":"このシステムメッセージを現実にするボタン ↓",
 "✉ 합격 문자 보내기":"✉ 合格メッセージを送る","닫기":"閉じる",
-"직접 만든 운영 자동화 툴 :":"自作の運営自動化ツール：",
+"직접 만든 운영 자동화 툴 :":"自作の運営自動化ツール：","경력기술서 PDF 다운로드":"職務経歴書PDFをダウンロード","경력기술서 PDF":"職務経歴書PDF",
+"📄 인사담당자용 PDF 저장":"📄 採用ご担当者様用PDF保存",
+"김우신 (Kim Wooshin) — 일본 라이브 서비스 운영 포트폴리오":"金優信（Kim Wooshin） — 日本ライブサービス運営ポートフォリオ",
+"검은사막 콘솔 라이브 서비스 운영 7년+ · 일본어 담당 · kimboard@naver.com · +82 10-9707-3701":"黒い砂漠コンソール ライブサービス運営7年+・日本語担当・kimboard@naver.com・+82 10-9707-3701",
 "본 포트폴리오는 넥슨 일본 라이브 서비스 포지션 지원을 위해 제작되었습니다.":"本ポートフォリオは、ネクソンの日本ライブサービスポジションへの応募のために制作しました。",
 "본 사이트는 마비노기 공식 홈페이지의 UI를 오마주하여 직접 구현한 개인 포트폴리오입니다. 게재된 이미지와 업무 자료는 본인이 수행한 업무의 증빙 목적으로만 사용되었습니다. 생성형 AI를 활용해 직접 기획·제작했습니다.":"本サイトはマビノギ公式サイトのUIをオマージュして自ら実装した個人のポートフォリオです。掲載した画像と業務資料は、本人が遂行した業務の証明のみを目的としています。生成AIを活用し、自ら企画・制作しました。",
 "인게임 괴롭힘 판단 기준 수립(도쿄 오피스 협업 공지), 은화 부정 거래 적발·제재":"ゲーム内ハラスメント（迷惑行為）対応基準の策定（東京オフィスと連携したお知らせ）、ゲーム内通貨の不正取引の摘発・制裁",
