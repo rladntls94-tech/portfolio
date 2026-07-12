@@ -281,6 +281,22 @@ footer{background:var(--black);color:#8a8f98;padding:44px 0 54px;font-size:13px;
 footer .brand{color:#fff;font-weight:900;letter-spacing:.3em;font-size:15px;margin-bottom:10px}
 footer a{color:var(--blue)}
 
+/* ── 인쇄(PDF) 대응: Cmd+P로 문서형 출력 ── */
+@media print{
+  .topbar,.gnb,.scroller,.gamestart,#topBtn,.side,.cats,.tabs,#joinModal,#lightbox,.hero .stars,.hero .cta{display:none !important}
+  body,section,#fame{background:#fff !important}
+  .hero{background:none !important;color:#000}
+  .hero .container{display:block;padding:10px 0 20px}
+  .hero h1,.hero .sub,.hero .kicker{color:#000 !important}
+  .board-wrap,.board{display:block}
+  details.notice{background:#fff !important;border-bottom:1px solid #999;page-break-inside:avoid}
+  .notice-wrap{border-left:none}
+  .chips span{background:#fff !important;color:#000 !important;border:1px solid #000}
+  .widget,.skill{page-break-inside:avoid}
+  .nicon{background:#000}
+  section{padding:18px 0}
+  a{color:#000}
+}
 @media(max-width:900px){
   .hero .container{grid-template-columns:1fr}
   .gnb nav{display:none}
@@ -751,6 +767,7 @@ document.querySelectorAll('.evidence img,.gallery img,.wimg img,.devnote .photo 
 });
 lb.addEventListener('click',()=>lb.classList.remove('on'));
 window.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
+window.addEventListener('beforeprint',()=>{document.querySelectorAll('details').forEach(d=>d.open=true)});
 
 document.querySelectorAll('[data-open]').forEach(a=>{
   a.addEventListener('click',()=>{
