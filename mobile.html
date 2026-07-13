@@ -53,7 +53,7 @@ body{background:#000;font-family:'Noto Sans KR',sans-serif;color:var(--txt)}
 .top .menu-btn::after{content:"";position:absolute;top:-3px;right:-3px;width:8px;height:8px;border-radius:50%;background:var(--red)}
 
 /* ── 섹션 공통 ── */
-.page{display:none;padding:18px 16px 30px}
+.page{display:none;padding:18px 16px 30px;position:relative;z-index:1}
 .page.on{display:block;animation:pagein .35s ease}
 @keyframes pagein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;margin:6px 0 14px}
@@ -215,6 +215,50 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
 .skcell,.life,.attend a,.cat-tabs button,.mgrid a .mi{transition:transform .12s ease}
 .skcell:active,.life:active,.attend a:active{transform:scale(.96)}
 .mgrid a:active .mi{transform:scale(.9)}
+/* ── 살아있는 연출: 앰비언트 ── */
+.app::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(139,108,240,.12), transparent 42%),
+    radial-gradient(circle at 85% 55%, rgba(126,227,106,.07), transparent 45%),
+    radial-gradient(circle at 50% 95%, rgba(78,160,224,.08), transparent 50%);
+  animation:ambient 10s ease-in-out infinite alternate}
+@keyframes ambient{from{opacity:.65;transform:translateY(-12px)}to{opacity:1;transform:translateY(14px)}}
+.gem{animation:float 3.2s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.cp-lv b{animation:goldglow 2.6s ease-in-out infinite}
+@keyframes goldglow{0%,100%{text-shadow:0 0 6px rgba(232,196,106,.25)}50%{text-shadow:0 0 16px rgba(232,196,106,.65)}}
+.chead img{animation:avatarpulse 3s ease-in-out infinite}
+@keyframes avatarpulse{0%,100%{box-shadow:0 0 0 0 rgba(139,108,240,.35)}50%{box-shadow:0 0 0 7px rgba(139,108,240,0)}}
+.top .menu-btn::after,.mgrid a .dot::after{animation:dotpulse 1.6s ease-in-out infinite}
+@keyframes dotpulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.45);opacity:.55}}
+.hpbar::after{content:"";position:absolute;top:0;left:-50%;width:40%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.28),transparent);animation:sweep 2.6s ease-in-out infinite}
+.hpbar{position:relative}
+.attend{animation:attendglow 3s ease-in-out infinite}
+@keyframes attendglow{0%,100%{box-shadow:0 0 14px rgba(232,196,106,.10)}50%{box-shadow:0 0 30px rgba(232,196,106,.30)}}
+.skcell.on{animation:cellglow 2.4s ease-in-out infinite}
+@keyframes cellglow{0%,100%{box-shadow:0 0 12px rgba(126,227,106,.25)}50%{box-shadow:0 0 22px rgba(126,227,106,.5)}}
+.ps-ico{animation:goldring 2.8s ease-in-out infinite}
+@keyframes goldring{0%,100%{box-shadow:0 0 0 0 rgba(232,196,106,.22)}50%{box-shadow:0 0 12px 2px rgba(232,196,106,.18)}}
+
+/* ── 호버(마우스) 확대 ── */
+.skcell,.life,.ach-row,.power,.stat,.cpanel,.pskill,.attend a,.cat-tabs button,.mgrid a .mi,
+.chead img,.top .pdf-btn,.top .lang-btn,.top .menu-btn,.substats,.shots figure{
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,filter .18s ease}
+@media(hover:hover){
+  .skcell:hover{transform:translateY(-3px) scale(1.03)}
+  .life:hover,.ach-row:hover{transform:translateY(-2px) scale(1.015);border-color:#39415a}
+  .power:hover{transform:scale(1.02)}
+  .stat:hover{transform:scale(1.02);border-color:#39415a}
+  .cpanel:hover,.pskill:hover,.substats:hover{transform:scale(1.012)}
+  .attend a:hover{transform:scale(1.03);filter:brightness(1.12)}
+  .cat-tabs button:hover{transform:scale(1.03);color:#fff}
+  .mgrid a:hover .mi{transform:scale(1.14);border-color:var(--purple)}
+  .top .pdf-btn:hover,.top .lang-btn:hover,.top .menu-btn:hover{transform:scale(1.07)}
+  .chead img:hover{transform:scale(1.1)}
+  .shots figure:hover{transform:scale(1.015)}
+  .tabbar button:hover{color:#fff}
+}
 @media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
 
 /* ── 내 정보(구 폼) ── */
