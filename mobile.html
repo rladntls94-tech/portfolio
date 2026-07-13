@@ -117,13 +117,22 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
   display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0}
 .tabbar button .ic{font-size:18px;line-height:1}
 .tabbar button.on{color:#fff}
-.tabbar button.on .ic{color:var(--purple)}
+.tabbar button.on .ic{color:#fff}
 .tabbar button.on::after{content:"";width:36px;height:3px;border-radius:2px;background:var(--purple);margin-top:3px}
 
+/* 모노크롬 아이콘 — 컬러 이모지 대신 흰색 계열(살짝 어두운) SVG */
+.ic svg,.mi svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block}
+.ach-row .medal{color:#c9cede}
+.ach-row .medal svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block}
+.attend a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:-2px;margin-right:6px}
+
 /* ── 메뉴 그리드 모달 ── */
-#menuModal{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.78);display:none;justify-content:center;align-items:flex-start;padding:30px 16px}
-#menuModal.on{display:flex}
-.menu-panel{width:100%;max-width:400px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 16px;position:relative}
+#menuModal{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.78);display:flex;justify-content:center;align-items:flex-start;padding:30px 16px;
+  opacity:0;pointer-events:none;transition:opacity .28s ease}
+#menuModal.on{opacity:1;pointer-events:auto}
+.menu-panel{width:100%;max-width:400px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 16px;position:relative;
+  transform:translateY(-18px) scale(.97);opacity:0;transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .25s ease}
+#menuModal.on .menu-panel{transform:none;opacity:1}
 .menu-panel .x{position:absolute;top:14px;right:14px;background:none;border:0;color:#fff;font-size:20px;cursor:pointer}
 .menu-panel h3{font-size:15px;font-weight:900;margin-bottom:16px}
 .mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 8px}
@@ -141,8 +150,8 @@ footer a{color:var(--purple)}
   <!-- 지역 소개 인트로 -->
   <div id="intro">
     <div class="zone"><span class="deco">—◇—</span> 김우신 <span class="deco">—◇—</span></div>
-    <p>없는 것 빼고 다 있는 라이브 서비스 운영자.<br>
-    7년간의 무사고 운영 기록과 자동화 도구들로<br>활기가 넘쳐난다.</p>
+    <p>검은사막 콘솔 라이브 7년+ · 일본어 담당 운영자.<br>
+    격주 업데이트 140회+의 기록과<br>직접 만든 자동화 툴 4종을 장비하고 있다.</p>
     <div class="tap">TAP TO START</div>
   </div>
 
@@ -177,7 +186,7 @@ footer a{color:var(--purple)}
       <h3>STATUS</h3>
       <div class="stat"><span class="k">언어</span><span class="v plain">일본어 Native · 한국어 Native</span></div>
       <div class="stat"><span class="k">격주 업데이트</span><span class="v">140회+</span></div>
-      <div class="stat"><span class="k">한국어 노출 사고</span><span class="v">0건</span></div>
+      <div class="stat"><span class="k">한국어 원문 노출 사고</span><span class="v">0건</span></div>
       <div class="stat"><span class="k">제재 후속 분쟁</span><span class="v">0건</span></div>
       <div class="stat"><span class="k">검수 시간</span><span class="v">90분 → 5분</span></div>
       <div class="stat"><span class="k">주 무기</span><span class="v plain">기준 · 데이터 · 자동화</span></div>
@@ -209,16 +218,16 @@ footer a{color:var(--purple)}
   <!-- 클래스 = 업적·연락 -->
   <section class="page" id="pg-class">
     <h2 class="ptitle">CLASS — 업적과 파티 모집</h2>
-    <div class="ach-row"><span class="medal">🏆</span><div><b>PlayStation Partner Awards 2020</b><p>한국 최초 콘솔 MMORPG 크로스플레이 — Japan Asia 팀 수상</p></div></div>
-    <div class="ach-row"><span class="medal">🥇</span><div><b>일본 PS 스토어 랭킹 1위</b><p>PS4 론칭 시 달성 · 4주간 MCU 90% 유지</p></div></div>
-    <div class="ach-row"><span class="medal">📈</span><div><b>전환기 매출 210% 성장</b><p>법적 분쟁 0건 · 크래시율 8.4%→0.9%</p></div></div>
-    <div class="ach-row"><span class="medal">🕊️</span><div><b>분쟁 0건의 수호자</b><p>매크로 제재 후속 분쟁 0건 · 한국어 노출 사고 0건</p></div></div>
+    <div class="ach-row"><span class="medal"><svg viewBox="0 0 24 24"><path d="M8 4.5h8V10a4 4 0 0 1-8 0z"/><path d="M8 6H4.5C4.5 9 6 10.5 8 10.5M16 6h3.5c0 3-1.5 4.5-3.5 4.5"/><path d="M12 14v3.5M8.5 20.5h7M9.5 17.5h5"/></svg></span><div><b>PlayStation Partner Awards 2020</b><p>한국 최초 콘솔 MMORPG 크로스플레이 — Japan Asia 팀 수상</p></div></div>
+    <div class="ach-row"><span class="medal"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M10.5 9.5L12.5 8v8"/></svg></span><div><b>일본 PS 스토어 랭킹 1위</b><p>PS4 론칭 시 달성 · 4주간 MCU 90% 유지</p></div></div>
+    <div class="ach-row"><span class="medal"><svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M5 15l4-4 3 3 6-6"/><path d="M14.5 8H18v3.5"/></svg></span><div><b>전환기 매출 210% 성장</b><p>법적 분쟁 0건 · 크래시율 8.4%→0.9%</p></div></div>
+    <div class="ach-row"><span class="medal"><svg viewBox="0 0 24 24"><path d="M12 3l7 2.5V11c0 4.8-3 8.4-7 9.5-4-1.1-7-4.7-7-9.5V5.5z"/><path d="M9 11.5l2 2 4-4"/></svg></span><div><b>분쟁 0건의 수호자</b><p>매크로 제재 후속 분쟁 0건 · 한국어 원문 노출 사고 0건</p></div></div>
     <div class="attend">
       <div class="t">파티 모집 중</div>
       <p>일본어 원어민 라이브 서비스 운영자가 다음 파티를 찾고 있습니다.</p>
-      <a href="mailto:kimboard@naver.com">✉ 합격 문자 보내기</a>
-      <a class="alt" href="김우신_경력기술서.pdf" download>경력기술서 PDF 다운로드</a>
-      <a class="alt" href="index.html">🖥 PC 버전으로 보기</a>
+      <a href="mailto:kimboard@naver.com"><svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M4 7l8 6.5L20 7"/></svg>합격 문자 보내기</a>
+      <a class="alt" href="김우신_경력기술서.pdf" download><svg viewBox="0 0 24 24"><path d="M12 4v10m0 0l-4.5-4.5M12 14l4.5-4.5"/><path d="M4.5 20h15"/></svg>경력기술서 PDF 다운로드</a>
+      <a class="alt" href="index.html"><svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="12" rx="1.5"/><path d="M9.5 20.5h5M12 16.5v4"/></svg>PC 버전으로 보기</a>
     </div>
   </section>
 
@@ -230,10 +239,10 @@ footer a{color:var(--purple)}
 
   <!-- 하단 탭바 -->
   <nav class="tabbar">
-    <button data-pg="pg-me"><span class="ic">👤</span>내 정보</button>
-    <button data-pg="pg-battle" class="on"><span class="ic">⚔️</span>전투 스킬</button>
-    <button data-pg="pg-life"><span class="ic">🛠</span>생활 스킬</button>
-    <button data-pg="pg-class"><span class="ic">🎖</span>클래스</button>
+    <button data-pg="pg-me"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"/><path d="M4.5 20.5c.8-3.6 3.9-5.5 7.5-5.5s6.7 1.9 7.5 5.5"/></svg></span>내 정보</button>
+    <button data-pg="pg-battle" class="on"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20.5 3.5L10.5 13.5"/><path d="M7.5 10.5l6 6"/><path d="M9.5 14.5l-5 5"/></svg></span>전투 스킬</button>
+    <button data-pg="pg-life"><span class="ic"><svg viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg></span>생활 스킬</button>
+    <button data-pg="pg-class"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="9.5" r="4.5"/><path d="M9.5 13L7.5 21l4.5-2.5L16.5 21l-2-8"/></svg></span>클래스</button>
   </nav>
 
   <!-- 메뉴 그리드 -->
@@ -242,15 +251,15 @@ footer a{color:var(--purple)}
       <button class="x" id="menuX">✕</button>
       <h3>메뉴</h3>
       <div class="mgrid">
-        <a href="#" data-go="pg-battle"><span class="mi dot">📜</span>프로젝트</a>
-        <a href="#" data-go="pg-me"><span class="mi">👤</span>내 정보</a>
-        <a href="#" data-go="pg-life"><span class="mi dot">🛠</span>생활 스킬</a>
-        <a href="#" data-go="pg-class"><span class="mi">🎖</span>업적</a>
-        <a href="https://rladntls94-tech.github.io/OPtools/" target="_blank" rel="noopener"><span class="mi">🧰</span>OPtools</a>
-        <a href="https://www.youtube.com/watch?v=yi6oxIYmppY" target="_blank" rel="noopener"><span class="mi dot">▶️</span>출연 영상</a>
-        <a href="김우신_경력기술서.pdf" download><span class="mi">📄</span>경력기술서</a>
-        <a href="mailto:kimboard@naver.com"><span class="mi dot">✉️</span>채용 문의</a>
-        <a href="index.html"><span class="mi">🖥</span>PC 버전</a>
+        <a href="#" data-go="pg-battle"><span class="mi dot"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 16h5"/></svg></span>프로젝트</a>
+        <a href="#" data-go="pg-me"><span class="mi"><svg viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"/><path d="M4.5 20.5c.8-3.6 3.9-5.5 7.5-5.5s6.7 1.9 7.5 5.5"/></svg></span>내 정보</a>
+        <a href="#" data-go="pg-life"><span class="mi dot"><svg viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg></span>생활 스킬</a>
+        <a href="#" data-go="pg-class"><span class="mi"><svg viewBox="0 0 24 24"><circle cx="12" cy="9.5" r="4.5"/><path d="M9.5 13L7.5 21l4.5-2.5L16.5 21l-2-8"/></svg></span>업적</a>
+        <a href="https://rladntls94-tech.github.io/OPtools/" target="_blank" rel="noopener"><span class="mi"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="1.5"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 13h16"/></svg></span>OPtools</a>
+        <a href="https://www.youtube.com/watch?v=yi6oxIYmppY" target="_blank" rel="noopener"><span class="mi dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path fill="currentColor" stroke="none" d="M10 8.5l6 3.5-6 3.5z"/></svg></span>출연 영상</a>
+        <a href="김우신_경력기술서.pdf" download><span class="mi"><svg viewBox="0 0 24 24"><path d="M12 4v10m0 0l-4.5-4.5M12 14l4.5-4.5"/><path d="M4.5 20h15"/></svg></span>경력기술서</a>
+        <a href="mailto:kimboard@naver.com"><span class="mi dot"><svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M4 7l8 6.5L20 7"/></svg></span>채용 문의</a>
+        <a href="index.html"><span class="mi"><svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="12" rx="1.5"/><path d="M9.5 20.5h5M12 16.5v4"/></svg></span>PC 버전</a>
       </div>
     </div>
   </div>
@@ -264,7 +273,7 @@ const SKILLS=[
  {name:"라이브 서비스 운영", plus:"+140", grade:"전설 · 정기 운영 스킬", tags:["#일본어전담","#자동화","#7년+"],
   desc:"격주 정기점검과 업데이트를 7년 넘게 이어온 메인 스킬. 일본어 공지·약관 현지화, 공식 영상 출연, 인게임 GM 활동, 검출 툴 개발까지 라이브의 모든 국면을 커버한다.",
   period:"2019.07 ~ 진행 중",
-  stats:[["격주 업데이트","140회+"],["검수 시간","90분 → 5분"],["한국어 노출 사고","0건"],["중상위 유저 상위 진입","약 30%"]]},
+  stats:[["격주 업데이트","140회+"],["검수 시간","90분 → 5분"],["한국어 원문 노출 사고","0건"],["중상위 유저 상위 진입","약 30%"]]},
  {name:"글로벌 계정 통합", plus:"+54", grade:"고급 · 리스크 관리 스킬", tags:["#11개언어권","#사전QA","#체크리스트"],
   desc:"Pearl Abyss ID 통합 전환. 사전 QA에서 미공유 스펙 변경 2건을 직접 발견하고 FAQ·CS 템플릿을 선제 구축, 점검 당일 체크리스트를 총괄했다.",
   period:"2025.06 ~ 2025.12",
@@ -285,10 +294,10 @@ const SKILLS=[
   desc:"스토어 구매테스트 프로세스 구축, 한/영/독/불 R&R 배분, CERO 심의 대응과 일본어 현지화로 일본 시장 진입을 이끌었다.",
   period:"2019.07 ~ 2019.11",
   stats:[["일본 PS 스토어","랭킹 1위"],["론칭 4주 MCU","90% 유지"],["CS 인입","예상 30% → 12%"]]},
- {name:"붉은사막 신작 준비", plus:"+22", grade:"고급 · 신작 스킬", tags:["#리뷰분석","#운영툴전환"],
-  desc:"테스트 플레이·리뷰 추이 분석 기반 이슈 대응 프로세스를 세우고, CS·포럼 수집의 한계를 데이터로 증명해 운영툴 기반 수집으로 전환을 주도했다.",
-  period:"2026.03 ~ 2026.06",
-  stats:[["스팀 리뷰 긍정 비율","22%p 개선"],["PS 리뷰 평점","3.7 → 4.2"]]},
+ {name:"붉은사막 신작 준비", plus:"+22", grade:"고급 · 신작 파견 스킬", tags:["#리뷰분석","#운영툴전환"],
+  desc:"신작 준비팀에 파견되어 테스트 플레이·리뷰 추이 분석 기반 이슈 대응 프로세스를 세우고, CS·포럼 수집의 한계를 데이터로 증명해 운영툴 기반 수집으로 전환을 주도했다.",
+  period:"2026.03 ~ 2026.06 (파견 후 복귀)",
+  stats:[["스팀 리뷰 긍정 비율(2,000건당)","22%p 개선"],["PS 리뷰 평점","3.7 → 4.2"]]},
 ];
 
 function gemSvg(color,size){
@@ -347,7 +356,6 @@ document.querySelectorAll('[data-go]').forEach(a=>{
 const intro=document.getElementById('intro');
 function endIntro(){intro.classList.add('hide');setTimeout(()=>intro.style.display='none',1100)}
 intro.addEventListener('click',endIntro);
-setTimeout(endIntro,4200);
 </script>
 </body>
 </html>
