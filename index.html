@@ -283,28 +283,6 @@ footer{background:var(--black);color:#8a8f98;padding:44px 0 54px;font-size:13px;
 footer .brand{color:#fff;font-weight:900;letter-spacing:.3em;font-size:15px;margin-bottom:10px}
 footer a{color:var(--blue)}
 
-/* ── 인쇄(PDF) 대응: Cmd+P로 문서형 출력 ── */
-.print-head{display:none}
-@media print{
-  .print-head{display:block;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:14px}
-  .print-head h1{font-size:20px}
-  .print-head p{font-size:12px;color:#333;margin-top:4px}
-  .topbar,.gnb,.scroller,.gamestart,#topBtn,.side,.cats,.tabs,#joinModal,#lightbox,.hero .stars,.hero .cta,.playmark,.hero .kicker{display:none !important}
-  .hero h1{font-size:30px}
-  .sec-head .plus{display:none}
-  body,section,#fame{background:#fff !important}
-  .hero{background:none !important;color:#000}
-  .hero .container{display:block;padding:10px 0 20px}
-  .hero h1,.hero .sub,.hero .kicker{color:#000 !important}
-  .board-wrap,.board{display:block}
-  details.notice{background:#fff !important;border-bottom:1px solid #999;page-break-inside:avoid}
-  .notice-wrap{border-left:none}
-  .chips span{background:#fff !important;color:#000 !important;border:1px solid #000}
-  .widget,.skill{page-break-inside:avoid}
-  .nicon{background:#000}
-  section{padding:18px 0}
-  a{color:#000}
-}
 @media(max-width:900px){
   .hero .container{grid-template-columns:1fr}
   .gnb nav{display:none}
@@ -319,6 +297,122 @@ footer a{color:var(--blue)}
   .notice .d{display:none}
   details.notice summary{padding:16px 14px;gap:10px}
   .side{margin-top:10px}
+}
+
+/* ── 인쇄(PDF) 대응: 인사담당자용 문서형 리포트 출력 ──
+   주의: A4 폭(≈794px)은 위 max-width:900px 블록에도 걸리므로,
+   인쇄 블록이 반드시 모바일 블록보다 뒤에 와야 함 */
+.print-head{display:none}
+@page{size:A4;margin:12mm 11mm 14mm}
+@media print{
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;
+    animation:none !important;transition:none !important;box-shadow:none !important}
+  html,body{background:#fff !important}
+  body{font-size:10pt;line-height:1.6;color:#1d2027;orphans:3;widows:3;word-break:keep-all}
+  html[lang="ja"] body{word-break:normal;overflow-wrap:break-word}
+  .container{max-width:100%;padding:0}
+  a{color:inherit}
+  section{padding:16px 0 4px}
+  #fame{background:#fff !important}
+
+  /* 화면 전용 요소 숨김 */
+  .topbar,.gnb,.scroller,.gamestart,#topBtn,.side,.cats,.tabs,#joinModal,#lightbox,
+  .hero .stars,.hero .cta,.playmark,.wplus,.sec-head .plus{display:none !important}
+
+  /* 표지 마스트헤드 */
+  .print-head{display:block;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%) !important;
+    color:#fff;border-radius:10px;border-bottom:5px solid var(--lime);padding:22px 26px 18px;margin-bottom:16px}
+  .print-head h1{font-family:'Noto Serif KR',serif;font-weight:900;font-size:18pt;line-height:1.35;word-break:keep-all}
+  .print-head p{font-size:9pt;color:#c9d6ea;margin-top:6px;letter-spacing:.02em}
+
+  /* 히어로 → 인트로 블록 */
+  .hero{background:none !important;color:var(--ink)}
+  .hero .container{display:block;padding:0 0 4px}
+  .hero .kicker{color:var(--blue) !important;font-size:8.5pt;letter-spacing:.26em;margin-bottom:8px}
+  .hero h1{font-size:19pt;color:var(--navy) !important;line-height:1.25}
+  .hero h1 .colon{color:#7a941f !important}
+  .hero .sub{color:#3c414c !important;font-size:9.5pt;line-height:1.75;margin-top:10px;
+    padding:2px 0 2px 12px;border-left:3px solid var(--lime)}
+
+  /* 섹션 제목 */
+  .sec-head{margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid var(--navy);break-after:avoid}
+  .sec-head h2{font-size:14pt;color:var(--navy)}
+  .sec-head .en{font-size:8pt}
+  .board-title{font-size:14pt;color:var(--navy);border-bottom:2px solid var(--navy);
+    padding-bottom:8px;margin-bottom:12px;break-after:avoid}
+  .board-title::after{content:"KEY PROJECTS";color:var(--blue);font-size:8pt;font-weight:700;
+    letter-spacing:.22em;margin-left:12px;font-family:'Noto Sans KR',sans-serif}
+
+  /* 프로젝트 카드 */
+  .board-wrap,.board{display:block}
+  .notice-wrap{border-left:none}
+  details.notice{background:#fff !important;border:1px solid #d3d7de;border-left:4px solid var(--navy);
+    border-radius:8px;margin-bottom:10px;break-inside:avoid;overflow:hidden}
+  details.notice.hidden{display:block !important}
+  details.notice summary{padding:11px 16px;gap:12px;background:#f3f5f9 !important;border-bottom:1px solid #e3e5e9}
+  .nicon{width:26px;height:26px;font-size:12px;background:var(--navy) !important}
+  .ncat{font-size:9pt;min-width:auto}
+  .nt{font-size:11pt}
+  .nmeta{margin-top:4px;font-size:8pt}
+  .gm{background:var(--black) !important;color:#fff !important}
+  .notice .d{display:inline;font-size:8.5pt}
+  .notice-body{padding:10px 16px 14px;background:#fff !important}
+  .chips{gap:6px;margin:8px 0 10px}
+  .chips span{background:var(--navy) !important;color:#fff !important;font-size:8.5pt;
+    font-weight:700;padding:4px 11px;border-radius:20px}
+  .chips span.g{background:var(--blue) !important}
+  .notice-body ul{margin-bottom:10px}
+  .notice-body li{font-size:9.5pt;line-height:1.65;padding:3px 0 3px 16px}
+  .notice-body li::before{top:10px;width:6px;height:6px;background:var(--lime) !important}
+  .evidence{gap:10px}
+  .evidence figure{width:150px;break-inside:avoid}
+  .evidence img{border:1px solid #d3d7de}
+  .evidence figcaption{font-size:7.5pt}
+
+  /* 명예의 전당 위젯 */
+  .fame-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+  .widget{break-inside:avoid;border:1px solid #d3d7de;border-radius:8px;overflow:hidden}
+  .widget .whead{background:#f3f5f9 !important;border-bottom:1px solid #e3e5e9;font-size:9.5pt;padding:8px 12px}
+  .widget .whead .arr{width:15px;height:15px;font-size:8px;background:var(--blue) !important}
+  .widget .wbody{padding:10px 12px 12px;min-height:auto}
+  .wbody .num{font-size:15pt;color:var(--blue) !important}
+  .wbody .line{font-size:8.5pt;margin-top:4px}
+  .wbody p{font-size:7.5pt;margin-top:3px}
+  .wbody .wimg{margin:0 0 8px;border:1px solid #e3e5e9}
+
+  /* 개발자 노트: 사진은 좌측 플로트, 사진 아래부터 전체 폭 사용 */
+  .devnote{display:block}
+  .devnote .photo{float:left;width:150px;margin:2px 18px 10px 0;border-radius:8px;break-inside:avoid}
+  .devnote .photo figcaption{font-size:7.5pt;padding:6px 8px}
+  .devnote h3{font-size:11pt;margin:14px 0 6px;clear:left}
+  .devnote h3:first-child{margin-top:0;clear:none}
+  .devnote p{font-size:9.5pt;line-height:1.75}
+  .skills{grid-template-columns:1fr 1fr;gap:8px;clear:left}
+  .skill{break-inside:avoid;padding:10px 13px}
+  .skill b{font-size:9.5pt}
+  .skill p{font-size:8.5pt}
+  .edu{font-size:8.5pt;clear:left}
+  .edu td{padding:6px 10px}
+  .edu td:first-child{width:150px;background:#f7f8fb !important}
+
+  /* 자료실 */
+  .tools{grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
+  .tool{background:#fff !important;color:var(--ink);border:1px solid #d3d7de;border-left:4px solid var(--blue);
+    border-radius:8px;padding:11px 14px;break-inside:avoid}
+  .tool b{font-size:10pt;color:var(--navy);margin-bottom:3px}
+  .tool p{color:#565d6a;font-size:8.5pt}
+  .tool .go{display:none}
+  .tool::after{content:attr(href);display:block;font-size:7pt;color:var(--blue);margin-top:6px;word-break:break-all}
+  .gallery{grid-template-columns:repeat(4,1fr);gap:9px}
+  .gallery figure{break-inside:avoid;border-radius:8px}
+  .gallery img{height:76px}
+  .gallery figcaption{font-size:7pt;padding:6px 8px;line-height:1.5}
+
+  /* 푸터 */
+  footer{background:#fff !important;color:#565d6a;border-top:2px solid var(--navy);
+    padding:12px 0 0;font-size:8pt;line-height:1.9}
+  footer .brand{color:var(--navy);font-size:9.5pt;letter-spacing:.3em;margin-bottom:4px}
+  footer a{color:var(--blue)}
 }
 </style>
 </head>
@@ -784,7 +878,14 @@ document.querySelectorAll('.evidence img,.gallery img,.wimg img,.devnote .photo 
 });
 lb.addEventListener('click',()=>lb.classList.remove('on'));
 window.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
-window.addEventListener('beforeprint',()=>{document.querySelectorAll('details').forEach(d=>d.open=true)});
+/* 인쇄 시: 모든 항목 펼치고, 저장 파일명(=문서 제목)을 이력서용으로 교체 */
+let printTitle=null;
+window.addEventListener('beforeprint',()=>{
+  document.querySelectorAll('details').forEach(d=>d.open=true);
+  printTitle=document.title;
+  document.title=document.documentElement.lang==='ja'?'金優信_ポートフォリオ_職務経歴':'김우신_포트폴리오_경력기술서';
+});
+window.addEventListener('afterprint',()=>{if(printTitle){document.title=printTitle;printTitle=null}});
 document.getElementById('pdfBtn').addEventListener('click',e=>{e.preventDefault();document.querySelectorAll('details').forEach(d=>d.open=true);window.print();});
 
 document.querySelectorAll('[data-open]').forEach(a=>{
