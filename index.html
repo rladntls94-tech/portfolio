@@ -700,7 +700,7 @@ footer a{color:var(--blue)}
             <li>CS·포럼 수집의 한계를 데이터로 증명하고 운영툴 기반 데이터 수집 프로세스로 전환 주도</li>
           </ul>
           <div class="evidence">
-            <figure><img src="img/review_trend.jpg" alt="스팀 리뷰 추이 분석"><figcaption>스팀 리뷰 언어별 긍정 비율 추이 분석 (수치 비식별화)</figcaption></figure>
+            <figure><img src="img/review_trend.jpg" alt="스팀 리뷰 추이 분석"><figcaption>스팀 리뷰 언어별 긍정 비율 추이 분석</figcaption></figure>
             <figure><img src="img/cs_heatmap.png" alt="CS 추이 히트맵"><figcaption>CS 카테고리별 추이 히트맵 (수치 비식별화)</figcaption></figure>
           </div>
         </div>
@@ -759,7 +759,7 @@ footer a{color:var(--blue)}
       <div class="widget">
         <div class="whead"><span class="arr">❯</span>정기 업데이트</div>
         <div class="wbody"><div class="num">140회+</div>
-          <p>7년+ 격주 무사고 라이브 운영 · 매크로 제재 후속 분쟁 0건</p>
+          <p>7년+ 격주 라이브 운영 · 매크로 제재 후속 분쟁 0건</p>
           <a class="wplus" href="#p-live" data-open="p-live">＋</a></div>
       </div>
       <div class="widget">
@@ -897,6 +897,13 @@ window.addEventListener('beforeprint',()=>{
 });
 window.addEventListener('afterprint',()=>{if(printTitle){document.title=printTitle;printTitle=null}});
 document.getElementById('pdfBtn').addEventListener('click',e=>{e.preventDefault();document.querySelectorAll('details').forEach(d=>d.open=true);window.print();});
+/* 모바일 버전에서 ?print=1로 진입 시 자동으로 인쇄(PDF 저장) 실행 */
+if(new URLSearchParams(location.search).has('print')){
+  window.addEventListener('load',()=>{
+    document.querySelectorAll('details').forEach(d=>d.open=true);
+    setTimeout(()=>window.print(),700);
+  });
+}
 
 document.querySelectorAll('[data-open]').forEach(a=>{
   a.addEventListener('click',()=>{
@@ -985,7 +992,7 @@ const JA = {
 "랭킹 1위":"ランキング1位","210% 성장":"210%成長","140회+":"140回+","90분 → 5분":"90分→5分","NRU 183%":"NRU183%",
 "PS4 론칭 시 달성 · 4주간 MCU 90% 유지":"PS4ローンチ時に達成・4週間MCU90%維持",
 "법적 분쟁 0건으로 통과한 PS5/XBS 세대 전환":"法的トラブル0件で完了したPS5/XBS世代移行",
-"7년+ 격주 무사고 라이브 운영 · 매크로 제재 후속 분쟁 0건":"7年+隔週の無事故ライブ運営・マクロ制裁のその後の紛争0件",
+"7년+ 격주 라이브 운영 · 매크로 제재 후속 분쟁 0건":"7年+隔週のライブ運営・マクロ制裁のその後の紛争0件",
 "직접 만든 검출 툴로 95% 절감 · 도입 후 한국어 원문 노출 사고 0건":"自作の検出ツールで95%削減・導入後の誤掲載0件",
 "직접 제안한 리테일 패키지 — 웹 방문자 140% 상승":"自ら提案したリテールパッケージ — サイト訪問者140%増",
 "나를 한 마디로 표현한다면?":"私を一言で表すなら？",
@@ -1011,7 +1018,7 @@ const JA = {
 "점검 당일 크로스체크 체크리스트 총괄":"メンテナンス当日のクロスチェックを統括",
 "개발자노트":"開発者ノート","채용 문의":"採用のお問い合わせ","합격 문자 보내기":"合格メッセージを送る",
 "🎉 새로운 파티원이":"🎉 新しいパーティーメンバーが","넥슨":"ネクソン","에 합류했습니다!":"に加入しました！",
-"[전설]":"[伝説]","일본어 원어민 라이브 서비스 운영자 · 김우신":"日本語ネイティブのライブサービス運営者・金優信",
+"[전설]":"[伝説]","일본어 원어민 라이브 서비스 운영자 · 김우신":"日本語ネイティブのライブサービスGM・金優信",
 "획득 효과 : 일본 서비스 안정도":"獲得効果：日本サービス安定度","+140회":"+140回","· CS 유입":"・CS流入","· 분쟁 발생률":"・紛争発生率",
 "패시브 스킬 : 반복 업무를 보면 자동화하지 않고는 못 배김":"パッシブスキル：反復業務を見ると自動化せずにはいられない",
 "이 시스템 메시지를 현실로 만드는 버튼 ↓":"このシステムメッセージを現実にするボタン ↓",
@@ -1039,7 +1046,7 @@ const JA = {
 "일본 PS 스토어 PS4 랭킹 1위 — 검은사막":"日本PSストア PS4ランキング1位 — 黒い砂漠",
 "PS4 랭킹 1위 기념 리트윗 캠페인 — 직접 기획":"PS4ランキング1位記念RTキャンペーン — 自ら企画",
 "PlayStation Partner Awards 2020 시상식 현장":"PlayStation Partner Awards 2020 授賞式",
-"스팀 리뷰 언어별 긍정 비율 추이 분석 (수치 비식별화)":"Steamレビュー言語別好評率の推移分析（数値は非識別化）",
+"스팀 리뷰 언어별 긍정 비율 추이 분석":"Steamレビュー言語別好評率の推移分析",
 "CS 카테고리별 추이 히트맵 (수치 비식별화)":"CSカテゴリ別推移ヒートマップ（数値は非識別化）"
 };
 const langBtn=document.getElementById('langBtn');
