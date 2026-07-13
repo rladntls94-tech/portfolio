@@ -69,6 +69,18 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
 .stat .v{font-weight:900;color:var(--green)}
 .stat .v.plain{color:var(--txt)}
 .sk-period{margin-top:10px;font-size:11.5px;color:#6c7383;text-align:right}
+/* 기록 스크린샷 스트립 + 확대 뷰 */
+.shots{display:flex;gap:8px;overflow-x:auto;padding:10px 2px 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.shots::-webkit-scrollbar{display:none}
+.shots figure{flex:0 0 auto;width:132px;position:relative;cursor:pointer}
+.shots img{width:132px;height:88px;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--line);display:block;background:#0e1118}
+.shots figcaption{font-size:9.5px;color:var(--sub);line-height:1.45;margin-top:5px}
+.shots figure[data-video]::before{content:"";position:absolute;left:50%;top:44px;width:32px;height:32px;transform:translate(-50%,-50%);border-radius:50%;background:rgba(10,12,18,.6);border:1.5px solid rgba(255,255,255,.75)}
+.shots figure[data-video]::after{content:"";position:absolute;left:calc(50% + 2px);top:44px;transform:translate(-50%,-50%);border-left:9px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent}
+#shotView{position:fixed;inset:0;z-index:95;background:rgba(0,0,0,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s}
+#shotView.on{opacity:1;pointer-events:auto}
+#shotView img{max-width:100%;max-height:76vh;border-radius:10px;background:#fff}
+#shotView p{font-size:12px;color:var(--sub);text-align:center;line-height:1.6;max-width:340px}
 /* 스킬 그리드 — 생활 스킬 UI 스타일: 다크 카드 + 원형 게이지 + 흰색 아이콘 + 레벨 */
 .skillgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
 .skcell{background:#161a24;border:1.5px solid #212635;border-radius:14px;padding:13px 4px 11px;
@@ -173,7 +185,7 @@ footer a{color:var(--purple)}
 
   <!-- 전투 스킬 = 프로젝트 -->
   <section class="page on" id="pg-battle">
-    <h2 class="ptitle">BATTLE SKILL — 프로젝트</h2>
+    <h2 class="ptitle">PROJECT — 주요 프로젝트</h2>
     <div class="cat-tabs"><button class="on">액티브</button><button onclick="alert('패시브 스킬: 반복 업무를 보면 자동화하지 않고는 못 배김')">패시브</button></div>
     <div class="skillcard" id="skillcard"></div>
     <div class="skillgrid" id="gembar"></div>
@@ -181,7 +193,7 @@ footer a{color:var(--purple)}
 
   <!-- 내 정보 -->
   <section class="page" id="pg-me">
-    <h2 class="ptitle">MY INFO — 캐릭터 정보</h2>
+    <h2 class="ptitle">MY INFO — 프로필</h2>
     <div class="char">
       <div class="row1">
         <img src="img/profile.png" alt="김우신">
@@ -206,13 +218,13 @@ footer a{color:var(--purple)}
       <div class="stat"><span class="k">2011.03~2013.02</span><span class="v plain">광성고등학교 졸업</span></div>
       <div class="stat"><span class="k">2013.04~</span><span class="v plain">센슈대 경제학과 중퇴 (한국 이주)</span></div>
       <div class="stat"><span class="k">2014.03~2019.07</span><span class="v plain">성공회대 일어일본학과 중퇴 (취업)</span></div>
-      <div class="stat"><span class="k">2020.03~2022.02</span><span class="v plain">경희사이버대 일본학과 졸업</span></div>
+      <div class="stat"><span class="k">2020.03~2022.02</span><span class="v plain">경희사이버대 일본학과 졸업 (재직 병행)</span></div>
     </div>
   </section>
 
   <!-- 생활 스킬 = 자동화 툴 -->
   <section class="page" id="pg-life">
-    <h2 class="ptitle">LIFE SKILL — 직접 만든 자동화 툴</h2>
+    <h2 class="ptitle">TOOLS — 직접 만든 자동화 툴</h2>
     <a class="life" href="https://rladntls94-tech.github.io/korean-checker/" target="_blank" rel="noopener">
       <div class="info"><b>한국어 검출기<span class="lv">Lv.MAX</span></b><p>다국어 텍스트의 한국어 잔류 자동 검출 — 검수 90분→5분의 주역</p></div><span class="use">사용</span></a>
     <a class="life" href="https://rladntls94-tech.github.io/multilang-generator/" target="_blank" rel="noopener">
@@ -226,7 +238,7 @@ footer a{color:var(--purple)}
 
   <!-- 클래스 = 업적·연락 -->
   <section class="page" id="pg-class">
-    <h2 class="ptitle">CLASS — 업적과 파티 모집</h2>
+    <h2 class="ptitle">ACHIEVEMENT — 수상·업적과 채용 문의</h2>
     <div class="ach-row"><span class="medal"><svg viewBox="0 0 24 24"><path d="M8 4.5h8V10a4 4 0 0 1-8 0z"/><path d="M8 6H4.5C4.5 9 6 10.5 8 10.5M16 6h3.5c0 3-1.5 4.5-3.5 4.5"/><path d="M12 14v3.5M8.5 20.5h7M9.5 17.5h5"/></svg></span><div><b>PlayStation Partner Awards 2020</b><p>한국 최초 콘솔 MMORPG 크로스플레이 — Japan Asia 팀 수상</p></div></div>
     <div class="ach-row"><span class="medal"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M10.5 9.5L12.5 8v8"/></svg></span><div><b>일본 PS 스토어 랭킹 1위</b><p>PS4 론칭 시 달성 · 4주간 MCU 90% 유지</p></div></div>
     <div class="ach-row"><span class="medal"><svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M5 15l4-4 3 3 6-6"/><path d="M14.5 8H18v3.5"/></svg></span><div><b>전환기 매출 210% 성장</b><p>법적 분쟁 0건 · 크래시율 8.4%→0.9%</p></div></div>
@@ -249,9 +261,9 @@ footer a{color:var(--purple)}
   <!-- 하단 탭바 -->
   <nav class="tabbar">
     <button data-pg="pg-me"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"/><path d="M4.5 20.5c.8-3.6 3.9-5.5 7.5-5.5s6.7 1.9 7.5 5.5"/></svg></span>내 정보</button>
-    <button data-pg="pg-battle" class="on"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20.5 3.5L10.5 13.5"/><path d="M7.5 10.5l6 6"/><path d="M9.5 14.5l-5 5"/></svg></span>전투 스킬</button>
-    <button data-pg="pg-life"><span class="ic"><svg viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg></span>생활 스킬</button>
-    <button data-pg="pg-class"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="9.5" r="4.5"/><path d="M9.5 13L7.5 21l4.5-2.5L16.5 21l-2-8"/></svg></span>클래스</button>
+    <button data-pg="pg-battle" class="on"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20.5 3.5L10.5 13.5"/><path d="M7.5 10.5l6 6"/><path d="M9.5 14.5l-5 5"/></svg></span>프로젝트</button>
+    <button data-pg="pg-life"><span class="ic"><svg viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg></span>자동화 툴</button>
+    <button data-pg="pg-class"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="9.5" r="4.5"/><path d="M9.5 13L7.5 21l4.5-2.5L16.5 21l-2-8"/></svg></span>업적</button>
   </nav>
 
   <!-- 메뉴 그리드 -->
@@ -262,7 +274,7 @@ footer a{color:var(--purple)}
       <div class="mgrid">
         <a href="#" data-go="pg-battle"><span class="mi dot"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 16h5"/></svg></span>프로젝트</a>
         <a href="#" data-go="pg-me"><span class="mi"><svg viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"/><path d="M4.5 20.5c.8-3.6 3.9-5.5 7.5-5.5s6.7 1.9 7.5 5.5"/></svg></span>내 정보</a>
-        <a href="#" data-go="pg-life"><span class="mi dot"><svg viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg></span>생활 스킬</a>
+        <a href="#" data-go="pg-life"><span class="mi dot"><svg viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg></span>자동화 툴</a>
         <a href="#" data-go="pg-class"><span class="mi"><svg viewBox="0 0 24 24"><circle cx="12" cy="9.5" r="4.5"/><path d="M9.5 13L7.5 21l4.5-2.5L16.5 21l-2-8"/></svg></span>업적</a>
         <a href="https://rladntls94-tech.github.io/OPtools/" target="_blank" rel="noopener"><span class="mi"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="1.5"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 13h16"/></svg></span>OPtools</a>
         <a href="https://www.youtube.com/watch?v=yi6oxIYmppY" target="_blank" rel="noopener"><span class="mi dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path fill="currentColor" stroke="none" d="M10 8.5l6 3.5-6 3.5z"/></svg></span>출연 영상</a>
@@ -275,34 +287,41 @@ footer a{color:var(--purple)}
 
 </div>
 
+<div id="shotView"><img src="" alt="확대 이미지"><p></p></div>
+
 <script>
 /* ───── 프로젝트 = 전투 스킬 데이터 ───── */
 const GEMS=["#8b6cf0","#4ea0e0","#7ee36a","#e8c46a","#e06ea8","#6adfd4","#b06cf0"];
 const SKILLS=[
  {name:"라이브 서비스 운영", plus:"+140", grade:"전설 · 정기 운영 스킬", tags:["#일본어전담","#자동화","#7년+"],
-  desc:"격주 정기점검과 업데이트를 7년 넘게 이어온 메인 스킬. 일본어 공지·약관 현지화, 공식 영상 출연, 인게임 GM 활동, 검출 툴 개발까지 라이브의 모든 국면을 커버한다.",
+  desc:"격주 정기점검과 업데이트를 7년 넘게 이어온 메인 스킬. 일본어 공지·약관 현지화, X·Discord 커뮤니티 운영, 인게임 GM 활동, 공식 유튜브 영상 출연, 검출 툴 개발까지 라이브의 모든 국면을 커버한다.",
   period:"2019.07 ~ 진행 중",
-  stats:[["격주 업데이트","140회+"],["검수 시간","90분 → 5분"],["한국어 원문 노출 사고","0건"],["중상위 유저 상위 진입","약 30%"]]},
+  stats:[["격주 업데이트","140회+"],["검수 시간","90분 → 5분"],["한국어 원문 노출 사고","0건"],["중상위 유저 상위 진입","약 30%"]],
+  imgs:[["img/pspartners.png","PlayStation Partners — 플랫폼 정책·배포 실무"],["img/policy_jp.png","운영 정책(運営ポリシー) 일본어 현지화 문서"],["img/ingame_event.png","인게임 GM 이벤트 진행 화면"]]},
  {name:"글로벌 계정 통합", plus:"+54", grade:"고급 · 리스크 관리 스킬", tags:["#11개언어권","#사전QA","#체크리스트"],
-  desc:"Pearl Abyss ID 통합 전환. 사전 QA에서 미공유 스펙 변경 2건을 직접 발견하고 FAQ·CS 템플릿을 선제 구축, 점검 당일 체크리스트를 총괄했다.",
+  desc:"Pearl Abyss ID 통합 전환. 사전 QA에서 미공유 스펙 변경 2건을 직접 발견해 FAQ·CS 템플릿을 선제 구축하고, 점검 당일 체크리스트를 총괄하며 미국 오피스와 실시간 협업했다.",
   period:"2025.06 ~ 2025.12",
-  stats:[["CS 유입 억제","예측 대비 54%"],["이관 당일 이슈","0건"],["점검 종료","2시간 조기"],["발견 스펙 변경","2건"]]},
+  stats:[["CS 유입 억제","예측 대비 54%"],["이관 당일 이슈","0건"],["점검 종료","2시간 조기"],["발견 스펙 변경","2건"]],
+  imgs:[["img/paid.png","다국가 서비스 → 통합 계정(PA ID) 전환 구조"],["img/checklist.png","점검 당일 크로스체크 체크리스트"],["img/qa_check.png","이관 사전 QA 확인 항목 설계"]]},
  {name:"PS5/XBS 세대 전환", plus:"+210", grade:"전설 · 위기 관리 스킬", tags:["#서비스종료","#자금결제법","#BM"],
-  desc:"구세대 서비스 종료와 차세대 전환. 각국 환불 규정과 일본 자금결제법을 선제 검토해 환불 기준을 세우고, 로드맵 선공개와 안내 영상 출연으로 이탈을 방어했다.",
+  desc:"구세대 서비스 종료와 차세대 전환. 각국 환불 규정과 일본 자금결제법을 선제 검토해 환불 기준을 세우고, 판매 데이터 기반 BM 기획과 로드맵 선공개·안내 영상 출연으로 이탈을 방어했다.",
   period:"2024.11 ~ 2025.08",
-  stats:[["전환기 매출","210% 성장"],["법적 분쟁","0건 · 실환불 1건"],["크래시율","8.4% → 0.9%"],["이탈률","예상 8~10% → 4~6%"]]},
+  stats:[["전환기 매출","210% 성장"],["법적 분쟁","0건 · 실환불 1건"],["크래시율","8.4% → 0.9%"],["이탈률","예상 8~10% → 4~6%"]],
+  imgs:[["img/video.png","유저 대상 공식 안내 영상 — 일본어 담당으로 직접 출연"],["img/refund.png","환불 안내 문구 법무 검토 협의"]]},
  {name:"리테일 패키지 발매", plus:"+183", grade:"희귀 · 제작 스킬", tags:["#직접제안","#일본문화","#에디션"],
   desc:"일본에서 자라며 체득한 실물 패키지 선호 문화를 근거로 직접 제안해 회사를 설득, 기획부터 출시까지 주도한 프로젝트.",
   period:"2020.05 ~ 2020.11",
-  stats:[["글로벌 NRU","183% 증가"],["웹 방문자","140% 상승"],["패키지 유저 D30 잔존율","38%"]]},
+  stats:[["글로벌 NRU","183% 증가"],["웹 방문자","140% 상승"],["패키지 유저 D30 잔존율","38%"]],
+  imgs:[["img/retail.png","프레스티지 에디션 패키지 구성"]]},
  {name:"크로스 플레이 도입", plus:"+350", grade:"전설 · 협동 스킬", tags:["#한국최초","#PPA2020수상","#매크로대응"],
-  desc:"한국 최초 콘솔 MMORPG 크로스플레이. 출시 일정 역산과 부서 협의를 이끌고, 매크로 대응 프로세스를 설계해 제재 후속 분쟁 0건을 유지했다.",
+  desc:"한국 최초 콘솔 MMORPG 크로스플레이. 출시 일정 역산과 거점전 세금 동기화 이슈 선제 발견으로 부서 협의를 이끌고, 매크로 대응 프로세스를 설계해 제재 후속 분쟁 0건을 유지했다.",
   period:"2019.10 ~ 2020.05",
-  stats:[["복귀 유저","350% 증가"],["NRU / DAU","250% / 126%"],["수상","PS Partner Awards 2020"],["제재 후속 분쟁","0건"]]},
+  stats:[["복귀 유저","350% 증가"],["NRU / DAU","250% / 126%"],["수상","PS Partner Awards 2020"],["제재 후속 분쟁","0건"]],
+  imgs:[["img/award.png","PlayStation Partner Awards 2020 (Japan Asia) — 팀 수상"],["img/gantt.png","론칭 일정 역산·부서별 R&R 관리"]]},
  {name:"PS4 론칭", plus:"+1", grade:"희귀 · 시작의 스킬", tags:["#CERO","#FAQ선제","#일본1위"],
-  desc:"스토어 구매테스트 프로세스 구축, 한/영/독/불 R&R 배분, CERO 심의 대응과 일본어 현지화로 일본 시장 진입을 이끌었다.",
+  desc:"스토어 구매테스트 프로세스 구축과 한/영/독/불 R&R 배분, 선행 플랫폼 데이터 분석 기반 FAQ 선제 배포, CERO 심의 대응과 일본어 현지화로 일본 시장 진입을 이끌었다.",
   period:"2019.07 ~ 2019.11",
-  stats:[["일본 PS 스토어","랭킹 1위"],["론칭 4주 MCU","90% 유지"],["CS 인입","예상 30% → 12%"]]},
+  stats:[["일본 PS 스토어","랭킹 1위"],["론칭 4주 MCU","90% 유지"],["CS 인입","예상 30% → 12%"],["도쿄 협업 리트윗 이벤트","RT 1,000 · 팔로워 +1,500"]]},
  {name:"붉은사막 신작 준비", plus:"+22", grade:"고급 · 신작 파견 스킬", tags:["#리뷰분석","#운영툴전환"],
   desc:"신작 준비팀에 파견되어 테스트 플레이·리뷰 추이 분석 기반 이슈 대응 프로세스를 세우고, CS·포럼 수집의 한계를 데이터로 증명해 운영툴 기반 수집으로 전환을 주도했다.",
   period:"2026.03 ~ 2026.06 (파견 후 복귀)",
@@ -327,6 +346,8 @@ function renderSkill(i){
     <div class="sk-desc">${s.desc}</div>
     <div class="sk-sub">성과 미리보기</div>
     ${s.stats.map(([k,v])=>`<div class="stat"><span class="k">${k}</span><span class="v">${v}</span></div>`).join('')}
+    ${s.imgs?`<div class="sk-sub" style="margin-top:16px">기록 스크린샷</div>
+    <div class="shots">${s.imgs.map(([src,cap])=>`<figure${src==='img/video.png'?' data-video="1"':''}><img src="${src}" alt="${cap}" loading="lazy"><figcaption>${cap}</figcaption></figure>`).join('')}</div>`:''}
     <div class="sk-period">${s.period}</div>`;
   document.querySelectorAll('#gembar button').forEach((b,j)=>b.classList.toggle('on',j===i));
 }
@@ -351,6 +372,18 @@ SKILLS.forEach((s,i)=>{
   bar.appendChild(b);
 });
 renderSkill(0);
+
+/* 기록 스크린샷 확대 뷰 (영상 썸네일은 유튜브로) */
+const sv=document.getElementById('shotView');
+card.addEventListener('click',e=>{
+  const f=e.target.closest('.shots figure');
+  if(!f)return;
+  if(f.dataset.video){window.open('https://www.youtube.com/watch?v=yi6oxIYmppY','_blank');return}
+  sv.querySelector('img').src=f.querySelector('img').src;
+  sv.querySelector('p').textContent=f.querySelector('figcaption').textContent;
+  sv.classList.add('on');
+});
+sv.addEventListener('click',()=>sv.classList.remove('on'));
 
 /* ───── 탭바 ───── */
 document.querySelectorAll('.tabbar button').forEach(b=>{
