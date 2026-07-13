@@ -254,6 +254,9 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
 @keyframes cellglow{0%,100%{box-shadow:0 0 12px rgba(126,227,106,.25)}50%{box-shadow:0 0 22px rgba(126,227,106,.5)}}
 .ps-ico{animation:goldring 2.8s ease-in-out infinite}
 @keyframes goldring{0%,100%{box-shadow:0 0 0 0 rgba(232,196,106,.22)}50%{box-shadow:0 0 12px 2px rgba(232,196,106,.18)}}
+.sk-name{transform-origin:left center;transition:transform .18s ease,text-shadow .18s ease}
+.sk-name b{animation:greenglow 2.6s ease-in-out infinite}
+@keyframes greenglow{0%,100%{text-shadow:0 0 6px rgba(126,227,106,.25)}50%{text-shadow:0 0 16px rgba(126,227,106,.65)}}
 
 /* ── 호버(마우스) 확대 ── */
 .skcell,.life,.ach-row,.power,.stat,.cpanel,.pskill,.attend a,.cat-tabs button,.mgrid a .mi,
@@ -272,6 +275,7 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
   .chead img:hover{transform:scale(1.1)}
   .shots figure:hover{transform:scale(1.015)}
   .tabbar button:hover{color:#fff}
+  .sk-name:hover{transform:scale(1.03);text-shadow:0 0 14px rgba(126,227,106,.45)}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
 
