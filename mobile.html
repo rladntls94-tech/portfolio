@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>김우신 — 모바일 포트폴리오</title>
+<meta name="description" content="검은사막 콘솔 라이브 서비스 운영 7년+ · 일본어 담당 김우신 — 모바일 게임 UI 포트폴리오">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0d12; --panel:#12151d; --panel2:#181c26; --line:#262b38;
+  --green:#7ee36a; --green-dim:#3f7a36; --purple:#8b6cf0; --purple-deep:#5f43c9;
+  --txt:#e8eaf0; --sub:#9aa2b5; --gold:#e8c46a; --red:#ff5d5d;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:#000;font-family:'Noto Sans KR',sans-serif;color:var(--txt)}
+.app{max-width:430px;margin:0 auto;min-height:100vh;background:
+  radial-gradient(ellipse at 50% -10%, #1b2030 0%, transparent 55%), var(--bg);
+  position:relative;padding-bottom:86px}
+
+/* ── 지역 소개 인트로 ── */
+#intro{position:fixed;inset:0;z-index:100;background:#000;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:30px;transition:opacity 1s}
+#intro.hide{opacity:0;pointer-events:none}
+#intro .zone{font-size:30px;font-weight:900;letter-spacing:.3em;color:#fff;opacity:0;animation:fadein 1.4s ease .3s forwards}
+#intro .deco{color:#8a8f9c;font-size:15px;letter-spacing:.2em;margin:0 12px}
+#intro p{margin-top:20px;color:#b8bdc9;font-size:14.5px;line-height:1.9;opacity:0;animation:fadein 1.4s ease 1s forwards}
+#intro .tap{position:absolute;bottom:60px;color:#6c7383;font-size:12px;letter-spacing:.25em;animation:blink 1.4s infinite}
+@keyframes fadein{to{opacity:1}}
+@keyframes blink{50%{opacity:.2}}
+
+/* ── 상단 바 ── */
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:10px;
+  padding:14px 16px;background:rgba(11,13,18,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .name{font-weight:900;font-size:16px}
+.top .lv{font-size:11px;color:var(--green);border:1px solid var(--green-dim);border-radius:4px;padding:2px 7px;font-weight:700}
+.top .menu-btn{margin-left:auto;width:34px;height:34px;border:1px solid var(--line);border-radius:8px;
+  background:var(--panel);color:var(--txt);font-size:16px;position:relative;cursor:pointer}
+.top .menu-btn::after{content:"";position:absolute;top:-3px;right:-3px;width:8px;height:8px;border-radius:50%;background:var(--red)}
+
+/* ── 섹션 공통 ── */
+.page{display:none;padding:18px 16px 30px}
+.page.on{display:block;animation:pagein .35s ease}
+@keyframes pagein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;margin:6px 0 14px}
+
+/* ── 스킬 카드 (전투 스킬 = 프로젝트) ── */
+.cat-tabs{display:flex;gap:8px;margin-bottom:14px}
+.cat-tabs button{flex:1;padding:9px 0;border-radius:18px;border:1px solid var(--line);background:var(--panel);
+  color:var(--sub);font-weight:700;font-size:13.5px;font-family:inherit;cursor:pointer}
+.cat-tabs button.on{background:var(--purple);border-color:var(--purple);color:#fff}
+.skillcard{border:1.5px solid var(--green-dim);border-radius:14px;background:
+  linear-gradient(180deg, rgba(126,227,106,.06), transparent 30%), var(--panel);
+  box-shadow:0 0 24px rgba(126,227,106,.08), inset 0 0 30px rgba(0,0,0,.4);
+  padding:18px 16px;min-height:430px}
+.sk-head{display:flex;align-items:center;gap:12px}
+.sk-name{font-size:19px;font-weight:900}
+.sk-name b{color:var(--green)}
+.sk-grade{font-size:12px;color:var(--gold);margin-top:3px}
+.gem{margin-left:auto;flex-shrink:0}
+.tags{display:flex;gap:6px;margin:12px 0}
+.tags span{font-size:11.5px;color:#c9cede;background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:3px 8px}
+.sk-desc{font-size:13.5px;line-height:1.8;color:#c3c9d8;margin-bottom:14px;min-height:66px}
+.sk-sub{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--txt);
+  border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:4px}
+.sk-sub::before{content:"◆";color:var(--green);font-size:9px}
+.stat{display:flex;justify-content:space-between;padding:8px 2px;border-bottom:1px solid rgba(38,43,56,.6);font-size:13px}
+.stat .k{color:var(--sub)}
+.stat .v{font-weight:900;color:var(--green)}
+.stat .v.plain{color:var(--txt)}
+.sk-period{margin-top:10px;font-size:11.5px;color:#6c7383;text-align:right}
+/* 보석 아이콘 바 */
+.gembar{display:flex;gap:9px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.gembar button{background:none;border:0;cursor:pointer;position:relative;padding:0}
+.gembar .plus{position:absolute;bottom:-4px;right:-4px;font-size:9.5px;font-weight:900;color:#fff;
+  background:#20242f;border:1px solid var(--line);border-radius:4px;padding:1px 4px}
+.gembar button.on svg{filter:drop-shadow(0 0 8px rgba(139,108,240,.9))}
+.gembar button.on::after{content:"";position:absolute;inset:-4px;border:1.5px solid var(--purple);border-radius:12px}
+
+/* ── 내 정보 ── */
+.char{border:1.5px solid var(--line);border-radius:14px;background:var(--panel);padding:18px 16px;margin-bottom:14px}
+.char .row1{display:flex;gap:14px;align-items:center}
+.char img{width:74px;height:74px;border-radius:50%;object-fit:cover;border:2px solid var(--purple)}
+.char .who b{font-size:18px}
+.char .who span{display:block;font-size:12px;color:var(--sub);margin-top:4px;line-height:1.6}
+.char .quote{margin-top:14px;font-size:13px;line-height:1.8;color:#c3c9d8;border-top:1px solid var(--line);padding-top:12px}
+.statbox{border:1.5px solid var(--line);border-radius:14px;background:var(--panel);padding:16px;margin-bottom:14px}
+.statbox h3{font-size:13px;color:var(--green);letter-spacing:.12em;margin-bottom:8px}
+
+/* ── 생활 스킬 (툴) ── */
+.life{display:flex;gap:12px;align-items:center;border:1.5px solid var(--line);border-radius:12px;
+  background:var(--panel);padding:14px;margin-bottom:10px;color:inherit;text-decoration:none}
+.life:active{background:var(--panel2)}
+.life .info{flex:1}
+.life b{font-size:15px}
+.life .lv{font-size:10.5px;color:var(--gold);margin-left:6px}
+.life p{font-size:12px;color:var(--sub);margin-top:4px;line-height:1.6}
+.life .use{font-size:11.5px;font-weight:700;color:#fff;background:var(--purple-deep);border-radius:14px;padding:6px 12px;flex-shrink:0}
+
+/* ── 클래스(업적·연락) ── */
+.ach-row{display:flex;gap:12px;align-items:center;border:1.5px solid var(--line);border-radius:12px;
+  background:var(--panel);padding:13px 14px;margin-bottom:10px}
+.ach-row .medal{font-size:22px}
+.ach-row b{font-size:14px;display:block}
+.ach-row p{font-size:11.5px;color:var(--sub);margin-top:3px;line-height:1.55}
+.attend{border:1.5px solid var(--gold);border-radius:14px;text-align:center;padding:22px 16px;margin-top:16px;
+  background:radial-gradient(ellipse at 50% 0%, rgba(232,196,106,.14), transparent 65%), var(--panel)}
+.attend .t{font-size:20px;font-weight:900;letter-spacing:.14em;color:var(--gold)}
+.attend p{font-size:12.5px;color:var(--sub);margin:8px 0 14px}
+.attend a{display:block;background:var(--purple);color:#fff;font-weight:700;font-size:14px;border-radius:10px;padding:13px;margin-top:8px;text-decoration:none}
+.attend a.alt{background:var(--panel2);border:1px solid var(--line);color:#c9cede}
+
+/* ── 하단 탭바 ── */
+.tabbar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;z-index:40;
+  display:flex;background:rgba(13,15,21,.97);border-top:1px solid var(--line);padding:8px 6px calc(10px + env(safe-area-inset-bottom))}
+.tabbar button{flex:1;background:none;border:0;color:var(--sub);font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0}
+.tabbar button .ic{font-size:18px;line-height:1}
+.tabbar button.on{color:#fff}
+.tabbar button.on .ic{color:var(--purple)}
+.tabbar button.on::after{content:"";width:36px;height:3px;border-radius:2px;background:var(--purple);margin-top:3px}
+
+/* ── 메뉴 그리드 모달 ── */
+#menuModal{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.78);display:none;justify-content:center;align-items:flex-start;padding:30px 16px}
+#menuModal.on{display:flex}
+.menu-panel{width:100%;max-width:400px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 16px;position:relative}
+.menu-panel .x{position:absolute;top:14px;right:14px;background:none;border:0;color:#fff;font-size:20px;cursor:pointer}
+.menu-panel h3{font-size:15px;font-weight:900;margin-bottom:16px}
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 8px}
+.mgrid a{display:flex;flex-direction:column;align-items:center;gap:6px;color:#c9cede;font-size:11px;text-decoration:none;position:relative}
+.mgrid a .mi{width:44px;height:44px;border-radius:10px;background:var(--panel2);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-size:19px}
+.mgrid a .dot::after{content:"";position:absolute;top:-2px;right:8px;width:7px;height:7px;border-radius:50%;background:var(--red)}
+footer{padding:26px 16px 20px;text-align:center;color:#5b6272;font-size:10.5px;line-height:1.9}
+footer a{color:var(--purple)}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- 지역 소개 인트로 -->
+  <div id="intro">
+    <div class="zone"><span class="deco">—◇—</span> 김우신 <span class="deco">—◇—</span></div>
+    <p>없는 것 빼고 다 있는 라이브 서비스 운영자.<br>
+    7년간의 무사고 운영 기록과 자동화 도구들로<br>활기가 넘쳐난다.</p>
+    <div class="tap">TAP TO START</div>
+  </div>
+
+  <!-- 상단 바 -->
+  <div class="top">
+    <span class="name">김우신</span>
+    <span class="lv">Lv.7+ 운영자</span>
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </div>
+
+  <!-- 전투 스킬 = 프로젝트 -->
+  <section class="page on" id="pg-battle">
+    <h2 class="ptitle">BATTLE SKILL — 프로젝트</h2>
+    <div class="cat-tabs"><button class="on">액티브</button><button onclick="alert('패시브 스킬: 반복 업무를 보면 자동화하지 않고는 못 배김')">패시브</button></div>
+    <div class="skillcard" id="skillcard"></div>
+    <div class="gembar" id="gembar"></div>
+  </section>
+
+  <!-- 내 정보 -->
+  <section class="page" id="pg-me">
+    <h2 class="ptitle">MY INFO — 캐릭터 정보</h2>
+    <div class="char">
+      <div class="row1">
+        <img src="img/profile.png" alt="김우신">
+        <div class="who"><b>김우신 (Shinozaki Masanobu)</b>
+          <span>콘솔 라이브 서비스 운영자 · 일본어 담당<br>펄어비스 2019.07 ~ 재직 중</span></div>
+      </div>
+      <div class="quote">한국인 어머니와 일본인 아버지 사이에서 일본에서 태어나 초등학교까지 일본 학교를 다닌 일본어 원어민.
+      라이브 서비스의 신뢰는 사고 없는 하루하루의 축적에서 나온다고 믿습니다.</div>
+    </div>
+    <div class="statbox">
+      <h3>STATUS</h3>
+      <div class="stat"><span class="k">언어</span><span class="v plain">일본어 Native · 한국어 Native</span></div>
+      <div class="stat"><span class="k">격주 업데이트</span><span class="v">140회+</span></div>
+      <div class="stat"><span class="k">한국어 노출 사고</span><span class="v">0건</span></div>
+      <div class="stat"><span class="k">제재 후속 분쟁</span><span class="v">0건</span></div>
+      <div class="stat"><span class="k">검수 시간</span><span class="v">90분 → 5분</span></div>
+      <div class="stat"><span class="k">주 무기</span><span class="v plain">기준 · 데이터 · 자동화</span></div>
+    </div>
+    <div class="statbox">
+      <h3>EDUCATION</h3>
+      <div class="stat"><span class="k">2001.04~2007.03</span><span class="v plain">일본 소재 초등학교 졸업</span></div>
+      <div class="stat"><span class="k">2011.03~2013.02</span><span class="v plain">광성고등학교 졸업</span></div>
+      <div class="stat"><span class="k">2013.04~</span><span class="v plain">센슈대 경제학과 중퇴 (한국 이주)</span></div>
+      <div class="stat"><span class="k">2014.03~2019.07</span><span class="v plain">성공회대 일어일본학과 중퇴 (취업)</span></div>
+      <div class="stat"><span class="k">2020.03~2022.02</span><span class="v plain">경희사이버대 일본학과 졸업</span></div>
+    </div>
+  </section>
+
+  <!-- 생활 스킬 = 자동화 툴 -->
+  <section class="page" id="pg-life">
+    <h2 class="ptitle">LIFE SKILL — 직접 만든 자동화 툴</h2>
+    <a class="life" href="https://rladntls94-tech.github.io/korean-checker/" target="_blank" rel="noopener">
+      <div class="info"><b>한국어 검출기<span class="lv">Lv.MAX</span></b><p>다국어 텍스트의 한국어 잔류 자동 검출 — 검수 90분→5분의 주역</p></div><span class="use">사용</span></a>
+    <a class="life" href="https://rladntls94-tech.github.io/multilang-generator/" target="_blank" rel="noopener">
+      <div class="info"><b>다국어 생성기<span class="lv">Lv.8</span></b><p>한국어 소스를 언어별 소스로 자동 치환</p></div><span class="use">사용</span></a>
+    <a class="life" href="https://rladntls94-tech.github.io/console-key-converter/" target="_blank" rel="noopener">
+      <div class="info"><b>콘솔 키 변환기<span class="lv">Lv.7</span></b><p>PC 조작키 표기를 PS/XB 버튼 표기로 일괄 변환</p></div><span class="use">사용</span></a>
+    <a class="life" href="https://rladntls94-tech.github.io/userreport-tool/" target="_blank" rel="noopener">
+      <div class="info"><b>UserReport 뷰어<span class="lv">Lv.6</span></b><p>ZIP 속 유저 리포트 열람·정리 보조 툴</p></div><span class="use">사용</span></a>
+    <p style="font-size:11px;color:#6c7383;line-height:1.8;margin-top:12px">※ 전부 개인 시간에 사내 데이터 없이 Python·생성형 AI(GPT, Claude)로 제작해 공개 배포 중인 범용 도구입니다.</p>
+  </section>
+
+  <!-- 클래스 = 업적·연락 -->
+  <section class="page" id="pg-class">
+    <h2 class="ptitle">CLASS — 업적과 파티 모집</h2>
+    <div class="ach-row"><span class="medal">🏆</span><div><b>PlayStation Partner Awards 2020</b><p>한국 최초 콘솔 MMORPG 크로스플레이 — Japan Asia 팀 수상</p></div></div>
+    <div class="ach-row"><span class="medal">🥇</span><div><b>일본 PS 스토어 랭킹 1위</b><p>PS4 론칭 시 달성 · 4주간 MCU 90% 유지</p></div></div>
+    <div class="ach-row"><span class="medal">📈</span><div><b>전환기 매출 210% 성장</b><p>법적 분쟁 0건 · 크래시율 8.4%→0.9%</p></div></div>
+    <div class="ach-row"><span class="medal">🕊️</span><div><b>분쟁 0건의 수호자</b><p>매크로 제재 후속 분쟁 0건 · 한국어 노출 사고 0건</p></div></div>
+    <div class="attend">
+      <div class="t">파티 모집 중</div>
+      <p>일본어 원어민 라이브 서비스 운영자가 다음 파티를 찾고 있습니다.</p>
+      <a href="mailto:kimboard@naver.com">✉ 합격 문자 보내기</a>
+      <a class="alt" href="김우신_경력기술서.pdf" download>경력기술서 PDF 다운로드</a>
+      <a class="alt" href="index.html">🖥 PC 버전으로 보기</a>
+    </div>
+  </section>
+
+  <footer>
+    본 페이지는 모바일 게임 UI를 오마주하여 직접 구현한 개인 포트폴리오입니다.<br>
+    특정 게임의 이미지·에셋은 사용하지 않았습니다 · <a href="index.html">PC 버전</a><br>
+    © 김우신 · kimboard@naver.com
+  </footer>
+
+  <!-- 하단 탭바 -->
+  <nav class="tabbar">
+    <button data-pg="pg-me"><span class="ic">👤</span>내 정보</button>
+    <button data-pg="pg-battle" class="on"><span class="ic">⚔️</span>전투 스킬</button>
+    <button data-pg="pg-life"><span class="ic">🛠</span>생활 스킬</button>
+    <button data-pg="pg-class"><span class="ic">🎖</span>클래스</button>
+  </nav>
+
+  <!-- 메뉴 그리드 -->
+  <div id="menuModal">
+    <div class="menu-panel">
+      <button class="x" id="menuX">✕</button>
+      <h3>메뉴</h3>
+      <div class="mgrid">
+        <a href="#" data-go="pg-battle"><span class="mi dot">📜</span>프로젝트</a>
+        <a href="#" data-go="pg-me"><span class="mi">👤</span>내 정보</a>
+        <a href="#" data-go="pg-life"><span class="mi dot">🛠</span>생활 스킬</a>
+        <a href="#" data-go="pg-class"><span class="mi">🎖</span>업적</a>
+        <a href="https://rladntls94-tech.github.io/OPtools/" target="_blank" rel="noopener"><span class="mi">🧰</span>OPtools</a>
+        <a href="https://www.youtube.com/watch?v=yi6oxIYmppY" target="_blank" rel="noopener"><span class="mi dot">▶️</span>출연 영상</a>
+        <a href="김우신_경력기술서.pdf" download><span class="mi">📄</span>경력기술서</a>
+        <a href="mailto:kimboard@naver.com"><span class="mi dot">✉️</span>채용 문의</a>
+        <a href="index.html"><span class="mi">🖥</span>PC 버전</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ───── 프로젝트 = 전투 스킬 데이터 ───── */
+const GEMS=["#8b6cf0","#4ea0e0","#7ee36a","#e8c46a","#e06ea8","#6adfd4","#b06cf0"];
+const SKILLS=[
+ {name:"라이브 서비스 운영", plus:"+140", grade:"전설 · 정기 운영 스킬", tags:["#일본어전담","#자동화","#7년+"],
+  desc:"격주 정기점검과 업데이트를 7년 넘게 이어온 메인 스킬. 일본어 공지·약관 현지화, 공식 영상 출연, 인게임 GM 활동, 검출 툴 개발까지 라이브의 모든 국면을 커버한다.",
+  period:"2019.07 ~ 진행 중",
+  stats:[["격주 업데이트","140회+"],["검수 시간","90분 → 5분"],["한국어 노출 사고","0건"],["중상위 유저 상위 진입","약 30%"]]},
+ {name:"글로벌 계정 통합", plus:"+54", grade:"고급 · 리스크 관리 스킬", tags:["#11개언어권","#사전QA","#체크리스트"],
+  desc:"Pearl Abyss ID 통합 전환. 사전 QA에서 미공유 스펙 변경 2건을 직접 발견하고 FAQ·CS 템플릿을 선제 구축, 점검 당일 체크리스트를 총괄했다.",
+  period:"2025.06 ~ 2025.12",
+  stats:[["CS 유입 억제","예측 대비 54%"],["이관 당일 이슈","0건"],["점검 종료","2시간 조기"],["발견 스펙 변경","2건"]]},
+ {name:"PS5/XBS 세대 전환", plus:"+210", grade:"전설 · 위기 관리 스킬", tags:["#서비스종료","#자금결제법","#BM"],
+  desc:"구세대 서비스 종료와 차세대 전환. 각국 환불 규정과 일본 자금결제법을 선제 검토해 환불 기준을 세우고, 로드맵 선공개와 안내 영상 출연으로 이탈을 방어했다.",
+  period:"2024.11 ~ 2025.08",
+  stats:[["전환기 매출","210% 성장"],["법적 분쟁","0건 · 실환불 1건"],["크래시율","8.4% → 0.9%"],["이탈률","예상 8~10% → 4~6%"]]},
+ {name:"리테일 패키지 발매", plus:"+183", grade:"희귀 · 제작 스킬", tags:["#직접제안","#일본문화","#에디션"],
+  desc:"일본에서 자라며 체득한 실물 패키지 선호 문화를 근거로 직접 제안해 회사를 설득, 기획부터 출시까지 주도한 프로젝트.",
+  period:"2020.05 ~ 2020.11",
+  stats:[["글로벌 NRU","183% 증가"],["웹 방문자","140% 상승"],["패키지 유저 D30 잔존율","38%"]]},
+ {name:"크로스 플레이 도입", plus:"+350", grade:"전설 · 협동 스킬", tags:["#한국최초","#PPA2020수상","#매크로대응"],
+  desc:"한국 최초 콘솔 MMORPG 크로스플레이. 출시 일정 역산과 부서 협의를 이끌고, 매크로 대응 프로세스를 설계해 제재 후속 분쟁 0건을 유지했다.",
+  period:"2019.10 ~ 2020.05",
+  stats:[["복귀 유저","350% 증가"],["NRU / DAU","250% / 126%"],["수상","PS Partner Awards 2020"],["제재 후속 분쟁","0건"]]},
+ {name:"PS4 론칭", plus:"+1", grade:"희귀 · 시작의 스킬", tags:["#CERO","#FAQ선제","#일본1위"],
+  desc:"스토어 구매테스트 프로세스 구축, 한/영/독/불 R&R 배분, CERO 심의 대응과 일본어 현지화로 일본 시장 진입을 이끌었다.",
+  period:"2019.07 ~ 2019.11",
+  stats:[["일본 PS 스토어","랭킹 1위"],["론칭 4주 MCU","90% 유지"],["CS 인입","예상 30% → 12%"]]},
+ {name:"붉은사막 신작 준비", plus:"+22", grade:"고급 · 신작 스킬", tags:["#리뷰분석","#운영툴전환"],
+  desc:"테스트 플레이·리뷰 추이 분석 기반 이슈 대응 프로세스를 세우고, CS·포럼 수집의 한계를 데이터로 증명해 운영툴 기반 수집으로 전환을 주도했다.",
+  period:"2026.03 ~ 2026.06",
+  stats:[["스팀 리뷰 긍정 비율","22%p 개선"],["PS 리뷰 평점","3.7 → 4.2"]]},
+];
+
+function gemSvg(color,size){
+  return `<svg width="${size}" height="${size}" viewBox="0 0 40 40">
+    <polygon points="20,2 36,12 36,28 20,38 4,28 4,12" fill="${color}" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
+    <polygon points="20,2 36,12 20,20 4,12" fill="rgba(255,255,255,.25)"/>
+    <circle cx="14" cy="12" r="3" fill="rgba(255,255,255,.7)"/></svg>`;
+}
+const card=document.getElementById('skillcard'), bar=document.getElementById('gembar');
+function renderSkill(i){
+  const s=SKILLS[i];
+  card.innerHTML=`
+    <div class="sk-head">
+      <div><div class="sk-name">${s.name} <b>${s.plus}</b></div><div class="sk-grade">${s.grade}</div></div>
+      <div class="gem">${gemSvg(GEMS[i],46)}</div>
+    </div>
+    <div class="tags">${s.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+    <div class="sk-desc">${s.desc}</div>
+    <div class="sk-sub">성과 미리보기</div>
+    ${s.stats.map(([k,v])=>`<div class="stat"><span class="k">${k}</span><span class="v">${v}</span></div>`).join('')}
+    <div class="sk-period">${s.period}</div>`;
+  document.querySelectorAll('.gembar button').forEach((b,j)=>b.classList.toggle('on',j===i));
+}
+SKILLS.forEach((s,i)=>{
+  const b=document.createElement('button');
+  b.innerHTML=gemSvg(GEMS[i],34)+`<span class="plus">${s.plus}</span>`;
+  b.addEventListener('click',()=>renderSkill(i));
+  bar.appendChild(b);
+});
+renderSkill(0);
+
+/* ───── 탭바 ───── */
+document.querySelectorAll('.tabbar button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.tabbar button').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    document.getElementById(b.dataset.pg).classList.add('on');
+    window.scrollTo({top:0});
+  });
+});
+
+/* ───── 메뉴 모달 ───── */
+const mm=document.getElementById('menuModal');
+document.getElementById('menuBtn').addEventListener('click',()=>mm.classList.add('on'));
+document.getElementById('menuX').addEventListener('click',()=>mm.classList.remove('on'));
+mm.addEventListener('click',e=>{if(e.target===mm)mm.classList.remove('on')});
+document.querySelectorAll('[data-go]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();mm.classList.remove('on');
+    document.querySelector(`.tabbar button[data-pg="${a.dataset.go}"]`).click();
+  });
+});
+
+/* ───── 인트로 ───── */
+const intro=document.getElementById('intro');
+function endIntro(){intro.classList.add('hide');setTimeout(()=>intro.style.display='none',1100)}
+intro.addEventListener('click',endIntro);
+setTimeout(endIntro,4200);
+</script>
+</body>
+</html>
