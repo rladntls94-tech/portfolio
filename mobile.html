@@ -25,7 +25,17 @@ body{background:#000;font-family:'Noto Sans KR',sans-serif;color:var(--txt)}
 #intro .zone{font-size:30px;font-weight:900;letter-spacing:.3em;color:#fff;opacity:0;animation:fadein 1.4s ease .3s forwards}
 #intro .deco{color:#8a8f9c;font-size:15px;letter-spacing:.2em;margin:0 12px}
 #intro p{margin-top:20px;color:#b8bdc9;font-size:14.5px;line-height:1.9;opacity:0;animation:fadein 1.4s ease 1s forwards}
-#intro .tap{position:absolute;bottom:60px;color:#6c7383;font-size:12px;letter-spacing:.25em;animation:blink 1.4s infinite}
+#intro .tap{position:absolute;bottom:calc(88px + env(safe-area-inset-bottom));color:#6c7383;font-size:12px;letter-spacing:.25em;
+  opacity:0;animation:tapblink 1.4s ease-in-out 2.3s infinite}
+@keyframes tapblink{0%,100%{opacity:1}50%{opacity:.2}}
+#intro .loadwrap{position:absolute;bottom:calc(82px + env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:9px;
+  animation:loaddone .35s ease 2.05s forwards}
+#intro .loadbar{width:150px;height:4px;border-radius:3px;background:#20242f;overflow:hidden}
+#intro .loadbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8b6cf0,#7ee36a);border-radius:3px;
+  animation:loadfill 1.85s cubic-bezier(.3,.7,.4,1) .15s forwards}
+#intro .loadtxt{font-size:10px;letter-spacing:.3em;color:#565d6e}
+@keyframes loadfill{to{width:100%}}
+@keyframes loaddone{to{opacity:0;visibility:hidden}}
 @keyframes fadein{to{opacity:1}}
 @keyframes blink{50%{opacity:.2}}
 
@@ -363,6 +373,7 @@ footer a{color:var(--purple)}
     <div class="zone"><span class="deco">—◇—</span> 김우신 <span class="deco">—◇—</span></div>
     <p>검은사막 콘솔 라이브 7년+ · 일본어 담당 운영자.<br>
     격주 업데이트 140회+의 기록과<br>직접 만든 자동화 툴 4종을 장비하고 있다.</p>
+    <div class="loadwrap"><div class="loadbar"><i></i></div><span class="loadtxt">NOW LOADING</span></div>
     <div class="tap">TAP TO START</div>
   </div>
 
