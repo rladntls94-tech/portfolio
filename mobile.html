@@ -188,6 +188,35 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
 .statnote{font-size:10px;color:#6c7383;line-height:1.7;margin:2px 2px 12px}
 .quote2{font-size:13px;line-height:1.8;color:#c3c9d8;margin-top:9px}
 
+/* ── 게임 모션 ── */
+@keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.page.on>*{animation:riseIn .42s cubic-bezier(.22,.9,.3,1) backwards}
+.page.on>*:nth-child(1){animation-delay:.03s}.page.on>*:nth-child(2){animation-delay:.08s}
+.page.on>*:nth-child(3){animation-delay:.13s}.page.on>*:nth-child(4){animation-delay:.18s}
+.page.on>*:nth-child(5){animation-delay:.23s}.page.on>*:nth-child(6){animation-delay:.28s}
+.page.on>*:nth-child(7){animation-delay:.33s}.page.on>*:nth-child(8){animation-delay:.38s}
+.page.on>*:nth-child(9){animation-delay:.43s}.page.on>*:nth-child(10){animation-delay:.48s}
+.page.on>*:nth-child(11){animation-delay:.53s}.page.on>*:nth-child(12){animation-delay:.58s}
+@keyframes fillbar{from{width:0}}
+.hpbar i{animation:fillbar 1s cubic-bezier(.2,.8,.3,1) .35s backwards}
+.expbar i{animation:fillbar 1.1s cubic-bezier(.2,.8,.3,1) .45s backwards}
+.power{position:relative;overflow:hidden}
+.power::after{content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.13),transparent);animation:sweep 3s ease-in-out infinite}
+.p-blue::after{animation-delay:.4s}.p-gold::after{animation-delay:.8s}
+@keyframes sweep{0%{left:-60%}55%,100%{left:120%}}
+.skillcard>*{animation:riseIn .32s ease backwards}
+.skillcard>*:nth-child(2){animation-delay:.05s}.skillcard>*:nth-child(3){animation-delay:.09s}
+.skillcard>*:nth-child(4){animation-delay:.13s}.skillcard>*:nth-child(5){animation-delay:.17s}
+.skillcard>*:nth-child(6){animation-delay:.21s}.skillcard>*:nth-child(7){animation-delay:.25s}
+@keyframes pop{0%{transform:scale(.55)}70%{transform:scale(1.18)}100%{transform:scale(1)}}
+.tabbar button.on .ic{animation:pop .32s cubic-bezier(.2,1.4,.4,1)}
+.skcell .ring .prog{transition:stroke-dashoffset .9s cubic-bezier(.2,.8,.3,1)}
+.skcell,.life,.attend a,.cat-tabs button,.mgrid a .mi{transition:transform .12s ease}
+.skcell:active,.life:active,.attend a:active{transform:scale(.96)}
+.mgrid a:active .mi{transform:scale(.9)}
+@media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+
 /* ── 내 정보(구 폼) ── */
 .char{border:1.5px solid var(--line);border-radius:14px;background:var(--panel);padding:18px 16px;margin-bottom:14px}
 .char .row1{display:flex;gap:14px;align-items:center}
@@ -519,11 +548,12 @@ const VCLS=['','','hi','','hi','low',''];
 SKILLS.forEach((s,i)=>{
   const b=document.createElement('button');
   b.className='skcell';
-  b.innerHTML=`<span class="ring"><svg viewBox="0 0 48 48"><circle class="track" cx="24" cy="24" r="20"/><circle class="prog" cx="24" cy="24" r="20" stroke-dashoffset="${(126*(1-RINGP[i])).toFixed(1)}"/></svg><span class="sicon">${ICONS[i]}</span></span><b>${SHORT[i]}</b><i class="${VCLS[i]}">${s.plus}</i>`;
+  b.innerHTML=`<span class="ring"><svg viewBox="0 0 48 48"><circle class="track" cx="24" cy="24" r="20"/><circle class="prog" cx="24" cy="24" r="20" stroke-dashoffset="126" data-o="${(126*(1-RINGP[i])).toFixed(1)}"/></svg><span class="sicon">${ICONS[i]}</span></span><b>${SHORT[i]}</b><i class="${VCLS[i]}">${s.plus}</i>`;
   b.addEventListener('click',()=>renderSkill(i));
   bar.appendChild(b);
 });
 renderSkill(0);
+setTimeout(()=>{document.querySelectorAll('.skillgrid .prog').forEach(c=>c.style.strokeDashoffset=c.dataset.o)},150);
 
 /* 액티브/패시브 탭 전환 */
 const tabA=document.getElementById('tabActive'),tabP=document.getElementById('tabPassive'),
@@ -561,8 +591,30 @@ document.querySelectorAll('.tabbar button').forEach(b=>{
     b.classList.add('on');
     document.getElementById(b.dataset.pg).classList.add('on');
     window.scrollTo({top:0});
+    if(b.dataset.pg==='pg-me')animateInfo();
   });
 });
+
+/* 내 정보 숫자 카운트업 */
+function countUp(el){
+  if(el._anim)return;
+  const full=el.textContent, m=full.match(/[\d,.]+/);
+  if(!m)return;
+  const num=parseFloat(m[0].replace(/,/g,'')), dec=(m[0].split('.')[1]||'').length;
+  if(!num){return}
+  el._anim=true;
+  const t0=performance.now(), dur=750;
+  function f(t){
+    const pr=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-pr,3);
+    const cur=(num*e).toFixed(dec);
+    el.textContent=full.replace(m[0], Number(cur).toLocaleString('en-US',{minimumFractionDigits:dec}));
+    if(pr<1)requestAnimationFrame(f);else{el.textContent=full;el._anim=false}
+  }
+  requestAnimationFrame(f);
+}
+function animateInfo(){
+  document.querySelectorAll('#pg-me .power b, #pg-me .stat5 b, #pg-me .atkdef b').forEach(countUp);
+}
 
 /* ───── 메뉴 모달 ───── */
 const mm=document.getElementById('menuModal');
