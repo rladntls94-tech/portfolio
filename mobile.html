@@ -42,6 +42,14 @@ body{background:#000;font-family:'Noto Sans KR',sans-serif;color:var(--txt)}
   background:rgba(78,160,224,.08);color:#4ea0e0;font-weight:700;font-size:11.5px;font-family:inherit;cursor:pointer}
 .top .menu-btn{width:34px;height:34px;border:1px solid var(--line);border-radius:8px;flex-shrink:0;
   background:var(--panel);color:var(--txt);font-size:16px;position:relative;cursor:pointer}
+.top .lv{white-space:nowrap}
+@media(max-width:400px){
+  .top{gap:7px}
+  .top .name{font-size:14px}
+  .top .lv{font-size:10px;padding:2px 5px}
+  .top .pdf-btn{padding:0 8px;font-size:11px;gap:4px}
+  .top .lang-btn{padding:0 8px;font-size:11px}
+}
 .top .menu-btn::after{content:"";position:absolute;top:-3px;right:-3px;width:8px;height:8px;border-radius:50%;background:var(--red)}
 
 /* ── 섹션 공통 ── */
