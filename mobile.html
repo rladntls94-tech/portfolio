@@ -364,13 +364,12 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
 footer{padding:26px 16px 20px;text-align:center;color:#5b6272;font-size:10.5px;line-height:1.9}
 footer a{color:var(--purple)}
 
-/* ── 자동화 툴·업적 메뉴: 보라 허밍 효과 ── */
-@keyframes hum{0%,100%{box-shadow:0 0 5px rgba(139,108,240,.22);border-color:rgba(139,108,240,.5)}50%{box-shadow:0 0 16px rgba(139,108,240,.6);border-color:var(--purple)}}
-@keyframes ichum{0%,100%{filter:drop-shadow(0 0 2px rgba(139,108,240,.35));transform:translateY(0)}50%{filter:drop-shadow(0 0 9px rgba(139,108,240,.95));transform:translateY(-2px)}}
-.catnav button[data-pg="pg-life"],.catnav button[data-pg="pg-class"]{animation:hum 2.4s ease-in-out infinite}
-.catnav button[data-pg="pg-class"]{animation-delay:1.2s}
-.tabbar button[data-pg="pg-life"] .ic,.tabbar button[data-pg="pg-class"] .ic{animation:ichum 2.4s ease-in-out infinite}
-.tabbar button[data-pg="pg-class"] .ic{animation-delay:1.2s}
+/* ── 자동화 툴 박스: 선택 시 보라 허밍 ── */
+@keyframes humP{0%,100%{box-shadow:0 0 5px rgba(139,108,240,.25)}50%{box-shadow:0 0 18px rgba(139,108,240,.7)}}
+@keyframes humG{0%,100%{box-shadow:0 0 5px rgba(232,196,106,.25)}50%{box-shadow:0 0 18px rgba(232,196,106,.65)}}
+.life:hover,.life:active,.life:focus-visible{border-color:var(--purple)!important;animation:humP 1.6s ease-in-out infinite}
+/* ── 업적 박스: 선택 시 골드 허밍 ── */
+.ach-row:hover,.ach-row:active{border-color:var(--gold)!important;animation:humG 1.6s ease-in-out infinite}
 /* ── PDF·일본어 버튼: 무채색 심플 ── */
 .top .pdf-btn,.top .lang-btn{border-color:#3a3f4c !important;color:#c9cede !important;background:var(--panel) !important;box-shadow:none !important;animation:none !important}
 </style>
