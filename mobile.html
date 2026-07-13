@@ -144,7 +144,51 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
 .pskill .ps-head .ps-sub{display:block;font-size:11px;color:var(--gold);margin-top:3px}
 .pskill p{font-size:13px;line-height:1.75;color:#c3c9d8}
 
-/* ── 내 정보 ── */
+/* ── 내 정보: 캐릭터 정보창 폼 ── */
+.chead{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.chead img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--purple);cursor:pointer;flex-shrink:0}
+.ctitle{font-size:11px;color:var(--sub)}
+.ctitle b{color:var(--gold);font-weight:700;margin-left:4px}
+.cname{font-size:18px;font-weight:900;margin:3px 0 7px}
+.hpbar{height:10px;border-radius:6px;background:#20242f;overflow:hidden;border:1px solid #2c3140}
+.hpbar i{display:block;height:100%;background:linear-gradient(90deg,#59d162,#8ee36a);border-radius:6px}
+.hpnum{font-size:11px;color:var(--green);font-weight:700;margin-top:4px}
+.cpanel{background:rgba(13,16,23,.92);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+.cp-row1{display:flex;justify-content:space-between;font-size:12px;color:var(--sub)}
+.cp-age b{color:var(--txt)}
+.cp-lv{margin-top:6px;font-size:15px;font-weight:900;color:var(--gold)}
+.cp-lv b{font-size:26px}
+.cp-exp{margin-left:10px;font-size:11.5px;color:var(--sub);font-weight:500}
+.expbar{height:8px;border-radius:5px;background:#20242f;margin-top:9px;overflow:hidden}
+.expbar i{display:block;height:100%;background:var(--gold);border-radius:5px}
+.cp-class{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.cp-class b{font-size:15px}
+.cp-class .sub2{display:block;font-size:11.5px;color:var(--sub);margin-top:6px;line-height:1.7;font-weight:400}
+.cp-ico{width:42px;height:42px;border-radius:50%;background:#1c202c;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:#c9cede;flex-shrink:0}
+.cp-ico svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.power{display:flex;align-items:center;gap:12px;border-radius:12px;padding:12px 16px;margin-bottom:8px;border:1px solid}
+.power span{font-size:13px;font-weight:900;flex-shrink:0}
+.power b{font-size:23px;font-weight:900;color:#fff}
+.power i{font-style:normal;font-size:11px;color:var(--sub);margin-left:auto;text-align:right;line-height:1.5}
+.p-red{background:linear-gradient(90deg,rgba(255,93,93,.18),rgba(255,93,93,.03));border-color:#5b2626}.p-red span{color:#ff6b57}
+.p-blue{background:linear-gradient(90deg,rgba(78,160,224,.18),rgba(78,160,224,.03));border-color:#24425f}.p-blue span{color:#4ea0e0}
+.p-gold{background:linear-gradient(90deg,rgba(232,196,106,.18),rgba(232,196,106,.03));border-color:#5b4a26}.p-gold span{color:var(--gold)}
+.stat5{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;background:rgba(13,16,23,.92);border:1px solid var(--line);border-radius:14px;padding:14px 6px;margin-bottom:6px;text-align:center}
+.stat5 .s5{color:var(--c)}
+.stat5 .s5 svg{width:20px;height:20px;margin:0 auto 6px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.stat5 .s5 em{font-style:normal;font-size:11.5px;font-weight:700;display:block}
+.stat5 .s5 b{font-size:17px;color:#fff;display:block;margin-top:3px}
+.atkdef{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px}
+.atkdef>div{background:rgba(13,16,23,.92);border:1px solid var(--line);border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--sub)}
+.atkdef b{margin-left:auto;font-size:16px;color:#fff}
+.atkdef svg{width:16px;height:16px;flex-shrink:0;fill:none;stroke:#c9cede;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.substats{display:grid;grid-template-columns:1fr 1fr;gap:2px 14px;background:rgba(13,16,23,.92);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.substats>div{display:flex;justify-content:space-between;font-size:12px;padding:5px 2px;color:var(--sub)}
+.substats b{color:var(--txt)}
+.statnote{font-size:10px;color:#6c7383;line-height:1.7;margin:2px 2px 12px}
+.quote2{font-size:13px;line-height:1.8;color:#c3c9d8;margin-top:9px}
+
+/* ── 내 정보(구 폼) ── */
 .char{border:1.5px solid var(--line);border-radius:14px;background:var(--panel);padding:18px 16px;margin-bottom:14px}
 .char .row1{display:flex;gap:14px;align-items:center}
 .char img{width:74px;height:74px;border-radius:50%;object-fit:cover;border:2px solid var(--purple);cursor:pointer}
@@ -263,24 +307,58 @@ footer a{color:var(--purple)}
   <!-- 내 정보 -->
   <section class="page" id="pg-me">
     <h2 class="ptitle">MY INFO — 프로필</h2>
-    <div class="char">
-      <div class="row1">
-        <img src="img/profile.png" alt="김우신">
-        <div class="who"><b>김우신 (Shinozaki Masanobu)</b>
-          <span>콘솔 라이브 서비스 운영자 · 일본어 담당<br>펄어비스 2019.07 ~ 재직 중</span></div>
+    <div class="chead">
+      <img src="img/profile.png" alt="김우신">
+      <div style="flex:1">
+        <div class="ctitle">장착한 타이틀 <b>일본어 원어민 GM</b></div>
+        <div class="cname">김우신</div>
+        <div class="hpbar"><i style="width:100%"></i></div>
+        <div class="hpnum">무사고 140 / 140</div>
       </div>
-      <div class="quote">한국인 어머니와 일본인 아버지 사이에서 일본에서 태어나 초등학교까지 일본 학교를 다닌 일본어 원어민.
-      라이브 서비스의 신뢰는 사고 없는 하루하루의 축적에서 나온다고 믿습니다.</div>
     </div>
-    <div class="statbox">
-      <h3>STATUS</h3>
-      <div class="stat"><span class="k">언어</span><span class="v plain">일본어 Native · 한국어 Native</span></div>
-      <div class="stat"><span class="k">격주 업데이트</span><span class="v">140회+</span></div>
-      <div class="stat"><span class="k">한국어 원문 노출 사고</span><span class="v">0건</span></div>
-      <div class="stat"><span class="k">제재 후속 분쟁</span><span class="v">0건</span></div>
-      <div class="stat"><span class="k">검수 시간</span><span class="v">90분 → 5분</span></div>
-      <div class="stat"><span class="k">주 무기</span><span class="v plain">기준 · 데이터 · 자동화</span></div>
+
+    <div class="cpanel">
+      <div class="cp-row1"><span>캐릭터</span><span class="cp-age">나이 <b>7년차</b></span></div>
+      <div class="cp-lv">Lv. <b>7</b><span class="cp-exp">140회+ / 격주 업데이트 EXP</span></div>
+      <div class="expbar"><i style="width:92%"></i></div>
     </div>
+
+    <div class="cpanel cp-class">
+      <div><b>콘솔 라이브 서비스 운영</b> Lv. 7
+        <span class="sub2">일본어 담당 · 펄어비스 2019.07 ~ 재직 중<br>주 무기: 기준 · 데이터 · 자동화</span></div>
+      <span class="cp-ico"><svg viewBox="0 0 24 24"><path d="M20.5 3.5L10.5 13.5"/><path d="M7.5 10.5l6 6"/><path d="M9.5 14.5l-5 5"/></svg></span>
+    </div>
+
+    <div class="power p-red"><span>전투력</span><b>140회+</b><i>격주 업데이트 (7년+)</i></div>
+    <div class="power p-blue"><span>생활력</span><b>95%</b><i>검수 시간 절감 (90분→5분)</i></div>
+    <div class="power p-gold"><span>매력</span><b>+1,500</b><i>이벤트로 늘린 팔로워</i></div>
+
+    <div class="stat5">
+      <div class="s5" style="--c:#ff6b57"><svg viewBox="0 0 24 24"><path d="M20.5 3.5L10.5 13.5"/><path d="M7.5 10.5l6 6"/><path d="M9.5 14.5l-5 5"/></svg><em>힘</em><b>210</b></div>
+      <div class="s5" style="--c:#e8c46a"><svg viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg><em>솜씨</em><b>4</b></div>
+      <div class="s5" style="--c:#4ea0e0"><svg viewBox="0 0 24 24"><path d="M12 3.5c3.5 4 5.5 7 5.5 10a5.5 5.5 0 0 1-11 0c0-3 2-6 5.5-10z"/></svg><em>지력</em><b>11</b></div>
+      <div class="s5" style="--c:#8b6cf0"><svg viewBox="0 0 24 24"><path d="M12 3c1.2 2.8-2.8 4.6-2.8 8a3.8 3.8 0 0 0 7.6 0c0-1.4-.7-2.7-1.5-3.9-.4 1-.9 1.6-1.6 2C13.4 7 14.2 5 12 3z"/><path d="M8.5 14.5a3.5 3.5 0 0 0 7 0"/></svg><em>의지</em><b>7+</b></div>
+      <div class="s5" style="--c:#7ee36a"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><circle cx="15" cy="8" r="3.2"/><circle cx="9" cy="14" r="3.2"/><circle cx="15" cy="14" r="3.2"/><path d="M12 17v4"/></svg><em>행운</em><b>0</b></div>
+    </div>
+    <p class="statnote">* 힘 = 전환기 매출 성장 % · 솜씨 = 자작 툴 · 지력 = 대응 언어권 · 의지 = 연차 · 행운 = 분쟁·사고</p>
+
+    <div class="atkdef">
+      <div><svg viewBox="0 0 24 24"><path d="M20.5 3.5L10.5 13.5"/><path d="M7.5 10.5l6 6"/><path d="M9.5 14.5l-5 5"/></svg>공격력<b>350%</b></div>
+      <div><svg viewBox="0 0 24 24"><path d="M12 3l7 2.5V11c0 4.8-3 8.4-7 9.5-4-1.1-7-4.7-7-9.5V5.5z"/></svg>방어력<b>0.9%</b></div>
+    </div>
+    <p class="statnote">* 공격력 = 복귀 유저 증가율 · 방어력 = 크래시율(플랫폼 기준 10% 미만 관리)</p>
+
+    <div class="substats">
+      <div><span>CS 억제</span><b>54%</b></div>
+      <div><span>이탈 방어</span><b>4~6%</b></div>
+      <div><span>D30 잔존율</span><b>38%</b></div>
+      <div><span>MCU 유지</span><b>90%</b></div>
+      <div><span>리뷰 긍정</span><b>+22%p</b></div>
+      <div><span>PS 평점</span><b>4.2</b></div>
+    </div>
+
+    <div class="cpanel"><div class="cp-row1"><span>GM 노트</span></div>
+      <p class="quote2">한국인 어머니와 일본인 아버지 사이에서 일본에서 태어나 초등학교까지 일본 학교를 다닌 일본어 원어민. 라이브 서비스의 신뢰는 사고 없는 하루하루의 축적에서 나온다고 믿습니다.</p></div>
     <div class="statbox">
       <h3>EDUCATION</h3>
       <div class="stat"><span class="k">2001.04~2007.03</span><span class="v plain">일본 소재 초등학교 졸업</span></div>
@@ -472,7 +550,7 @@ sv.addEventListener('click',()=>sv.classList.remove('on'));
 
 /* 프로필 이미지 탭 → 프로필 크게 보기 */
 const pv=document.getElementById('profileView');
-document.querySelector('.char img').addEventListener('click',()=>pv.classList.add('on'));
+document.querySelector('.chead img').addEventListener('click',()=>pv.classList.add('on'));
 pv.addEventListener('click',()=>pv.classList.remove('on'));
 
 /* ───── 탭바 ───── */
@@ -578,6 +656,16 @@ const JA={
 "특정 게임의 이미지·에셋은 사용하지 않았습니다 ·":"特定ゲームの画像・アセットは使用していません ·","PC 버전":"PC版",
 "© 김우신 · kimboard@naver.com":"© 金優信 · kimboard@naver.com",
 "출연 영상":"出演動画","경력기술서":"職務経歴書","채용 문의":"採用のお問い合わせ",
+"장착한 타이틀":"装着中の称号","일본어 원어민 GM":"日本語ネイティブGM","무사고 140 / 140":"無事故 140 / 140",
+"캐릭터":"キャラクター","나이":"年齢","7년차":"7年目","140회+ / 격주 업데이트 EXP":"140回+ / 隔週アップデートEXP",
+"콘솔 라이브 서비스 운영":"コンソール ライブサービス運営","일본어 담당 · 펄어비스 2019.07 ~ 재직 중":"日本語担当・パールアビス 2019.07～在職中",
+"주 무기: 기준 · 데이터 · 자동화":"メイン武器：基準・データ・自動化",
+"전투력":"戦闘力","생활력":"生活力","매력":"魅力","격주 업데이트 (7년+)":"隔週アップデート（7年+）",
+"검수 시간 절감 (90분→5분)":"検証時間の短縮（90分→5分）","이벤트로 늘린 팔로워":"イベントで増やしたフォロワー",
+"힘":"力","솜씨":"器用さ","지력":"知力","의지":"意志","행운":"幸運","공격력":"攻撃力","방어력":"防御力",
+"* 힘 = 전환기 매출 성장 % · 솜씨 = 자작 툴 · 지력 = 대응 언어권 · 의지 = 연차 · 행운 = 분쟁·사고":"* 力=移行期売上成長% · 器用さ=自作ツール · 知力=対応言語圏 · 意志=年数 · 幸運=紛争・事故",
+"* 공격력 = 복귀 유저 증가율 · 방어력 = 크래시율(플랫폼 기준 10% 미만 관리)":"* 攻撃力=復帰ユーザー増加率 · 防御力=クラッシュ率（プラットフォーム基準10%未満で管理）",
+"CS 억제":"CS抑制","이탈 방어":"離脱防御","D30 잔존율":"D30残存率","MCU 유지":"MCU維持","리뷰 긍정":"レビュー好評","PS 평점":"PS評価","GM 노트":"GMノート",
 "이중 언어 원어민":"バイリンガルネイティブ","업무 자동화":"業務自動化","선제 리스크 관리":"先制リスク管理","상시 발동 · 고유 패시브":"常時発動・固有パッシブ","고유 패시브":"固有パッシブ","상시 발동 · 패시브 스킬":"常時発動・パッシブスキル",
 "일본어·한국어 모두 모국어 — 언어를 넘어 일본 규제(자금결제법·CERO)와 유저 정서까지 함께 다룹니다.":"日本語・韓国語ともに母語 — 言語を超えて日本の規制（資金決済法・CERO）とユーザー感情まで扱います。",
 "반복 업무는 Python·생성형 AI로 도구화 — 검수 90분→5분, 도입 후 한국어 원문 노출 사고 0건.":"反復業務はPython・生成AIでツール化 — 検証90分→5分、導入後の韓国語原文誤掲載0件。",
