@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<!-- ver.2 B/W — 흑백 모노크롬 팔레트 + IBM Plex Sans KR 본문 폰트. portfolio-v2 저장소 배포용 -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김우신 — 일본 라이브 서비스 운영 포트폴리오</title>
+<meta name="description" content="검은사막 콘솔 라이브 서비스 운영 7년+ · 일본어 담당 김우신의 포트폴리오">
+<meta property="og:title" content="김우신 — 일본 라이브 서비스 운영 포트폴리오">
+<meta property="og:description" content="즐거움에 대한 신뢰 — 검은사막 콘솔 라이브 7년+, 일본어 담당. 격주 업데이트 140회+, 분쟁 0건.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='8,3 22,7 22,22 8,26' fill='%23222222'/%3E%3Cpolygon points='8,26 22,22 30,25 15,30' fill='%23bdbdbd'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@700;900&display=swap" rel="stylesheet">
+<style>
+/* 넥슨 무료 배포 서체: 마비옛체 (Mabinogi Classic) */
+@font-face{
+  font-family:'Mabinogi_Classic';
+  src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Mabinogi_Classic.woff') format('woff');
+  font-weight:normal;font-display:swap;
+}
+/* 컬러 규칙(ver.2 B/W): 무채색만 사용 — 블랙 #1c1c1c / 미드그레이 #6b6b6b / 라이트그레이 #d9d9d9 */
+:root{
+  --navy:#1c1c1c; --navy-deep:#000000; --blue:#6b6b6b; --lime:#d9d9d9;
+  --black:#0f0f0f; --ink:#222222; --gray:#767676; --line:#e2e2e2; --bg:#f7f7f7;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'IBM Plex Sans KR','Noto Sans KR',sans-serif;color:var(--ink);background:var(--bg)}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:1140px;margin:0 auto;padding:0 20px}
+/* 디스플레이 요소는 마비옛체 */
+.gnb .logo,.hero h1,.hero .cta,.board-title,.sec-head h2,.side h3,
+.gamestart .head b,.join-box h3,.wbody .num{
+  font-family:'Black Han Sans','Noto Serif KR',serif !important;font-weight:400 !important}
+.hero h1{letter-spacing:.02em}
+/* 일본어 모드: 한자 커버리지 문제로 마비옛체 제외, 세리프로 통일 */
+html[lang="ja"] .gnb .logo,html[lang="ja"] .hero h1,html[lang="ja"] .hero .cta,
+html[lang="ja"] .board-title,html[lang="ja"] .sec-head h2,html[lang="ja"] .side h3,
+html[lang="ja"] .gamestart .head b,html[lang="ja"] .join-box h3,html[lang="ja"] .wbody .num{
+  font-family:'Noto Serif KR',serif !important;font-weight:900 !important}
+
+/* ── 최상단 검은 바 (NEXON 스타일) ── */
+.topbar{background:#fff;border-bottom:1px solid var(--line)}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;height:54px}
+.topbar .brand{font-weight:900;letter-spacing:.35em;font-size:18px;color:var(--black)}
+.topbar .right{display:flex;gap:8px}
+.topbar .right a{font-size:13px;font-weight:700;border:1.5px solid var(--black);border-radius:20px;padding:7px 16px}
+.topbar .right a:hover{background:var(--black);color:#fff}
+.topbar .right a#pdfBtn{border-color:var(--lime);color:#444444;background:rgba(0,0,0,.05);font-weight:900}
+.topbar .right a#pdfBtn:hover{background:var(--lime);color:var(--black)}
+.topbar .right a#langBtn{border-color:var(--blue);color:var(--blue)}
+.topbar .right a#langBtn:hover{background:var(--blue);color:#fff}
+
+/* ── 서브 내비 (마비노기 스타일 다크 바) ── */
+.gnb{background:var(--black);position:sticky;top:0;z-index:50}
+.gnb .container{display:flex;align-items:center;height:60px;gap:6px;position:relative}
+.gnb .logo{font-family:'Black Han Sans','Noto Serif KR',serif;font-weight:900;color:#fff;font-size:19px;margin-right:26px;letter-spacing:.06em}
+.gnb .logo span{color:var(--lime)}
+.gnb nav{display:flex;gap:0;flex:1;height:60px}
+.gnb nav .item{position:relative;width:138px;text-align:center}
+.gnb nav .item>a{display:block;color:#cccccc;font-size:15px;font-weight:500;padding:19px 0;transition:.15s;height:60px}
+.gnb nav .item>a:hover{color:#fff}
+.gnb nav .item>a::after{content:"";display:block;height:2px;background:var(--lime);transform:scaleX(0);transition:.2s;margin-top:17px}
+.gnb nav .item:hover>a::after{transform:scaleX(1)}
+/* 메가 메뉴: 마비노기 스타일 — 호버 시 전체 폭 패널 */
+.mega-bg{position:absolute;left:0;right:0;top:60px;background:rgba(10,12,16,.97);border-top:1px solid #2b2b2b;
+  height:0;overflow:hidden;transition:height .25s ease;z-index:49}
+.gnb:hover .mega-bg,.gnb nav:hover~.mega-bg{height:232px}
+.gnb nav:hover .sub{opacity:1;pointer-events:auto}
+.gnb:hover .sub{opacity:1;pointer-events:auto}
+.sub{position:absolute;top:60px;left:0;width:138px;padding:18px 0;opacity:0;pointer-events:none;transition:opacity .25s;z-index:51;text-align:center}
+.sub a{display:block;color:#a3a3a3;font-size:13px;padding:7px 6px;transition:.12s;line-height:1.5;word-break:keep-all}
+/* 일본어 모드 전용 보정 */
+html[lang="ja"] .sub a{word-break:normal;overflow-wrap:break-word;font-size:12.5px;padding:6px 4px}
+html[lang="ja"] .gnb:hover .mega-bg,html[lang="ja"] .gnb nav:hover~.mega-bg{height:256px}
+html[lang="ja"] .nt{font-size:15.5px}
+html[lang="ja"] .chips span{font-size:12.5px}
+.sub a:hover{color:var(--lime)}
+.gnb .start{background:var(--lime);color:var(--black);font-weight:900;font-size:14px;letter-spacing:.12em;padding:11px 22px;border-radius:4px;position:relative;z-index:52}
+.gnb .start:hover{filter:brightness(1.06)}
+
+/* ── 히어로 (마비노기 메인 배너 스타일) ── */
+.hero{background:
+  radial-gradient(ellipse at 50% 130%, rgba(0,163,224,.28), transparent 55%),
+  linear-gradient(160deg, #14356b 0%, #0c2247 70%, #081831 100%);
+  color:#fff;position:relative;overflow:hidden}
+.hero .stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.5;animation:tw 3.4s infinite}
+@keyframes tw{0%,100%{opacity:.12}50%{opacity:.8}}
+/* ── 횡스크롤 러너 (배경 연출) ── */
+.scroller{position:absolute;left:0;right:0;bottom:0;height:230px;overflow:hidden;pointer-events:none;z-index:1}
+.pcloud{position:absolute;bottom:26px;width:128px;height:80px;opacity:.92;
+  animation:cloudmove linear infinite}
+.pcloud.c1{animation-duration:9s;bottom:22px}
+.pcloud.c2{animation-duration:12s;animation-delay:-5s;bottom:46px;transform:scale(.8)}
+.pcloud.c3{animation-duration:15s;animation-delay:-9s;bottom:8px;transform:scale(1.2)}
+@keyframes cloudmove{from{left:105%}to{left:-160px}}
+.runner{position:absolute;left:14%;bottom:52px;width:48px;height:64px;
+  animation:hop 2.2s cubic-bezier(.45,0,.55,1) infinite;filter:drop-shadow(0 6px 6px rgba(0,0,0,.35))}
+@keyframes hop{0%,100%{transform:translateY(0)}18%{transform:translateY(-6px)}45%{transform:translateY(-44px)}72%{transform:translateY(-8px)}}
+.runner svg{position:absolute;inset:0}
+.runner .fA{animation:frameA .36s steps(1) infinite}
+.runner .fB{animation:frameB .36s steps(1) infinite}
+@keyframes frameA{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes frameB{0%,49%{opacity:0}50%,100%{opacity:1}}
+.cat{position:absolute;left:calc(14% - 44px);bottom:52px;width:30px;height:20px;
+  animation:cathop 2.2s cubic-bezier(.45,0,.55,1) infinite .18s}
+@keyframes cathop{0%,100%{transform:translateY(0)}18%{transform:translateY(-5px)}45%{transform:translateY(-30px)}72%{transform:translateY(-6px)}}
+.speedline{position:absolute;height:3px;width:26px;background:rgba(255,255,255,.32);animation:dash 1s linear infinite}
+.sl1{bottom:88px;animation-delay:0s}.sl2{bottom:112px;animation-delay:.35s;width:18px}.sl3{bottom:66px;animation-delay:.65s;width:22px}
+@keyframes dash{0%{left:13%;opacity:.9}100%{left:-50px;opacity:0}}
+.dreamstar{position:absolute;right:7%;bottom:160px;width:30px;height:30px;animation:starpulse 1.6s ease-in-out infinite}
+@keyframes starpulse{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.3);opacity:1}}
+@media(max-width:900px){.scroller{display:none}}
+.hero .container{position:relative;z-index:2;display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:center;padding-top:76px;padding-bottom:110px}
+.hero .kicker{color:#bdbdbd;font-weight:700;letter-spacing:.3em;font-size:13px;margin-bottom:14px}
+.hero h1{font-family:'Black Han Sans','Noto Serif KR',serif;font-weight:900;font-size:clamp(42px,6vw,68px);letter-spacing:.04em;line-height:1.1}
+.hero h1 .colon{color:var(--lime)}
+.hero .sub{margin-top:18px;font-size:17px;color:#c9c9c9;line-height:1.7}
+.hero .cta{display:inline-block;margin-top:30px;font-family:'Black Han Sans','Noto Serif KR',serif;font-weight:700;font-size:16px;
+  color:#fff;border:1px solid rgba(255,255,255,.55);padding:13px 34px;border-radius:3px;letter-spacing:.14em;transition:.2s}
+.hero .cta:hover{background:#fff;color:var(--navy)}
+/* GAME START 패널 */
+.gamestart{background:#0d0d0d;border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.gamestart .head{background:var(--lime);color:var(--black);text-align:center;padding:18px 10px}
+.gamestart .head b{font-size:22px;letter-spacing:.16em;font-weight:900;display:block}
+.gamestart .head span{font-size:12px;font-weight:700}
+.gamestart .body{padding:18px;display:flex;flex-direction:column;gap:10px}
+.gamestart .body a{display:block;text-align:center;font-weight:700;font-size:14px;padding:13px;border-radius:4px}
+.gamestart .body a.b1{background:var(--blue);color:#fff}
+.gamestart .body a.b2{background:#262626;color:#cccccc;border:1px solid #3a3a3a}
+.gamestart .body a:hover{filter:brightness(1.1)}
+.gamestart .foot{color:#979797;font-size:11.5px;text-align:center;padding:0 14px 16px;line-height:1.6}
+
+/* ── 섹션 공통 ── */
+section{padding:64px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
+.sec-head h2{font-family:'Black Han Sans','Noto Serif KR',serif;font-weight:900;font-size:26px;color:var(--black)}
+.sec-head .en{color:var(--blue);font-size:12.5px;font-weight:700;letter-spacing:.22em}
+.sec-head .plus{margin-left:auto;color:var(--gray);font-size:13px}
+
+/* ── 공지사항: 마비노기 게시판 스타일 ── */
+.board-title{font-size:30px;font-weight:900;color:var(--black);margin-bottom:26px}
+.tabs{display:flex;margin-bottom:22px}
+.tabs a{padding:15px 40px;font-weight:700;font-size:15.5px;border:1px solid var(--line);background:#fff;color:var(--gray)}
+.tabs a.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.board-wrap{display:grid;grid-template-columns:1fr 264px;gap:40px;align-items:start}
+.board{display:grid;grid-template-columns:132px 1fr;gap:0 24px;align-items:start}
+.cats{display:flex;flex-direction:column}
+.cats button{font-family:inherit;padding:15px 10px;border:1px solid var(--line);border-top:0;background:#f1f1f1;
+  font-size:14.5px;font-weight:700;color:var(--gray);cursor:pointer;transition:.12s}
+.cats button:first-child{border-top:1px solid var(--line)}
+.cats button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.cats button:hover:not(.on){background:#e9e9e9}
+.notice-wrap{border-left:4px solid var(--lime)}
+details.notice{background:#f8f8f8;border-bottom:2px solid #fff}
+details.notice:nth-child(even){background:#f1f1f1}
+details.notice.hidden{display:none}
+details.notice summary{list-style:none;display:flex;align-items:center;gap:18px;padding:22px 26px;cursor:pointer;transition:.15s}
+details.notice summary::-webkit-details-marker{display:none}
+details.notice summary:hover .nt{color:var(--blue)}
+.nicon{flex-shrink:0;width:34px;height:34px;background:var(--navy);border-radius:4px;color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:16px}
+.ncat{flex-shrink:0;font-size:15px;font-weight:700;color:var(--ink);min-width:44px;white-space:nowrap}
+.ntext{flex:1;min-width:0}
+.nt{font-size:16.5px;font-weight:700;color:var(--ink);line-height:1.45}
+.nmeta{margin-top:7px;display:flex;align-items:center;gap:7px;font-size:13px;color:var(--gray)}
+.gm{background:var(--black);color:#fff;font-size:10.5px;font-weight:900;padding:3px 8px;
+  clip-path:polygon(8% 0,92% 0,100% 50%,92% 100%,8% 100%,0 50%);letter-spacing:.05em}
+.notice .d{flex-shrink:0;color:var(--gray);font-size:13.5px}
+/* 우측 새소식 사이드바 */
+.side h3{font-size:24px;font-weight:900;color:var(--black);padding-bottom:16px;border-bottom:2px solid var(--gray);margin-bottom:4px}
+.side .menu-list a{display:block;padding:15px 6px;font-size:15px;font-weight:500;color:var(--ink);border-bottom:1px dotted #c7c7c7}
+.side .menu-list a:hover{color:var(--blue)}
+.side .icon-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:22px}
+.side .icon-grid a{background:var(--gray);color:#fff;text-align:center;padding:22px 8px 18px;font-size:13.5px;font-weight:700;transition:.15s}
+.side .icon-grid a:hover{background:var(--navy)}
+.side .icon-grid a i{display:block;font-style:normal;margin-bottom:8px}
+.side i svg{width:26px;height:26px;display:block;margin:0 auto}
+.side .sns i svg{width:20px;height:20px}
+.side .sns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin-top:3px}
+.side .sns a{background:var(--gray);color:#fff;text-align:center;padding:16px 6px 13px;font-size:12px;font-weight:700}
+.side .sns a:hover{background:var(--blue)}
+.side .sns a i{display:block;font-style:normal;font-size:19px;margin-bottom:6px}
+
+.notice-body{padding:6px 26px 30px;background:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+.chips span{background:var(--navy);color:#fff;font-size:13px;font-weight:700;padding:7px 13px;border-radius:3px}
+.chips span.g{background:var(--blue)}
+.notice-body ul{list-style:none;margin-bottom:16px}
+.notice-body li{position:relative;padding:4px 0 4px 18px;font-size:14.5px;line-height:1.7;color:var(--ink)}
+.notice-body li::before{content:"";position:absolute;left:2px;top:14px;width:7px;height:7px;background:var(--lime)}
+.evidence{display:flex;gap:12px;flex-wrap:wrap}
+.evidence figure{width:200px}
+.evidence img{border:1px solid var(--line);border-radius:5px;background:#fff}
+.evidence figcaption{font-size:11.5px;color:var(--gray);margin-top:5px;line-height:1.5}
+
+/* ── 명예의 전당: 마비노기 위젯 스타일 ── */
+#fame{background:linear-gradient(180deg,#fff, #f0f0f0)}
+.fame-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.widget{background:#fff;border:1px solid #dddddd}
+.widget .whead{display:flex;align-items:center;gap:9px;background:#f1f1f1;border-bottom:1px solid #dddddd;
+  padding:13px 16px;font-weight:900;font-size:16.5px;color:var(--navy)}
+.widget .whead .arr{flex-shrink:0;width:21px;height:21px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900}
+.widget .wbody{padding:16px 18px 44px;position:relative;min-height:104px}
+.wbody .num{font-family:'Black Han Sans','Noto Serif KR',serif;font-weight:900;font-size:30px;color:var(--black);line-height:1.1}
+.wbody .line{font-size:15px;font-weight:700;color:var(--ink);margin-top:6px}
+.wbody p{font-size:13px;color:var(--gray);margin-top:5px;line-height:1.6}
+.wbody .wimg{margin:-4px -4px 8px;border:1px solid var(--line)}
+.wplus{position:absolute;right:13px;bottom:13px;width:27px;height:27px;border:1px solid #c7c7c7;background:#fff;
+  display:flex;align-items:center;justify-content:center;color:#767676;font-size:17px;line-height:1}
+.wplus:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ── 입사 축하 모달 ── */
+#joinModal{position:fixed;inset:0;background:rgba(5,8,14,.8);display:none;align-items:center;justify-content:center;z-index:98;padding:20px}
+#joinModal.on{display:flex}
+.join-box{background:linear-gradient(160deg,var(--navy),var(--navy-deep));color:#fff;border:1px solid var(--blue);
+  border-radius:10px;max-width:480px;width:100%;padding:38px 34px;text-align:center;
+  box-shadow:0 0 60px rgba(255,255,255,.18);animation:pop .4s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+.join-box .sys{color:var(--blue);font-size:12px;font-weight:900;letter-spacing:.3em;margin-bottom:14px}
+.join-box h3{font-family:'Black Han Sans','Noto Serif KR',serif;font-size:24px;line-height:1.4;margin-bottom:16px}
+.join-box h3 b{color:var(--lime)}
+.join-box .fx{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:6px;
+  padding:14px 16px;font-size:13.5px;line-height:2;color:#c9c9c9;margin-bottom:20px;text-align:left}
+.join-box .fx b{color:var(--lime)}
+.join-box .note{font-size:12.5px;color:#a0a0a0;margin-bottom:18px}
+.join-box .btns{display:flex;gap:10px;justify-content:center}
+.join-box .btns a,.join-box .btns button{font-family:inherit;font-weight:700;font-size:14px;padding:12px 22px;border-radius:5px;cursor:pointer;border:0}
+.join-box .btns a{background:var(--lime);color:var(--black)}
+.join-box .btns button{background:transparent;border:1px solid rgba(255,255,255,.4);color:#c9c9c9}
+
+/* ── 라이트박스 ── */
+#lightbox{position:fixed;inset:0;background:rgba(5,8,14,.88);display:none;align-items:center;justify-content:center;
+  z-index:99;cursor:zoom-out;padding:34px}
+#lightbox.on{display:flex}
+#lightbox img{max-width:96%;max-height:92vh;box-shadow:0 20px 60px rgba(0,0,0,.6);background:#fff}
+
+/* ── TOP 버튼 ── */
+#topBtn{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;
+  background:var(--navy);color:#fff;font-weight:900;font-size:12px;letter-spacing:.05em;z-index:60;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:.25s}
+#topBtn.show{opacity:1;pointer-events:auto}
+#topBtn:hover{background:var(--blue)}
+
+/* ── 개발자 노트 (About) ── */
+.devnote{display:grid;grid-template-columns:280px 1fr;gap:36px;align-items:start}
+.devnote .photo{border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.devnote .photo figcaption{font-size:12.5px;color:var(--gray);padding:10px 12px;text-align:center}
+.devnote h3{font-size:17px;color:var(--navy);margin:20px 0 8px}
+.devnote h3:first-child{margin-top:0}
+.devnote p{font-size:15px;line-height:1.85}
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.skill{background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:5px;padding:15px 17px}
+.skill:nth-child(2){border-left-color:var(--lime)}
+.skill:nth-child(3){border-left-color:var(--navy)}
+.skill:nth-child(4){border-left-color:var(--blue)}
+.skill b{font-size:14.5px;display:block;margin-bottom:5px;color:var(--black)}
+.skill p{font-size:13px;color:var(--gray);line-height:1.65}
+.edu{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px;background:#fff}
+.edu td{border:1px solid var(--line);padding:8px 12px}
+.edu td:first-child{color:var(--gray);width:190px;background:#fbfbfb}
+
+/* ── 자료실 ── */
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:34px}
+.tool{background:var(--navy);color:#fff;border-radius:6px;padding:20px 22px;transition:.15s;display:block}
+.tool:hover{background:var(--navy-deep);transform:translateY(-3px)}
+.tool img{width:100%;height:110px;object-fit:cover;object-position:top left;border-radius:6px;margin-bottom:12px;border:1px solid rgba(255,255,255,.14);background:#0d1117;display:block}
+.tool b{font-size:16px;display:block;margin-bottom:6px}
+.tool p{font-size:13px;color:#c9c9c9;line-height:1.6}
+.tool .go{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:var(--lime);letter-spacing:.1em}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery figure{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;position:relative}
+.playmark{position:absolute;top:85px;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;
+  background:rgba(0,0,0,.75);color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:20px;pointer-events:none;padding-left:4px}
+.gallery img{width:100%;height:170px;object-fit:cover;object-position:top}
+.gallery figcaption{font-size:12.5px;color:var(--gray);padding:10px 13px;line-height:1.55}
+
+/* ── 푸터 ── */
+footer{background:var(--black);color:#979797;padding:44px 0 54px;font-size:13px;line-height:2}
+footer .brand{color:#fff;font-weight:900;letter-spacing:.3em;font-size:15px;margin-bottom:10px}
+footer a{color:var(--blue)}
+
+@media(max-width:900px){
+  .hero .container{grid-template-columns:1fr}
+  .gnb nav{display:none}
+  .devnote{grid-template-columns:1fr}
+  .devnote .photo{max-width:280px}
+  .skills{grid-template-columns:1fr}
+  .board-wrap{grid-template-columns:1fr}
+  .board{grid-template-columns:1fr;gap:16px}
+  .cats{flex-direction:row;flex-wrap:wrap}
+  .cats button{flex:1;border-top:1px solid var(--line);padding:11px 6px;font-size:13px}
+  .tabs a{flex:1;text-align:center;padding:13px 0}
+  .notice .d{display:none}
+  details.notice summary{padding:16px 14px;gap:10px}
+  .side{margin-top:10px}
+}
+
+/* ── 인쇄(PDF) 대응: 인사담당자용 문서형 리포트 출력 ──
+   주의: A4 폭(≈794px)은 위 max-width:900px 블록에도 걸리므로,
+   인쇄 블록이 반드시 모바일 블록보다 뒤에 와야 함 */
+.print-head{display:none}
+@page{size:A4;margin:12mm 11mm 14mm}
+@media print{
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;
+    animation:none !important;transition:none !important;box-shadow:none !important}
+  html,body{background:#fff !important}
+  body{font-size:10pt;line-height:1.6;color:#1b1b1b;orphans:3;widows:3;word-break:keep-all}
+  html[lang="ja"] body{word-break:normal;overflow-wrap:break-word}
+  .container{max-width:100%;padding:0}
+  a{color:inherit}
+  section{padding:16px 0 4px}
+  #fame{background:#fff !important}
+
+  /* 화면 전용 요소 숨김 */
+  .topbar,.gnb,.scroller,.gamestart,#topBtn,.side,.cats,.tabs,#joinModal,#lightbox,
+  .hero .stars,.hero .cta,.playmark,.wplus,.sec-head .plus{display:none !important}
+
+  /* 표지 마스트헤드 */
+  .print-head{display:block;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%) !important;
+    color:#fff;border-radius:10px;border-bottom:5px solid var(--lime);padding:22px 26px 18px;margin-bottom:16px}
+  .print-head h1{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:18pt;line-height:1.35;word-break:keep-all}
+  .print-head p{font-size:9pt;color:#d2d2d2;margin-top:6px;letter-spacing:.02em}
+
+  /* 히어로 → 인트로 블록 */
+  .hero{background:none !important;color:var(--ink)}
+  .hero .container{display:block;padding:0 0 4px}
+  .hero .kicker{color:var(--blue) !important;font-size:8.5pt;letter-spacing:.26em;margin-bottom:8px}
+  .hero h1{font-size:19pt;color:var(--navy) !important;line-height:1.25}
+  .hero h1 .colon{color:#4f4f4f !important}
+  .hero .sub{color:#414141 !important;font-size:9.5pt;line-height:1.75;margin-top:10px;
+    padding:2px 0 2px 12px;border-left:3px solid var(--lime)}
+
+  /* 섹션 제목 */
+  .sec-head{margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid var(--navy);break-after:avoid}
+  .sec-head h2{font-size:14pt;color:var(--navy)}
+  .sec-head .en{font-size:8pt}
+  .board-title{font-size:14pt;color:var(--navy);border-bottom:2px solid var(--navy);
+    padding-bottom:8px;margin-bottom:12px;break-after:avoid}
+  .board-title::after{content:"KEY PROJECTS";color:var(--blue);font-size:8pt;font-weight:700;
+    letter-spacing:.22em;margin-left:12px;font-family:'Noto Sans KR',sans-serif}
+
+  /* 프로젝트 카드 */
+  .board-wrap,.board{display:block}
+  .notice-wrap{border-left:none}
+  details.notice{background:#fff !important;border:1px solid #d7d7d7;border-left:4px solid var(--navy);
+    border-radius:8px;margin-bottom:10px;break-inside:avoid;overflow:hidden}
+  details.notice.hidden{display:block !important}
+  details.notice summary{padding:11px 16px;gap:12px;background:#f4f4f4 !important;border-bottom:1px solid #e5e5e5}
+  .nicon{width:26px;height:26px;font-size:12px;background:var(--navy) !important}
+  .ncat{font-size:9pt;min-width:auto}
+  .nt{font-size:11pt}
+  .nmeta{margin-top:4px;font-size:8pt}
+  .gm{background:var(--black) !important;color:#fff !important}
+  .notice .d{display:inline;font-size:8.5pt}
+  .notice-body{padding:10px 16px 14px;background:#fff !important}
+  .chips{gap:6px;margin:8px 0 10px}
+  .chips span{background:var(--navy) !important;color:#fff !important;font-size:8.5pt;
+    font-weight:700;padding:4px 11px;border-radius:20px}
+  .chips span.g{background:var(--blue) !important}
+  .notice-body ul{margin-bottom:10px}
+  .notice-body li{font-size:9.5pt;line-height:1.65;padding:3px 0 3px 16px}
+  .notice-body li::before{top:10px;width:6px;height:6px;background:var(--lime) !important}
+  .evidence{gap:10px}
+  .evidence figure{width:150px;break-inside:avoid}
+  .evidence img{border:1px solid #d7d7d7}
+  .evidence figcaption{font-size:7.5pt}
+
+  /* 명예의 전당 위젯 */
+  .fame-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+  .widget{break-inside:avoid;border:1px solid #d7d7d7;border-radius:8px;overflow:hidden}
+  .widget .whead{background:#f4f4f4 !important;border-bottom:1px solid #e5e5e5;font-size:9.5pt;padding:8px 12px}
+  .widget .whead .arr{width:15px;height:15px;font-size:8px;background:var(--blue) !important}
+  .widget .wbody{padding:10px 12px 12px;min-height:auto}
+  .wbody .num{font-size:15pt;color:var(--black) !important}
+  .wbody .line{font-size:8.5pt;margin-top:4px}
+  .wbody p{font-size:7.5pt;margin-top:3px}
+  .wbody .wimg{margin:0 0 8px;border:1px solid #e5e5e5}
+
+  /* 개발자 노트: 사진은 좌측 플로트, 사진 아래부터 전체 폭 사용 */
+  .devnote{display:block}
+  .devnote .photo{float:left;width:150px;margin:2px 18px 10px 0;border-radius:8px;break-inside:avoid}
+  .devnote .photo figcaption{font-size:7.5pt;padding:6px 8px}
+  .devnote h3{font-size:11pt;margin:14px 0 6px;clear:left}
+  .devnote h3:first-child{margin-top:0;clear:none}
+  .devnote p{font-size:9.5pt;line-height:1.75}
+  .skills{grid-template-columns:1fr 1fr;gap:8px;clear:left}
+  .skill{break-inside:avoid;padding:10px 13px}
+  .skill b{font-size:9.5pt}
+  .skill p{font-size:8.5pt}
+  .edu{font-size:8.5pt;clear:left}
+  .edu td{padding:6px 10px}
+  .edu td:first-child{width:150px;background:#f8f8f8 !important}
+
+  /* 자료실 */
+  .tools{grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
+  .tool{background:#fff !important;color:var(--ink);border:1px solid #d7d7d7;border-left:4px solid var(--blue);
+    border-radius:8px;padding:11px 14px;break-inside:avoid}
+  .tool b{font-size:10pt;color:var(--navy);margin-bottom:3px}
+  .tool p{color:#5f5f5f;font-size:8.5pt}
+  .tool .go{display:none}
+  .tool::after{content:attr(href);display:block;font-size:7pt;color:var(--blue);margin-top:6px;word-break:break-all}
+  .gallery{grid-template-columns:repeat(4,1fr);gap:9px}
+  .gallery figure{break-inside:avoid;border-radius:8px}
+  .gallery img{height:76px}
+  .gallery figcaption{font-size:7pt;padding:6px 8px;line-height:1.5}
+
+  /* 푸터 */
+  footer{background:#fff !important;color:#5f5f5f;border-top:2px solid var(--navy);
+    padding:12px 0 0;font-size:8pt;line-height:1.9}
+  footer .brand{color:var(--navy);font-size:9.5pt;letter-spacing:.3em;margin-bottom:4px}
+  footer a{color:var(--blue)}
+}
+</style>
+</head>
+<body>
+
+<!-- 인쇄(PDF) 전용 헤더 -->
+<div class="print-head">
+  <h1>김우신 (Kim Wooshin) — 일본 라이브 서비스 운영 포트폴리오</h1>
+  <p>검은사막 콘솔 라이브 서비스 운영 7년+ · 일본어 담당 · kimboard@naver.com · +82 10-9707-3701</p>
+  <p>웹 버전: rladntls94-tech.github.io/portfolio · 직접 만든 운영 툴: rladntls94-tech.github.io/OPtools</p>
+</div>
+
+<!-- 최상단 바 -->
+<div class="topbar">
+  <div class="container">
+    <div class="brand">WOOSHIN</div>
+    <div class="right"><a href="#" id="pdfBtn" title="인쇄 화면에서 'PDF로 저장'을 선택하세요">📄 인사담당자용 PDF 저장</a><a href="#" id="langBtn">日本語</a><a href="mailto:kimboard@naver.com">Contact</a></div>
+  </div>
+</div>
+
+<!-- 다크 내비 -->
+<div class="gnb">
+  <div class="container">
+    <div class="logo">운영의 <span>기록</span></div>
+    <nav>
+      <div class="item"><a href="#notice">새소식</a>
+        <div class="sub">
+          <a href="#p-live" data-open="p-live">라이브 운영</a>
+          <a href="#p-account" data-open="p-account">글로벌 계정 통합</a>
+          <a href="#p-gen" data-open="p-gen">PS5/XBS 세대 전환</a>
+          <a href="#p-retail" data-open="p-retail">리테일 패키지 발매</a>
+          <a href="#p-cross" data-open="p-cross">크로스 플레이 도입</a>
+          <a href="#p-ps4" data-open="p-ps4">PS4 론칭</a>
+          <a href="#p-red" data-open="p-red">붉은사막 신작 준비팀</a>
+        </div>
+      </div>
+      <div class="item"><a href="#fame">명예의 전당</a>
+        <div class="sub">
+          <a href="#fame">PS Partner Awards</a>
+          <a href="#fame">일본 PS 스토어 1위</a>
+          <a href="#fame">기록으로 보는 7년</a>
+        </div>
+      </div>
+      <div class="item"><a href="#devnote">개발자 노트</a>
+        <div class="sub">
+          <a href="#devnote">나를 한 마디로</a>
+          <a href="#devnote">핵심 역량</a>
+          <a href="#devnote">학력</a>
+        </div>
+      </div>
+      <div class="item"><a href="#archive">자료실</a>
+        <div class="sub">
+          <a href="https://rladntls94-tech.github.io/OPtools/" target="_blank" rel="noopener">OPtools ↗</a>
+          <a href="#archive">실무 기록 갤러리</a>
+        </div>
+      </div>
+      <div class="item"><a href="mailto:kimboard@naver.com">고객지원</a>
+        <div class="sub">
+          <a href="mailto:kimboard@naver.com">메일 보내기</a>
+          <a href="#" onclick="document.getElementById('joinModal').classList.add('on');return false;">합격 문자 보내기</a>
+          <a href="김우신_경력기술서.pdf" download>경력기술서 PDF</a>
+        </div>
+      </div>
+    </nav>
+    <a class="start" href="#" id="startBtn">GAME START</a>
+    <div class="mega-bg"></div>
+  </div>
+</div>
+
+<!-- 히어로 -->
+<div class="hero">
+  <div class="stars" id="stars"></div>
+  <div class="scroller" aria-hidden="true">
+    <svg class="pcloud c1" viewBox="0 0 128 80" shape-rendering="crispEdges"><path d="M16 64 H12 V56 H8 V44 H12 V36 H16 V32 H24 V24 H32 V16 H44 V12 H60 V8 H76 V12 H88 V16 H96 V24 H104 V32 H112 V40 H116 V52 H112 V60 H104 V64 H96 V68 H80 V64 H72 V68 H56 V64 H44 V68 H28 V64 Z" fill="#ffffff" stroke="#1e2a52" stroke-width="4"/><rect x="18" y="50" width="92" height="9" fill="#dcebfa"/><rect x="28" y="59" width="72" height="5" fill="#c7ddf3"/></svg>
+    <svg class="pcloud c2" viewBox="0 0 128 80" shape-rendering="crispEdges"><path d="M16 64 H12 V56 H8 V44 H12 V36 H16 V32 H24 V24 H32 V16 H44 V12 H60 V8 H76 V12 H88 V16 H96 V24 H104 V32 H112 V40 H116 V52 H112 V60 H104 V64 H96 V68 H80 V64 H72 V68 H56 V64 H44 V68 H28 V64 Z" fill="#ffffff" stroke="#1e2a52" stroke-width="4"/><rect x="18" y="50" width="92" height="9" fill="#dcebfa"/><rect x="28" y="59" width="72" height="5" fill="#c7ddf3"/></svg>
+    <svg class="pcloud c3" viewBox="0 0 128 80" shape-rendering="crispEdges"><path d="M16 64 H12 V56 H8 V44 H12 V36 H16 V32 H24 V24 H32 V16 H44 V12 H60 V8 H76 V12 H88 V16 H96 V24 H104 V32 H112 V40 H116 V52 H112 V60 H104 V64 H96 V68 H80 V64 H72 V68 H56 V64 H44 V68 H28 V64 Z" fill="#ffffff" stroke="#1e2a52" stroke-width="4"/><rect x="18" y="50" width="92" height="9" fill="#dcebfa"/><rect x="28" y="59" width="72" height="5" fill="#c7ddf3"/></svg>
+    <div class="runner">
+      <!-- 달리기 프레임 A -->
+      <svg class="fA" viewBox="0 0 48 64" shape-rendering="crispEdges">
+        <rect x="11" y="0" width="26" height="6" fill="#4a3a28"/>
+        <rect x="9" y="4" width="30" height="4" fill="#4a3a28"/>
+        <rect x="13" y="8" width="16" height="3" fill="#4a3a28"/>
+        <rect x="9" y="8" width="4" height="7" fill="#4a3a28"/><rect x="35" y="8" width="4" height="7" fill="#4a3a28"/>
+        <rect x="13" y="8" width="22" height="16" fill="#f8dcc0"/>
+        <rect x="13" y="8" width="16" height="3" fill="#4a3a28"/>
+        <rect x="16" y="13" width="6" height="2" fill="#3a2c1c"/><rect x="27" y="13" width="6" height="2" fill="#3a2c1c"/>
+        <rect x="17" y="16" width="5" height="5" fill="#2b2118"/><rect x="28" y="16" width="5" height="5" fill="#2b2118"/>
+        <rect x="18" y="17" width="2" height="2" fill="#ffffff"/><rect x="29" y="17" width="2" height="2" fill="#ffffff"/>
+        <rect x="22" y="22" width="5" height="1" fill="#b97c62"/>
+        <rect x="21" y="24" width="6" height="4" fill="#f8dcc0"/>
+        <rect x="8" y="28" width="32" height="18" fill="#ffffff"/>
+        <rect x="18" y="28" width="12" height="2" fill="#e6e6ee"/><rect x="8" y="42" width="32" height="4" fill="#e6e6ee"/>
+        <rect x="3" y="30" width="6" height="8" fill="#ffffff"/><rect x="39" y="26" width="6" height="8" fill="#ffffff"/>
+        <rect x="3" y="38" width="5" height="5" fill="#f8dcc0"/><rect x="40" y="22" width="5" height="5" fill="#f8dcc0"/>
+        <rect x="11" y="46" width="26" height="8" fill="#22355c"/>
+        <rect x="13" y="54" width="6" height="6" fill="#f8dcc0"/><rect x="11" y="60" width="9" height="4" fill="#3a3a3a"/>
+        <rect x="30" y="51" width="6" height="6" fill="#f8dcc0"/><rect x="30" y="57" width="9" height="4" fill="#3a3a3a"/>
+      </svg>
+      <!-- 달리기 프레임 B -->
+      <svg class="fB" viewBox="0 0 48 64" shape-rendering="crispEdges">
+        <rect x="11" y="2" width="26" height="6" fill="#4a3a28"/>
+        <rect x="9" y="6" width="30" height="4" fill="#4a3a28"/>
+        <rect x="9" y="10" width="4" height="7" fill="#4a3a28"/><rect x="35" y="10" width="4" height="7" fill="#4a3a28"/>
+        <rect x="13" y="10" width="22" height="16" fill="#f8dcc0"/>
+        <rect x="13" y="10" width="16" height="3" fill="#4a3a28"/>
+        <rect x="16" y="15" width="6" height="2" fill="#3a2c1c"/><rect x="27" y="15" width="6" height="2" fill="#3a2c1c"/>
+        <rect x="17" y="18" width="5" height="5" fill="#2b2118"/><rect x="28" y="18" width="5" height="5" fill="#2b2118"/>
+        <rect x="18" y="19" width="2" height="2" fill="#ffffff"/><rect x="29" y="19" width="2" height="2" fill="#ffffff"/>
+        <rect x="22" y="24" width="5" height="1" fill="#b97c62"/>
+        <rect x="8" y="28" width="32" height="18" fill="#ffffff"/>
+        <rect x="18" y="28" width="12" height="2" fill="#e6e6ee"/><rect x="8" y="42" width="32" height="4" fill="#e6e6ee"/>
+        <rect x="3" y="26" width="6" height="8" fill="#ffffff"/><rect x="39" y="30" width="6" height="8" fill="#ffffff"/>
+        <rect x="3" y="22" width="5" height="5" fill="#f8dcc0"/><rect x="40" y="38" width="5" height="5" fill="#f8dcc0"/>
+        <rect x="11" y="46" width="26" height="8" fill="#22355c"/>
+        <rect x="18" y="52" width="6" height="6" fill="#f8dcc0"/><rect x="16" y="58" width="9" height="4" fill="#3a3a3a"/>
+        <rect x="26" y="54" width="6" height="6" fill="#f8dcc0"/><rect x="25" y="60" width="9" height="4" fill="#3a3a3a"/>
+      </svg>
+    </div>
+    <i class="speedline sl1"></i><i class="speedline sl2"></i><i class="speedline sl3"></i>
+    <svg class="dreamstar" viewBox="0 0 20 20" shape-rendering="crispEdges"><rect x="8" y="0" width="4" height="20" fill="#a8cb38"/><rect x="0" y="8" width="20" height="4" fill="#a8cb38"/><rect x="4" y="4" width="12" height="12" fill="#a8cb38"/><rect x="8" y="8" width="4" height="4" fill="#ffffff"/></svg>
+    <div class="cat">
+      <svg viewBox="0 0 24 16" shape-rendering="crispEdges">
+        <rect x="1" y="5" width="14" height="8" fill="#ffffff"/>
+        <rect x="0" y="2" width="4" height="5" fill="#ffffff"/>
+        <rect x="11" y="0" width="10" height="10" fill="#ffffff"/>
+        <rect x="9" y="1" width="3" height="7" fill="#ffffff"/>
+        <rect x="21" y="2" width="2" height="6" fill="#ffffff"/>
+        <rect x="12" y="0" width="8" height="2" fill="#f3f1ec"/>
+        <rect x="16" y="4" width="2" height="2" fill="#2b2118"/>
+        <rect x="20" y="6" width="2" height="2" fill="#2b2118"/>
+        <rect x="1" y="11" width="14" height="2" fill="#eceae4"/>
+        <rect x="3" y="13" width="3" height="3" fill="#ffffff"/><rect x="10" y="13" width="3" height="3" fill="#ffffff"/>
+      </svg>
+    </div>
+  </div>
+  <div class="container">
+    <div>
+      <div class="kicker">LIVE SERVICE OPERATOR · JAPAN</div>
+      <h1>즐거움에 대한<br><span class="colon">신뢰</span></h1>
+      <p class="sub">라이브 서비스가 약속해야 할 신뢰를,<br>
+      저는 7년간 라이브 서비스 현장에서 만들어 왔습니다.<br>
+      초등학생 때 메이플스토리에서 시작된 인연 — 검은사막 콘솔 라이브 7년+ · 일본어 담당 김우신.</p>
+      <a class="cta" href="#notice">운영 기록 보기</a>
+    </div>
+    <aside class="gamestart">
+      <div class="head" id="startPanel" style="cursor:pointer"><b>GAME START</b><span>파티 모집 중 (채용 문의)</span></div>
+      <div class="body">
+        <a class="b1" href="mailto:kimboard@naver.com">메일 보내기</a>
+        <a class="b2" href="https://rladntls94-tech.github.io/OPtools/" target="_blank" rel="noopener">OPtools — 직접 만든 툴 4종</a>
+        <a class="b2" href="김우신_경력기술서.pdf" download>경력기술서 PDF 다운로드</a>
+      </div>
+      <div class="foot">일본어·한국어 모두 모국어<br>펄어비스 2019.07 ~ 재직 중</div>
+    </aside>
+  </div>
+</div>
+
+<!-- 공지사항 = 프로젝트 -->
+<section id="notice">
+  <div class="container">
+    <h2 class="board-title">공지사항</h2>
+    <div class="tabs"><a class="on" href="#notice">공지사항</a><a href="#devnote">개발자 노트</a></div>
+    <div class="board-wrap">
+    <div class="board">
+      <div class="cats">
+        <button class="on" data-cat="all">전체</button>
+        <button data-cat="p-live">라이브</button>
+        <button data-cat="p-account">통합</button>
+        <button data-cat="p-gen">전환</button>
+        <button data-cat="p-retail">발매</button>
+        <button data-cat="p-cross">수상</button>
+        <button data-cat="p-ps4">론칭</button>
+        <button data-cat="p-red">신작</button>
+      </div>
+    <div class="notice-wrap">
+
+      <details class="notice" id="p-live" open>
+        <summary><span class="nicon">☰</span><span class="ncat">라이브</span><div class="ntext"><div class="nt">검은사막 콘솔 글로벌 라이브 서비스 운영 — 격주 업데이트 140회+</div><div class="nmeta"><span class="gm">GM</span>우신</div></div><span class="d">2019.07 ~ 진행 중</span></summary>
+        <div class="notice-body">
+          <div class="chips"><span>업데이트 140회+ (7년+)</span><span class="g">검수 90분 → 5분</span><span>한국어 원문 노출 사고 0건</span></div>
+          <ul>
+            <li>일본어 공지·약관 현지화, 공식 유튜브 영상 출연, 임원 출장 통역 동행, 인게임 GM 활동, 글로벌 유저 초청 행사 일본 유저 전담</li>
+            <li>다국어 번역 시 한국어 원문 노출을 원천 차단하는 검출 툴을 직접 개발해 팀 검수 프로세스에 정착 — 아이콘 매칭 등 에셋 업무도 자동화</li>
+            <li>유저 공·방 분포 분석으로 성장 병목을 찾아 이벤트로 가설 검증 후 콘텐츠 개선 — 중상위 유저 약 30% 상위 구간 진입</li>
+            <li>인게임 괴롭힘 판단 기준 수립(도쿄 오피스 협업 공지), 은화 부정 거래 적발·제재</li>
+            <li>CrowdStrike 글로벌 장애 새벽 긴급 대응 — Xbox 구매 API 장애 원인 규명·해결</li>
+          </ul>
+          <div class="evidence">
+            <figure><img src="img/pspartners.png" alt="PlayStation Partners 포털"><figcaption>PlayStation Partners — 플랫폼 정책·배포 실무</figcaption></figure>
+            <figure><img src="img/policy_jp.png" alt="운영 정책 일본어 문서"><figcaption>운영 정책(運営ポリシー) 일본어 현지화 문서</figcaption></figure>
+            <figure><img src="img/ingame_event.png" alt="인게임 이벤트"><figcaption>인게임 GM 이벤트 진행 화면</figcaption></figure>
+          </div>
+        </div>
+      </details>
+
+      <details class="notice" id="p-account">
+        <summary><span class="nicon">☰</span><span class="ncat">통합</span><div class="ntext"><div class="nt">글로벌 통합 계정 체계(Pearl Abyss ID) 전환 및 서비스 인프라 통합</div><div class="nmeta"><span class="gm">GM</span>우신</div></div><span class="d">2025.06 ~ 2025.12</span></summary>
+        <div class="notice-body">
+          <div class="chips"><span>CS 유입 예측 대비 54% 억제</span><span class="g">이관 당일 이슈 0건</span><span>점검 2시간 조기 종료</span></div>
+          <ul>
+            <li>11개 언어권 특이사항 분석, 통합 계정 약관 개정과 인게임 세팅 전 과정 수행, 유관 부서 체크리스트 단일화</li>
+            <li>사전 QA에서 미공유 스펙 변경 2건(쿠폰 수령 방식, 연동 해제 6개월 잠금)을 직접 발견 — FAQ·CS 템플릿 선제 구축, 통합 후 90일간 연동 해제 지원책 설계</li>
+            <li>선행 적용 국가의 결제·쿠폰 오류를 분석하고 이관 과정을 직접 시뮬레이션</li>
+            <li>점검 당일 약관 세팅·쿠폰 이관·마이그레이션 크로스체크 등 체크리스트를 총괄, 미국 오피스와 실시간 협업</li>
+          </ul>
+          <div class="evidence">
+            <figure><img src="img/paid.png" alt="Pearl Abyss ID 통합 다이어그램"><figcaption>다국가 서비스 → 통합 계정(PA ID) 전환 구조</figcaption></figure>
+            <figure><img src="img/checklist.png" alt="점검 체크리스트"><figcaption>점검 당일 크로스체크 체크리스트</figcaption></figure>
+            <figure><img src="img/qa_check.png" alt="QA 확인 항목"><figcaption>이관 사전 QA 확인 항목 설계</figcaption></figure>
+          </div>
+        </div>
+      </details>
+
+      <details class="notice" id="p-gen">
+        <summary><span class="nicon">☰</span><span class="ncat">전환</span><div class="ntext"><div class="nt">PS5/XBS 차세대 전환 및 구세대(PS4/XB One) 서비스 종료</div><div class="nmeta"><span class="gm">GM</span>우신</div></div><span class="d">2024.11 ~ 2025.08</span></summary>
+        <div class="notice-body">
+          <div class="chips"><span>전환기 매출 210% 성장</span><span class="g">법적 분쟁 0건 · 실환불 1건</span><span>크래시율 8.4% → 0.9%</span><span class="g">이탈 예상 8~10% → 실제 4~6%</span></div>
+          <ul>
+            <li>타사 종료 사례·국가별 환불 규정 분석으로 환불 기준 확립, 일본 자금결제법 선제 검토</li>
+            <li>접속·활동 데이터 분석으로 전환기 수요가 높은 결제 상품 기획 — 부정 동향 경험을 반영해 업데이트 3주 후 상품 배치</li>
+            <li>구세대 유저 이탈 방어를 위한 로드맵 선공개·안내 영상 기획, 일본어 담당자로 직접 출연</li>
+          </ul>
+          <div class="evidence">
+            <figure><img src="img/video.png" alt="안내 영상 출연"><figcaption>유저 대상 공식 안내 영상 — 일본어 담당으로 직접 출연</figcaption></figure>
+            <figure><img src="img/refund.png" alt="환불 문구 검토"><figcaption>환불 안내 문구 법무 검토 협의</figcaption></figure>
+          </div>
+        </div>
+      </details>
+
+      <details class="notice" id="p-retail">
+        <summary><span class="nicon">☰</span><span class="ncat">발매</span><div class="ntext"><div class="nt">리테일 패키지 발매 기획 — 직접 제안으로 시작한 프로젝트</div><div class="nmeta"><span class="gm">GM</span>우신</div></div><span class="d">2020.05 ~ 2020.11</span></summary>
+        <div class="notice-body">
+          <div class="chips"><span>글로벌 NRU 183% 증가</span><span class="g">웹 방문자 140% 상승</span><span>패키지 유저 D30 잔존율 38%</span></div>
+          <ul>
+            <li>일본에서 자라며 체득한 실물 패키지 선호 문화를 근거로 직접 제안해 회사를 설득 — 기획부터 출시까지 주도</li>
+            <li>판매 데이터 분석으로 구성품 선별·에디션 기획, 플랫폼·국가별 환율 연동 특이점을 테스트 환경에서 직접 시뮬레이션해 결제 오류 사전 차단</li>
+            <li>오프라인 상품과 온라인 유저를 잇는 이벤트 랜딩 페이지 기획·전개</li>
+          </ul>
+          <div class="evidence">
+            <figure><img src="img/retail.png" alt="프레스티지 에디션"><figcaption>프레스티지 에디션 패키지 구성</figcaption></figure>
+          </div>
+        </div>
+      </details>
+
+      <details class="notice" id="p-cross">
+        <summary><span class="nicon">☰</span><span class="ncat">수상</span><div class="ntext"><div class="nt">국내 콘솔 최초 MMORPG PS4–Xbox One 크로스 플레이 도입</div><div class="nmeta"><span class="gm">GM</span>우신</div></div><span class="d">2019.10 ~ 2020.05</span></summary>
+        <div class="notice-body">
+          <div class="chips"><span>PlayStation Partner Awards 2020 수상</span><span class="g">복귀 유저 350% · NRU 250% · DAU 126%</span></div>
+          <ul>
+            <li>PS/XB 제출 프로세스를 파악해 출시 일정 역산, 유관 부서 R&amp;R 시각화와 일일 체크리스트로 목표 3일 전 오픈 준비 완료</li>
+            <li>인게임 데이터(거점전 세금) 동기화 이슈를 선제 발견하고 기획/DB/프로그램팀 협의 리딩</li>
+            <li>매크로 대응 프로세스 설계 — 신고 접수→모니터링→GM 검증(3회)→증거 영상 확보→제재, 후속 분쟁 0건</li>
+          </ul>
+          <div class="evidence">
+            <figure><img src="img/ppa_award_stage.jpg" alt="PPA 2020 시상식"><figcaption>PlayStation Partner Awards 2020 시상식 현장</figcaption></figure>
+            <figure><img src="img/award.png" alt="PlayStation Partner Award 2020"><figcaption>PlayStation Partner Awards 2020 (Japan Asia) — 팀 수상</figcaption></figure>
+            <figure><img src="img/gantt.png" alt="일정 관리"><figcaption>론칭 일정 역산·부서별 R&amp;R 관리</figcaption></figure>
+          </div>
+        </div>
+      </details>
+
+      <details class="notice" id="p-ps4">
+        <summary><span class="nicon">☰</span><span class="ncat">론칭</span><div class="ntext"><div class="nt">PS4 론칭 및 서비스 운영 — 일본 PS 스토어 랭킹 1위</div><div class="nmeta"><span class="gm">GM</span>우신</div></div><span class="d">2019.07 ~ 2019.11</span></summary>
+        <div class="notice-body">
+          <div class="chips"><span>일본 PS 스토어 랭킹 1위</span><span class="g">론칭 4주 MCU 90% 유지</span><span>CS 인입 예상 30% → 실제 12%</span></div>
+          <ul>
+            <li>스토어 구매테스트 프로세스 구축, 한/영/독/불 운영 R&amp;R 배분</li>
+            <li>선행 플랫폼(Xbox) 데이터 분석으로 FAQ 선제 배포해 문의 폭주 사전 차단</li>
+            <li>일본 심의등급(CERO) 확인 및 출시 요건 대응, 약관·정책·규약 일본어 현지화</li>
+            <li>도쿄 오피스 협업 리트윗 이벤트 — RT 1,000건·팔로워 1,500명 증가</li>
+          </ul>
+          <div class="evidence">
+            <figure><img src="img/ps_store_rank1.png" alt="일본 PS 스토어 랭킹 1위"><figcaption>일본 PS 스토어 PS4 랭킹 1위 — 검은사막</figcaption></figure>
+            <figure><img src="img/sns_rt_event.png" alt="리트윗 캠페인"><figcaption>PS4 랭킹 1위 기념 리트윗 캠페인 — 직접 기획</figcaption></figure>
+          </div>
+        </div>
+      </details>
+
+      <details class="notice" id="p-red">
+        <summary><span class="nicon">☰</span><span class="ncat">신작</span><div class="ntext"><div class="nt">붉은사막 신작 준비팀 — 프로젝트 참여</div><div class="nmeta"><span class="gm">GM</span>우신</div></div><span class="d">2026.03 ~ 2026.06</span></summary>
+        <div class="notice-body">
+          <div class="chips"><span>스팀 리뷰 긍정 비율 22%p 개선</span><span class="g">PS 리뷰 평점 3.7 → 4.2</span></div>
+          <ul>
+            <li>테스트 플레이·리뷰 추이 분석(언어·국가별) 기반 이슈 대응 프로세스 수립, CS·리뷰 모니터링 및 QA 재현</li>
+            <li>CS·포럼 수집의 한계를 데이터로 증명하고 운영툴 기반 데이터 수집 프로세스로 전환 주도</li>
+          </ul>
+          <div class="evidence">
+            <figure><img src="img/review_trend.jpg" alt="스팀 리뷰 추이 분석"><figcaption>스팀 리뷰 언어별 긍정 비율 추이 분석 (수치 비식별화)</figcaption></figure>
+            <figure><img src="img/cs_heatmap.png" alt="CS 추이 히트맵"><figcaption>CS 카테고리별 추이 히트맵 (수치 비식별화)</figcaption></figure>
+          </div>
+        </div>
+      </details>
+
+    </div>
+    </div><!-- /board -->
+    <aside class="side">
+      <h3>새소식</h3>
+      <div class="menu-list">
+        <a href="#notice">공지사항</a>
+        <a href="#devnote">개발자노트</a>
+        <a href="#fame">명예의 전당</a>
+        <a href="#archive">자료실</a>
+      </div>
+      <div class="icon-grid">
+        <a href="https://rladntls94-tech.github.io/OPtools/" target="_blank" rel="noopener"><i><svg viewBox="0 0 24 24"><path d="M22.7 19.3l-6.9-6.9a6 6 0 0 0-7.8-7.8l3.5 3.5-2.8 2.8-3.5-3.5a6 6 0 0 0 7.8 7.8l6.9 6.9a1.5 1.5 0 0 0 2.1 0l0.7-0.7a1.5 1.5 0 0 0 0-2.1z" fill="#fff"/></svg></i>OPtools</a>
+        <a href="mailto:kimboard@naver.com"><i><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="1.5" fill="none" stroke="#fff" stroke-width="2"/><path d="M3 6.5l9 6.5 9-6.5" fill="none" stroke="#fff" stroke-width="2"/></svg></i>채용 문의</a>
+      </div>
+      <div class="sns">
+        <a href="mailto:kimboard@naver.com"><i><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="1.5" fill="none" stroke="#fff" stroke-width="2"/><path d="M3 6.5l9 6.5 9-6.5" fill="none" stroke="#fff" stroke-width="2"/></svg></i>Mail</a>
+        <a href="https://rladntls94-tech.github.io/OPtools/" target="_blank" rel="noopener"><i><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" fill="#fff"/><rect x="13" y="3" width="8" height="8" fill="#fff"/><rect x="3" y="13" width="8" height="8" fill="#fff"/><rect x="13" y="13" width="8" height="8" fill="#fff"/></svg></i>Tools</a>
+        <a href="#devnote"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.2" fill="#fff"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z" fill="#fff"/></svg></i>Profile</a>
+      </div>
+    </aside>
+    </div><!-- /board-wrap -->
+  </div>
+</section>
+
+<!-- 명예의 전당 -->
+<section id="fame">
+  <div class="container">
+    <div class="sec-head"><h2>명예의 전당</h2><span class="en">HALL OF FAME</span></div>
+    <div class="fame-grid">
+      <div class="widget">
+        <div class="whead"><span class="arr">❯</span>수상 기록</div>
+        <div class="wbody">
+          <div class="wimg"><img src="img/award.png" alt="PlayStation Partner Awards 2020"></div>
+          <div class="line">PlayStation Partner Awards 2020 (Japan Asia)</div>
+          <p>한국 최초 콘솔 MMORPG 크로스플레이 — 팀 수상</p>
+          <a class="wplus" href="#p-cross" data-open="p-cross">＋</a>
+        </div>
+      </div>
+      <div class="widget">
+        <div class="whead"><span class="arr">❯</span>일본 PS 스토어</div>
+        <div class="wbody"><div class="num">랭킹 1위</div>
+          <p>PS4 론칭 시 달성 · 4주간 MCU 90% 유지</p>
+          <a class="wplus" href="#p-ps4" data-open="p-ps4">＋</a></div>
+      </div>
+      <div class="widget">
+        <div class="whead"><span class="arr">❯</span>전환기 매출</div>
+        <div class="wbody"><div class="num">210% 성장</div>
+          <p>법적 분쟁 0건으로 통과한 PS5/XBS 세대 전환</p>
+          <a class="wplus" href="#p-gen" data-open="p-gen">＋</a></div>
+      </div>
+      <div class="widget">
+        <div class="whead"><span class="arr">❯</span>정기 업데이트</div>
+        <div class="wbody"><div class="num">140회+</div>
+          <p>7년+ 격주 라이브 운영 · 매크로 제재 후속 분쟁 0건</p>
+          <a class="wplus" href="#p-live" data-open="p-live">＋</a></div>
+      </div>
+      <div class="widget">
+        <div class="whead"><span class="arr">❯</span>검수 자동화</div>
+        <div class="wbody"><div class="num">90분 → 5분</div>
+          <p>직접 만든 검출 툴로 95% 절감 · 도입 후 한국어 원문 노출 사고 0건</p>
+          <a class="wplus" href="#p-live" data-open="p-live">＋</a></div>
+      </div>
+      <div class="widget">
+        <div class="whead"><span class="arr">❯</span>리테일 발매</div>
+        <div class="wbody"><div class="num">NRU 183%</div>
+          <p>직접 제안한 리테일 패키지 — 웹 방문자 140% 상승</p>
+          <a class="wplus" href="#p-retail" data-open="p-retail">＋</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 개발자 노트 -->
+<section id="devnote">
+  <div class="container">
+    <div class="sec-head"><h2>개발자 노트</h2><span class="en">ABOUT ME</span></div>
+    <div class="devnote">
+      <figure class="photo"><img src="img/profile.png" alt="김우신 프로필"><figcaption>김우신 · Shinozaki Masanobu</figcaption></figure>
+      <div>
+        <h3>나를 한 마디로 표현한다면?</h3>
+        <p>성장과 성공을 갈망하고, 그걸 실현하기 위해 능동적으로 문제를 정의하며 끊임없이 더 나은 방식을 찾아내는 사람입니다.
+        한국인 어머니와 일본인 아버지 사이에서 일본에서 태어나 초등학교까지 일본 학교를 다녔고, 일본어와 한국어 모두 모국어입니다.</p>
+        <p style="margin-top:10px">라이브 서비스의 신뢰는 화려한 이벤트가 아니라 사고 없는 하루하루의 축적에서 나온다고 믿습니다. 그리고 그 신뢰가 단 한 번의 실수로 무너질 수 있다는 것 또한 잘 알고 있습니다.</p>
+        <h3>핵심 역량</h3>
+        <div class="skills">
+          <div class="skill"><b>글로벌 코워크 및 현지화</b><p>일본어 원어민 역량으로 현지 유저 정서와 규제(자금결제법·CERO)를 직접 다루며, 해외 오피스·외주사와의 협업 창구 역할을 합니다.</p></div>
+          <div class="skill"><b>데이터 기반 리스크 관리</b><p>감이 아닌 유저 활동 로그와 결제·접속 데이터로 매크로 등 이상 징후를 선제 탐지하고, 기준을 세워 제재까지 잇습니다.</p></div>
+          <div class="skill"><b>커뮤니티 운영 및 정책 수립</b><p>X·Discord 공지 작성·번역, 모니터링, 피드백 분석까지 직접 챙깁니다. 논리적인 글쓰기로 흔들림 없는 신뢰받는 서비스를 만듭니다.</p></div>
+          <div class="skill"><b>효율을 챙기는 실무자 &amp; 재미를 아는 게이머</b><p>Python·생성형 AI로 반복 업무를 줄여 유저와 서비스에 집중합니다. 숫자 이면의 '진짜 즐거워할 포인트'를 먼저 고민하는 진성 게이머입니다.</p></div>
+        </div>
+        <h3>학력</h3>
+        <table class="edu">
+          <tr><td>2001.04 ~ 2007.03</td><td>일본 소재 초등학교 졸업</td></tr>
+          <tr><td>2011.03 ~ 2013.02</td><td>광성고등학교 졸업</td></tr>
+          <tr><td>2013.04 ~</td><td>센슈대학교 경제학과 중퇴 (한국 이주)</td></tr>
+          <tr><td>2014.03 ~ 2019.07</td><td>성공회대학교 일어일본학과 중퇴 (취업)</td></tr>
+          <tr><td>2020.03 ~ 2022.02</td><td>경희사이버대학교 일본학과 졸업 (재직 병행)</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 자료실 -->
+<section id="archive" style="background:#fff">
+  <div class="container">
+    <div class="sec-head"><h2>자료실</h2><span class="en">ARCHIVE</span><span class="plus">직접 만든 도구와 실무 기록</span></div>
+    <div class="tools">
+      <a class="tool" href="https://rladntls94-tech.github.io/korean-checker/" target="_blank" rel="noopener"><img src="img/tool_checker.png" alt=""><b>한국어 검출기</b><p>다국어 텍스트의 한국어 잔류 문자열 자동 검출 — 검수 90분→5분의 주역</p><span class="go">사용해보기 →</span></a>
+      <a class="tool" href="https://rladntls94-tech.github.io/multilang-generator/" target="_blank" rel="noopener"><img src="img/tool_multilang.png" alt=""><b>다국어 생성기</b><p>한국어 소스를 언어별 소스로 자동 치환</p><span class="go">사용해보기 →</span></a>
+      <a class="tool" href="https://rladntls94-tech.github.io/console-key-converter/" target="_blank" rel="noopener"><img src="img/tool_keyconv.png" alt=""><b>콘솔 키 변환기</b><p>PC 조작키 표기를 PS/XB 버튼 표기로 일괄 변환</p><span class="go">사용해보기 →</span></a>
+      <a class="tool" href="https://rladntls94-tech.github.io/userreport-tool/" target="_blank" rel="noopener"><img src="img/tool_userreport.png" alt=""><b>UserReport 뷰어</b><p>ZIP 속 유저 리포트 열람·정리 보조 툴</p><span class="go">사용해보기 →</span></a>
+    </div>
+    <div class="gallery">
+      <figure><span class="playmark">▶</span><img src="img/video.png" alt="공식 영상 출연"><figcaption>유저 대상 공식 안내 영상 — 일본어 담당으로 직접 출연</figcaption></figure>
+      <figure><img src="img/policy_jp.png" alt="일본어 운영 정책"><figcaption>운영 정책 일본어 현지화 — 약관·정책·규약 전담</figcaption></figure>
+      <figure><img src="img/paid.png" alt="계정 통합 구조"><figcaption>글로벌 통합 계정(PA ID) 전환 — 약관 개정·세팅 전 과정 수행</figcaption></figure>
+      <figure><img src="img/checklist.png" alt="점검 체크리스트"><figcaption>점검 당일 크로스체크 체크리스트 총괄</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="brand">WOOSHIN</div>
+    김우신 (Shinozaki Masanobu) · kimboard@naver.com · +82 10-9707-3701<br>
+    직접 만든 운영 자동화 툴 : <a href="https://rladntls94-tech.github.io/OPtools/" target="_blank" rel="noopener">OPtools</a> · <a href="김우신_경력기술서.pdf" download>경력기술서 PDF 다운로드</a> · <a href="general.html">모바일 게임 UI 버전</a><br>
+    <span style="font-size:12px">본 사이트는 마비노기 공식 홈페이지의 UI를 오마주하여 직접 구현한 개인 포트폴리오입니다. 게재된 이미지와 업무 자료는 본인이 수행한 업무의 증빙 목적으로만 사용되었습니다. 생성형 AI를 활용해 직접 기획·제작했습니다.</span>
+  </div>
+</footer>
+
+<div id="joinModal">
+  <div class="join-box">
+    <div class="sys">— SYSTEM MESSAGE —</div>
+    <h3>🎉 새로운 파티원이<br><b>당신의 팀</b>에 합류했습니다!</h3>
+    <div class="fx">
+      <b>[전설]</b> 일본어 원어민 라이브 서비스 운영자 · 김우신<br>
+      획득 효과 : 일본 서비스 안정도 <b>+140회</b> · CS 유입 <b>−54%</b> · 분쟁 발생률 <b>0%</b><br>
+      패시브 스킬 : 반복 업무를 보면 자동화하지 않고는 못 배김
+    </div>
+    <div class="note">이 시스템 메시지를 현실로 만드는 버튼 ↓</div>
+    <div class="btns">
+      <a href="mailto:kimboard@naver.com">✉ 합격 문자 보내기</a>
+      <button id="joinClose">닫기</button>
+    </div>
+  </div>
+</div>
+
+<div id="lightbox"><img src="" alt="확대 이미지"></div>
+<button id="topBtn" aria-label="맨 위로" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('topBtn').classList.toggle('show',window.scrollY>600);
+},{passive:true});
+</script>
+
+<script>
+/* 입사 축하 모달 */
+const jm=document.getElementById('joinModal');
+function openJoin(e){e.preventDefault();jm.classList.add('on')}
+document.getElementById('startBtn').addEventListener('click',openJoin);
+document.getElementById('startPanel').addEventListener('click',()=>jm.classList.add('on'));
+document.getElementById('joinClose').addEventListener('click',()=>jm.classList.remove('on'));
+jm.addEventListener('click',e=>{if(e.target===jm)jm.classList.remove('on')});
+</script>
+<script>
+/* 라이트박스 */
+const lb=document.getElementById('lightbox'), lbImg=lb.querySelector('img');
+/* ▼ 출연 영상 URL을 여기에 넣으면 영상 썸네일 클릭 시 유튜브로 이동합니다 */
+const VIDEO_URL="https://www.youtube.com/watch?v=yi6oxIYmppY";
+document.querySelectorAll('.evidence img,.gallery img,.wimg img,.devnote .photo img').forEach(img=>{
+  if(img.getAttribute('src')==='img/video.png' && VIDEO_URL){
+    img.style.cursor='pointer';
+    img.addEventListener('click',()=>window.open(VIDEO_URL,'_blank'));
+    return;
+  }
+  img.style.cursor='zoom-in';
+  img.addEventListener('click',()=>{lbImg.src=img.src;lb.classList.add('on')});
+});
+lb.addEventListener('click',()=>lb.classList.remove('on'));
+window.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
+/* 인쇄 시: 모든 항목 펼치고, 저장 파일명(=문서 제목)을 이력서용으로 교체 */
+let printTitle=null;
+window.addEventListener('beforeprint',()=>{
+  document.querySelectorAll('details').forEach(d=>d.open=true);
+  printTitle=document.title;
+  document.title=document.documentElement.lang==='ja'?'金優信_ポートフォリオ_職務経歴':'김우신_포트폴리오_경력기술서';
+});
+window.addEventListener('afterprint',()=>{if(printTitle){document.title=printTitle;printTitle=null}});
+document.getElementById('pdfBtn').addEventListener('click',e=>{e.preventDefault();document.querySelectorAll('details').forEach(d=>d.open=true);window.print();});
+/* 모바일 버전에서 ?print=1로 진입 시 자동으로 인쇄(PDF 저장) 실행 */
+if(new URLSearchParams(location.search).has('print')){
+  window.addEventListener('load',()=>{
+    document.querySelectorAll('details').forEach(d=>d.open=true);
+    setTimeout(()=>window.print(),700);
+  });
+}
+
+document.querySelectorAll('[data-open]').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const d=document.getElementById(a.dataset.open);
+    if(d) d.open=true;
+  });
+});
+/* 게시판 카테고리 필터 */
+document.querySelectorAll('.cats button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.cats button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    document.querySelectorAll('details.notice').forEach(d=>{
+      d.classList.toggle('hidden', b.dataset.cat!=='all' && d.id!==b.dataset.cat);
+    });
+  });
+});
+const stars=document.getElementById('stars');
+for(let i=0;i<50;i++){
+  const s=document.createElement('i');
+  s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+  s.style.animationDelay=(Math.random()*3)+'s';
+  stars.appendChild(s);
+}
+</script>
+<script>
+/* ───── 한/일 언어 전환 ───── */
+const JA = {
+"운영의":"運営の","기록":"記録",
+"새소식":"新着情報","명예의 전당":"名誉の殿堂","개발자 노트":"開発者ノート","자료실":"資料室","고객지원":"サポート",
+"라이브 운영":"ライブ運営","글로벌 계정 통합":"アカウント統合","PS5/XBS 세대 전환":"PS5/XBS世代移行","리테일 패키지 발매":"パッケージ発売","크로스 플레이 도입":"クロスプレイ導入","붉은사막 신작 준비팀":"紅の砂漠チーム",
+"일본 PS 스토어 1위":"日本PSストア1位","기록으로 보는 7년":"記録で見る7年","나를 한 마디로":"私を一言で","핵심 역량":"コアスキル","학력":"学歴","실무 기록 갤러리":"実務記録ギャラリー","메일 보내기":"メールを送る",
+"즐거움에 대한":"楽しさへの","신뢰":"信頼",
+"라이브 서비스가 약속해야 할 신뢰를,":"ライブサービスが約束すべき信頼を、",
+"저는 7년간 라이브 서비스 현장에서 만들어 왔습니다.":"私は7年間、ライブサービスの現場で作ってきました。",
+"초등학생 때 메이플스토리에서 시작된 인연 — 검은사막 콘솔 라이브 7년+ · 일본어 담당 김우신.":"小学生の頃メイプルストーリーから始まった縁 — 黒い砂漠コンソールライブ7年+・日本語担当 金優信。",
+"운영 기록 보기":"運営記録を見る",
+"파티 모집 중 (채용 문의)":"パーティー募集中（採用のお問い合わせ）",
+"OPtools — 직접 만든 툴 4종":"OPtools — 自作ツール4種",
+"일본어·한국어 모두 모국어":"日本語・韓国語ともにネイティブ","펄어비스 2019.07 ~ 재직 중":"パールアビス 2019.07～在職中",
+"공지사항":"お知らせ","전체":"全体","라이브":"ライブ","통합":"統合","전환":"移行","발매":"発売","수상":"受賞","신작":"新作","우신":"優信",
+"검은사막 콘솔 글로벌 라이브 서비스 운영 — 격주 업데이트 140회+":"黒い砂漠コンソール グローバルライブサービス運営 — 隔週アップデート140回+",
+"글로벌 통합 계정 체계(Pearl Abyss ID) 전환 및 서비스 인프라 통합":"グローバル統合アカウント（Pearl Abyss ID）移行およびサービスインフラ統合",
+"PS5/XBS 차세대 전환 및 구세대(PS4/XB One) 서비스 종료":"PS5/XBS世代移行および旧世代（PS4/XB One）サービス終了",
+"리테일 패키지 발매 기획 — 직접 제안으로 시작한 프로젝트":"リテールパッケージ発売企画 — 自ら提案して始めたプロジェクト",
+"국내 콘솔 최초 MMORPG PS4–Xbox One 크로스 플레이 도입":"韓国コンソール初のMMORPG PS4–Xbox Oneクロスプレイ導入",
+"붉은사막 신작 준비팀 — 프로젝트 참여":"紅の砂漠 新作準備チーム — プロジェクト参画",
+"2019.07 ~ 진행 중":"2019.07～現在",
+"업데이트 140회+ (7년+)":"アップデート140回+（7年+）","검수 90분 → 5분":"検証90分→5分","한국어 원문 노출 사고 0건":"韓国語原文の誤掲載0件",
+"CS 유입 예측 대비 54% 억제":"CS問い合わせを想定比54%抑制","이관 당일 이슈 0건":"移管当日のトラブル0件","점검 2시간 조기 종료":"メンテナンス2時間早期完了",
+"전환기 매출 210% 성장":"移行期に売上210%成長","법적 분쟁 0건 · 실환불 1건":"法的トラブル0件・返金対応1件","크래시율 8.4% → 0.9%":"クラッシュ率8.4%→0.9%","이탈 예상 8~10% → 실제 4~6%":"離脱予想8~10%→実際4~6%",
+"글로벌 NRU 183% 증가":"グローバルNRU183%増","웹 방문자 140% 상승":"サイト訪問者140%増","패키지 유저 D30 잔존율 38%":"パッケージユーザーD30継続率38%",
+"PlayStation Partner Awards 2020 수상":"PlayStation Partner Awards 2020受賞","복귀 유저 350% · NRU 250% · DAU 126%":"復帰350%・NRU250%・DAU126%増",
+"스팀 리뷰 긍정 비율 22%p 개선":"Steamレビュー好評率22%pt改善","PS 리뷰 평점 3.7 → 4.2":"PSレビュー評価3.7→4.2",
+"일본어 공지·약관 현지화, 공식 유튜브 영상 출연, 임원 출장 통역 동행, 인게임 GM 활동, 글로벌 유저 초청 행사 일본 유저 전담":"日本語のお知らせ・規約ローカライズ、公式YouTube動画への出演、役員出張の通訳同行、ゲーム内GM活動、グローバルユーザー招待イベントの日本ユーザー対応",
+"다국어 번역 시 한국어 원문 노출을 원천 차단하는 검출 툴을 직접 개발해 팀 검수 프로세스에 정착 — 아이콘 매칭 등 에셋 업무도 자동화":"多言語翻訳時の韓国語原文の誤掲載を防ぐ検出ツールを自作し、チームの検証プロセスに定着 — アイコンマッチング等のアセット業務も自動化",
+"유저 공·방 분포 분석으로 성장 병목을 찾아 이벤트로 가설 검증 후 콘텐츠 개선 — 중상위 유저 약 30% 상위 구간 진입":"攻撃力・防御力分布の分析で成長のボトルネックを特定、イベントで仮説検証後にコンテンツ改善 — 中上位ユーザー約30%が上位層へ移動",
+"매크로 대응 프로세스 설계(신고 접수→모니터링→GM 검증 3회→증거 확보→제재) — 제재 관련 후속 분쟁 0건":"マクロ対応プロセスの設計（通報受付→モニタリング→GM検証3回→証拠確保→制裁） — 制裁に関するその後の紛争0件",
+"11개 언어권 특이사항 분석, 통합 계정 약관 개정과 인게임 세팅 전 과정 수행, 유관 부서 체크리스트 단일화":"11言語圏の特異事項を分析、統合アカウント規約の改定とゲーム内設定の全過程を遂行、関連部署のチェックリストを一本化",
+"사전 QA에서 미공유 스펙 변경 2건(쿠폰 수령 방식, 연동 해제 6개월 잠금)을 직접 발견 — FAQ·CS 템플릿 선제 구축, 통합 후 90일간 연동 해제 지원책 설계":"事前にQAを行うことで未共有の仕様変更2件（クーポン受領方法、連携解除の6ヶ月制限）を発見 — FAQ・CSテンプレートを先行構築し、統合後90日間の連携解除対応策を設計",
+"선행 적용 국가의 결제·쿠폰 오류를 분석하고 이관 과정을 직접 시뮬레이션, 미국 오피스와 실시간 협업으로 점검 당일 총괄":"先行適用国の決済・クーポン不具合を分析し移管過程をシミュレーション、米国オフィスとリアルタイムで連携しメンテナンス当日を統括",
+"타사 종료 사례·국가별 환불 규정 분석으로 환불 기준 확립, 일본 자금결제법 선제 검토":"他社の終了事例・国別返金規定の分析で返金基準を確立、日本の資金決済法を事前に検討",
+"접속·활동 데이터 분석으로 전환기 수요가 높은 결제 상품 기획 — 부정 동향 경험을 반영해 업데이트 3주 후 상품 배치":"接続・活動データの分析で移行期に需要の高い課金施策を立案 — 否定的な反応の経験を踏まえアップデート3週間後に商品を配置",
+"구세대 유저 이탈 방어를 위한 로드맵 선공개·안내 영상 기획, 일본어 담당자로 직접 출연":"旧世代ユーザーの離脱防止のためロードマップ先行公開・案内動画を企画、日本語担当として出演",
+"일본에서 자라며 체득한 실물 패키지 선호 문화를 근거로 직접 제안해 회사를 설득 — 기획부터 출시까지 주도":"日本で育つ中で体得したパッケージ文化への洞察を根拠に自ら提案し会社を説得 — 企画からリリースまで主導",
+"판매 데이터 분석으로 구성품 선별·에디션 기획, 플랫폼·국가별 환율 연동 특이점을 테스트 환경에서 직접 시뮬레이션해 결제 오류 사전 차단":"販売データ分析による構成品選定・エディション企画、プラットフォーム・国別の為替連動をテスト環境で検証し決済エラーを事前に遮断",
+"오프라인 상품과 온라인 유저를 잇는 이벤트 랜딩 페이지 기획·전개":"オフライン商品とオンラインユーザーをつなぐイベントページを企画・展開",
+"PS/XB 제출 프로세스를 파악해 출시 일정 역산, 유관 부서 R&R 시각화와 일일 체크리스트로 목표 3일 전 오픈 준비 완료":"PS/XB提出プロセスを把握しリリース日程を逆算、部署別R&Rの可視化と日次チェックリストで目標3日前に準備完了",
+"인게임 데이터(거점전 세금) 동기화 이슈를 선제 발견하고 기획/DB/프로그램팀 협의 리딩":"ゲーム内データ（拠点戦の税金）の同期問題を事前に発見、企画/DB/プログラムチームとの協議を主導",
+"PS4 론칭 시 선행 플랫폼 데이터 분석으로 FAQ 선제 배포 — CS 인입 예상 30% → 실제 12%, 일본 CERO 심의·약관 검수 직접 수행으로 일본 PS 스토어 랭킹 1위의 기반 마련":"PS4ローンチ時は先行プラットフォームのデータ分析でFAQを先行配布 — CS流入予想30%→実際12%、CERO審査対応・規約検収も担当し日本PSストア1位の基盤に",
+"테스트 플레이·리뷰 추이 분석(언어·국가별) 기반 이슈 대응 프로세스 수립, CS·리뷰 모니터링 및 QA 재현":"テストプレイ・レビュー推移分析（言語・国別）に基づく対応プロセスの策定、CS・レビューモニタリングおよびQA再現",
+"CS·포럼 수집의 한계를 데이터로 증명하고 운영툴 기반 데이터 수집 프로세스로 전환 주도":"CS・フォーラム収集の限界をデータで示し、運営ツールを基盤としたデータ収集プロセスへの転換を主導",
+"PlayStation Partners — 플랫폼 정책·배포 실무":"PlayStation Partners — プラットフォーム政策・配信実務",
+"운영 정책(運営ポリシー) 일본어 현지화 문서":"運営ポリシーの日本語ローカライズ文書",
+"인게임 GM 이벤트 진행 화면":"ゲーム内GMイベントの進行画面",
+"다국가 서비스 → 통합 계정(PA ID) 전환 구조":"多国籍サービス→統合アカウント（PA ID）移行構造",
+"점검 당일 크로스체크 체크리스트":"メンテナンス当日のクロスチェックリスト",
+"이관 사전 QA 확인 항목 설계":"移管事前QAの確認項目設計",
+"유저 대상 공식 안내 영상 — 일본어 담당으로 직접 출연":"ユーザー向け公式案内動画 — 日本語担当として出演",
+"환불 안내 문구 법무 검토 협의":"返金案内文言の法務検討協議",
+"프레스티지 에디션 패키지 구성":"プレステージエディションのパッケージ構成",
+"PlayStation Partner Awards 2020 (Japan Asia) — 팀 수상":"PlayStation Partner Awards 2020（Japan Asia） — チーム受賞",
+"론칭 일정 역산·부서별 R&R 관리":"ローンチ日程の逆算・部署別R&R管理",
+"수상 기록":"受賞記録","일본 PS 스토어":"日本PSストア","전환기 매출":"移行期の売上","정기 업데이트":"定期アップデート","검수 자동화":"検証自動化","리테일 발매":"リテール発売",
+"한국 최초 콘솔 MMORPG 크로스플레이 — 팀 수상":"韓国初のコンソールMMORPGクロスプレイ — チーム受賞",
+"랭킹 1위":"ランキング1位","210% 성장":"210%成長","140회+":"140回+","90분 → 5분":"90分→5分","NRU 183%":"NRU183%",
+"PS4 론칭 시 달성 · 4주간 MCU 90% 유지":"PS4ローンチ時に達成・4週間MCU90%維持",
+"법적 분쟁 0건으로 통과한 PS5/XBS 세대 전환":"法的トラブル0件で完了したPS5/XBS世代移行",
+"7년+ 격주 라이브 운영 · 매크로 제재 후속 분쟁 0건":"7年+隔週のライブ運営・マクロ制裁のその後の紛争0件",
+"직접 만든 검출 툴로 95% 절감 · 도입 후 한국어 원문 노출 사고 0건":"自作の検出ツールで95%削減・導入後の誤掲載0件",
+"직접 제안한 리테일 패키지 — 웹 방문자 140% 상승":"自ら提案したリテールパッケージ — サイト訪問者140%増",
+"나를 한 마디로 표현한다면?":"私を一言で表すなら？",
+"성장과 성공을 갈망하고, 그걸 실현하기 위해 능동적으로 문제를 정의하며 끊임없이 더 나은 방식을 찾아내는 사람입니다. 한국인 어머니와 일본인 아버지 사이에서 일본에서 태어나 초등학교까지 일본 학교를 다녔고, 일본어와 한국어 모두 모국어입니다.":"成長と成功を渇望し、それを実現するために能動的に問題を定義し、絶えずより良い方法を見つけ出す人間です。韓国人の母と日本人の父のもと日本で生まれ、小学校まで日本の学校に通い、日本語と韓国語の両方がネイティブです。",
+"라이브 서비스의 신뢰는 화려한 이벤트가 아니라 사고 없는 하루하루의 축적에서 나온다고 믿습니다. 그리고 그 신뢰가 단 한 번의 실수로 무너질 수 있다는 것 또한 잘 알고 있습니다.":"ライブサービスの信頼は華やかなイベントではなく、事故のない一日一日の積み重ねから生まれると信じています。そしてその信頼が、たった一度のミスで崩れうることも知っています。",
+"글로벌 코워크 및 현지화":"グローバル協業とローカライズ",
+"일본어 원어민 역량으로 현지 유저 정서와 규제(자금결제법·CERO)를 직접 다루며, 해외 오피스·외주사와의 협업 창구 역할을 합니다.":"日本語ネイティブとして現地ユーザーの感情と規制（資金決済法・CERO）を直接扱い、海外オフィス・外注先との協業窓口を担います。",
+"데이터 기반 리스크 관리":"データに基づくリスク管理",
+"감이 아닌 유저 활동 로그와 결제·접속 데이터로 매크로 등 이상 징후를 선제 탐지하고, 기준을 세워 제재까지 잇습니다.":"勘ではなくユーザーログと決済・接続データでマクロ等の異常を検知し、基準を立てて制裁までつなげます。",
+"커뮤니티 운영 및 정책 수립":"コミュニティ運営とポリシー策定",
+"X·Discord 공지 작성·번역, 모니터링, 피드백 분석까지 직접 챙깁니다. 논리적인 글쓰기로 흔들림 없는 신뢰받는 서비스를 만듭니다.":"X・Discordのお知らせ作成・翻訳、モニタリング、フィードバック分析まで直接担当。論理的な文章で信頼されるサービスを作ります。",
+"효율을 챙기는 실무자 & 재미를 아는 게이머":"効率を極める実務者＆楽しさを知るゲーマー",
+"Python·생성형 AI로 반복 업무를 줄여 유저와 서비스에 집중합니다. 숫자 이면의 '진짜 즐거워할 포인트'를 먼저 고민하는 진성 게이머입니다.":"Python・生成AIで反復業務を減らし、ユーザーとサービスに集中。数字の裏にある「本当に楽しいポイント」を先に考える生粋のゲーマーです。",
+"일본 소재 초등학교 졸업":"日本の小学校 卒業","광성고등학교 졸업":"光成高等学校 卒業","센슈대학교 경제학과 중퇴 (한국 이주)":"専修大学 経済学科 中途退学（韓国移住）","성공회대학교 일어일본학과 중퇴 (취업)":"聖公会大学校 日語日本学科 中途退学（就職）","경희사이버대학교 일본학과 졸업 (재직 병행)":"慶熙サイバー大学校 日本学科 卒業（在職並行）",
+"직접 만든 도구와 실무 기록":"自作ツールと実務記録",
+"한국어 검출기":"韓国語検出ツール","다국어 텍스트의 한국어 잔류 문자열 자동 검출 — 검수 90분→5분의 주역":"多言語テキストの韓国語残存文字列を自動検出 — 検証90分→5分の立役者",
+"다국어 생성기":"多言語生成ツール","한국어 소스를 언어별 소스로 자동 치환":"韓国語ソースを言語別ソースに自動変換",
+"콘솔 키 변환기":"コンソールキー変換ツール","PC 조작키 표기를 PS/XB 버튼 표기로 일괄 변환":"PC操作キー表記をPS/XBボタン表記に一括変換",
+"UserReport 뷰어":"UserReportビューア","ZIP 속 유저 리포트 열람·정리 보조 툴":"ZIP内のユーザーレポートを閲覧・整理する補助ツール",
+"사용해보기 →":"使ってみる →",
+"운영 정책 일본어 현지화 — 약관·정책·규약 전담":"運営ポリシーの日本語ローカライズ — 規約・政策の専任対応",
+"글로벌 통합 계정(PA ID) 전환 — 약관 개정·세팅 전 과정 수행":"グローバル統合アカウント（PA ID）移行 — 規約改定・設定の全過程を遂行",
+"점검 당일 크로스체크 체크리스트 총괄":"メンテナンス当日のクロスチェックを統括",
+"개발자노트":"開発者ノート","채용 문의":"採用のお問い合わせ","합격 문자 보내기":"合格メッセージを送る",
+"🎉 새로운 파티원이":"🎉 新しいパーティーメンバーが","당신의 팀":"あなたのチーム","에 합류했습니다!":"に加入しました！",
+"[전설]":"[伝説]","일본어 원어민 라이브 서비스 운영자 · 김우신":"日本語ネイティブのライブサービスGM・金優信",
+"획득 효과 : 일본 서비스 안정도":"獲得効果：日本サービス安定度","+140회":"+140回","· CS 유입":"・CS流入","· 분쟁 발생률":"・紛争発生率",
+"패시브 스킬 : 반복 업무를 보면 자동화하지 않고는 못 배김":"パッシブスキル：反復業務を見ると自動化せずにはいられない",
+"이 시스템 메시지를 현실로 만드는 버튼 ↓":"このシステムメッセージを現実にするボタン ↓",
+"✉ 합격 문자 보내기":"✉ 合格メッセージを送る","닫기":"閉じる",
+"직접 만든 운영 자동화 툴 :":"自作の運営自動化ツール：","경력기술서 PDF 다운로드":"職務経歴書PDFをダウンロード","경력기술서 PDF":"職務経歴書PDF","모바일 게임 UI 버전":"モバイルゲームUI版",
+"📄 인사담당자용 PDF 저장":"📄 採用ご担当者様用PDF保存",
+"김우신 (Kim Wooshin) — 일본 라이브 서비스 운영 포트폴리오":"金優信（Kim Wooshin） — 日本ライブサービス運営ポートフォリオ",
+"검은사막 콘솔 라이브 서비스 운영 7년+ · 일본어 담당 · kimboard@naver.com · +82 10-9707-3701":"黒い砂漠コンソール ライブサービス運営7年+・日本語担当・kimboard@naver.com・+82 10-9707-3701",
+"본 사이트는 마비노기 공식 홈페이지의 UI를 오마주하여 직접 구현한 개인 포트폴리오입니다. 게재된 이미지와 업무 자료는 본인이 수행한 업무의 증빙 목적으로만 사용되었습니다. 생성형 AI를 활용해 직접 기획·제작했습니다.":"本サイトはマビノギ公式サイトのUIをオマージュして自ら実装した個人のポートフォリオです。掲載した画像と業務資料は、本人が遂行した業務の証明のみを目的としています。生成AIを活用し、自ら企画・制作しました。",
+"인게임 괴롭힘 판단 기준 수립(도쿄 오피스 협업 공지), 은화 부정 거래 적발·제재":"ゲーム内ハラスメント（迷惑行為）対応基準の策定（東京オフィスと連携したお知らせ）、ゲーム内通貨の不正取引の摘発・制裁",
+"CrowdStrike 글로벌 장애 새벽 긴급 대응 — Xbox 구매 API 장애 원인 규명·해결":"CrowdStrike世界的障害時の深夜緊急対応 — Xbox購入APIの障害原因を究明・解決",
+"매크로 대응 프로세스 설계 — 신고 접수→모니터링→GM 검증(3회)→증거 영상 확보→제재, 후속 분쟁 0건":"マクロ対応プロセスの設計 — 通報受付→モニタリング→GM検証（3回）→証拠映像確保→制裁、その後の紛争0件",
+"선행 적용 국가의 결제·쿠폰 오류를 분석하고 이관 과정을 직접 시뮬레이션":"先行適用国の決済・クーポン不具合を分析し、移管過程を直接シミュレーション",
+"점검 당일 약관 세팅·쿠폰 이관·마이그레이션 크로스체크 등 체크리스트를 총괄, 미국 오피스와 실시간 협업":"メンテナンス当日は規約設定・クーポン移管・マイグレーションのクロスチェックなどを統括し、米国オフィスとリアルタイムで連携",
+"PS4 론칭 및 서비스 운영 — 일본 PS 스토어 랭킹 1위":"PS4ローンチおよびサービス運営 — 日本PSストアランキング1位",
+"론칭":"ローンチ","PS4 론칭":"PS4ローンチ",
+"일본 PS 스토어 랭킹 1위":"日本PSストアランキング1位","론칭 4주 MCU 90% 유지":"ローンチ4週間MCU90%維持","CS 인입 예상 30% → 실제 12%":"CS流入予想30%→実際12%",
+"스토어 구매테스트 프로세스 구축, 한/영/독/불 운영 R&R 배분":"ストア購入テストプロセスの構築、韓・英・独・仏の運営担当のR&R分担",
+"선행 플랫폼(Xbox) 데이터 분석으로 FAQ 선제 배포해 문의 폭주 사전 차단":"先行プラットフォーム（Xbox）のデータ分析でFAQを先行配布し、問い合わせの急増を事前に遮断",
+"일본 심의등급(CERO) 확인 및 출시 요건 대응, 약관·정책·규약 일본어 현지화":"日本のレーティング（CERO）確認およびリリース要件への対応、規約・ポリシーの日本語ローカライズ",
+"도쿄 오피스 협업 리트윗 이벤트 — RT 1,000건·팔로워 1,500명 증가":"東京オフィスと連携したリツイートイベント — RT1,000件・フォロワー約1,500人増",
+"김우신 · Shinozaki Masanobu":"金優信 · 篠崎 雅信（しのざき まさのぶ）",
+"김우신 (Shinozaki Masanobu) · kimboard@naver.com · +82 10-9707-3701":"金優信（篠崎 雅信・しのざき まさのぶ）· kimboard@naver.com · +82 10-9707-3701",
+"일본 PS 스토어 PS4 랭킹 1위 — 검은사막":"日本PSストア PS4ランキング1位 — 黒い砂漠",
+"PS4 랭킹 1위 기념 리트윗 캠페인 — 직접 기획":"PS4ランキング1位記念RTキャンペーン — 自ら企画",
+"PlayStation Partner Awards 2020 시상식 현장":"PlayStation Partner Awards 2020 授賞式",
+"스팀 리뷰 언어별 긍정 비율 추이 분석 (수치 비식별화)":"Steamレビュー言語別好評率の推移分析（数値は非識別化）",
+"CS 카테고리별 추이 히트맵 (수치 비식별화)":"CSカテゴリ別推移ヒートマップ（数値は非識別化）"
+};
+const langBtn=document.getElementById('langBtn');
+let jaMode=false; const memo=new Map();
+function textNodes(){
+  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+  const arr=[];let n;while(n=w.nextNode())arr.push(n);return arr;
+}
+langBtn.addEventListener('click',e=>{
+  e.preventDefault();
+  jaMode=!jaMode;
+  if(jaMode){
+    textNodes().forEach(n=>{
+      const k=n.nodeValue.replace(/\s+/g,' ').trim();
+      if(JA[k]!==undefined){memo.set(n,n.nodeValue);n.nodeValue=JA[k];}
+    });
+    document.documentElement.lang='ja';
+    document.title='金優信 — 日本ライブサービス運営ポートフォリオ';
+    langBtn.textContent='한국어';
+  }else{
+    memo.forEach((v,n)=>{n.nodeValue=v});
+    memo.clear();
+    document.documentElement.lang='ko';
+    document.title='김우신 — 일본 라이브 서비스 운영 포트폴리오';
+    langBtn.textContent='日本語';
+  }
+});
+</script>
+</body>
+</html>
