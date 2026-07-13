@@ -62,7 +62,21 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
 .cat-tabs{display:flex;gap:8px;margin-bottom:14px}
 .cat-tabs button{flex:1;padding:9px 0;border-radius:18px;border:1px solid var(--line);background:var(--panel);
   color:var(--sub);font-weight:700;font-size:13.5px;font-family:inherit;cursor:pointer}
-.cat-tabs button.on{background:var(--purple);border-color:var(--purple);color:#fff}
+.cat-tabs button.on{background:rgba(126,227,106,.13);border-color:#5fca4e;color:#b8f2a8;
+  box-shadow:0 0 16px rgba(126,227,106,.30), inset 0 0 12px rgba(126,227,106,.06)}
+#tabPassive.on{background:rgba(232,196,106,.13);border-color:#c9a44e;color:#f2dfa8;
+  box-shadow:0 0 16px rgba(232,196,106,.30), inset 0 0 12px rgba(232,196,106,.06)}
+/* 상단 카테고리 내비 */
+.catnav{position:sticky;top:61px;z-index:29;display:flex;gap:7px;padding:10px 16px;
+  background:rgba(11,13,18,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.catnav button{flex:1;padding:9px 0;border-radius:12px;border:1px solid var(--line);background:var(--panel);
+  color:var(--sub);font-weight:700;font-size:12.5px;font-family:inherit;cursor:pointer;
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,color .18s ease,background .18s ease}
+.catnav button[data-pg="pg-me"].on{border-color:#4ea0e0;color:#a8d4f2;background:rgba(78,160,224,.13);box-shadow:0 0 16px rgba(78,160,224,.32)}
+.catnav button[data-pg="pg-battle"].on{border-color:#5fca4e;color:#b8f2a8;background:rgba(126,227,106,.13);box-shadow:0 0 16px rgba(126,227,106,.35)}
+.catnav button[data-pg="pg-life"].on{border-color:var(--purple);color:#cabdf7;background:rgba(139,108,240,.13);box-shadow:0 0 16px rgba(139,108,240,.35)}
+.catnav button[data-pg="pg-class"].on{border-color:#c9a44e;color:#f2dfa8;background:rgba(232,196,106,.13);box-shadow:0 0 16px rgba(232,196,106,.32)}
+@media(hover:hover){.catnav button:hover{transform:scale(1.04);color:#fff}}
 .skillcard{position:relative;border:1.5px solid #55b948;border-radius:22px;background:
   linear-gradient(180deg, rgba(126,227,106,.08), transparent 32%), #0f1218;
   padding:20px 16px 18px;min-height:430px;animation:cardglow 3.2s ease-in-out infinite}
@@ -357,6 +371,14 @@ footer a{color:var(--purple)}
     <button class="menu-btn" id="menuBtn">☰</button>
   </div>
 
+  <!-- 상단 카테고리 내비 (하단 탭과 동기화) -->
+  <div class="catnav">
+    <button data-pg="pg-me">내 정보</button>
+    <button data-pg="pg-battle" class="on">프로젝트</button>
+    <button data-pg="pg-life">자동화 툴</button>
+    <button data-pg="pg-class">업적</button>
+  </div>
+
   <!-- 전투 스킬 = 프로젝트 -->
   <section class="page on" id="pg-battle">
     <h2 class="ptitle">PROJECT — 주요 프로젝트</h2>
@@ -634,9 +656,15 @@ document.querySelectorAll('.tabbar button').forEach(b=>{
     document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
     b.classList.add('on');
     document.getElementById(b.dataset.pg).classList.add('on');
+    document.querySelectorAll('.catnav button').forEach(x=>x.classList.toggle('on',x.dataset.pg===b.dataset.pg));
     window.scrollTo({top:0});
     if(b.dataset.pg==='pg-me')animateInfo();
   });
+});
+
+/* 상단 카테고리 내비 → 탭바 위임 */
+document.querySelectorAll('.catnav button').forEach(cb=>{
+  cb.addEventListener('click',()=>document.querySelector(`.tabbar button[data-pg="${cb.dataset.pg}"]`).click());
 });
 
 /* 내 정보 숫자 카운트업 */
