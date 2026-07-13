@@ -363,6 +363,16 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
 .mgrid a .dot::after{content:"";position:absolute;top:-2px;right:8px;width:7px;height:7px;border-radius:50%;background:var(--red)}
 footer{padding:26px 16px 20px;text-align:center;color:#5b6272;font-size:10.5px;line-height:1.9}
 footer a{color:var(--purple)}
+
+/* ── 자동화 툴·업적 메뉴: 보라 허밍 효과 ── */
+@keyframes hum{0%,100%{box-shadow:0 0 5px rgba(139,108,240,.22);border-color:rgba(139,108,240,.5)}50%{box-shadow:0 0 16px rgba(139,108,240,.6);border-color:var(--purple)}}
+@keyframes ichum{0%,100%{filter:drop-shadow(0 0 2px rgba(139,108,240,.35));transform:translateY(0)}50%{filter:drop-shadow(0 0 9px rgba(139,108,240,.95));transform:translateY(-2px)}}
+.catnav button[data-pg="pg-life"],.catnav button[data-pg="pg-class"]{animation:hum 2.4s ease-in-out infinite}
+.catnav button[data-pg="pg-class"]{animation-delay:1.2s}
+.tabbar button[data-pg="pg-life"] .ic,.tabbar button[data-pg="pg-class"] .ic{animation:ichum 2.4s ease-in-out infinite}
+.tabbar button[data-pg="pg-class"] .ic{animation-delay:1.2s}
+/* ── PDF·일본어 버튼: 무채색 심플 ── */
+.top .pdf-btn,.top .lang-btn{border-color:#3a3f4c !important;color:#c9cede !important;background:var(--panel) !important;box-shadow:none !important;animation:none !important}
 </style>
 </head>
 <body>
