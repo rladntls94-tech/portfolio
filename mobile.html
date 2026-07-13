@@ -49,10 +49,14 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
 .cat-tabs button{flex:1;padding:9px 0;border-radius:18px;border:1px solid var(--line);background:var(--panel);
   color:var(--sub);font-weight:700;font-size:13.5px;font-family:inherit;cursor:pointer}
 .cat-tabs button.on{background:var(--purple);border-color:var(--purple);color:#fff}
-.skillcard{border:1.5px solid var(--green-dim);border-radius:14px;background:
-  linear-gradient(180deg, rgba(126,227,106,.06), transparent 30%), var(--panel);
-  box-shadow:0 0 24px rgba(126,227,106,.08), inset 0 0 30px rgba(0,0,0,.4);
-  padding:18px 16px;min-height:430px}
+.skillcard{position:relative;border:1.5px solid #55b948;border-radius:22px;background:
+  linear-gradient(180deg, rgba(126,227,106,.08), transparent 32%), #0f1218;
+  padding:20px 16px 18px;min-height:430px;animation:cardglow 3.2s ease-in-out infinite}
+.skillcard::before{content:"";position:absolute;inset:7px;border:1px solid rgba(126,227,106,.28);border-radius:16px;pointer-events:none}
+@keyframes cardglow{
+  0%,100%{box-shadow:0 0 18px rgba(126,227,106,.22), 0 0 55px rgba(126,227,106,.10), inset 0 0 34px rgba(0,0,0,.5)}
+  50%{box-shadow:0 0 28px rgba(126,227,106,.38), 0 0 90px rgba(126,227,106,.16), inset 0 0 34px rgba(0,0,0,.5)}
+}
 .sk-head{display:flex;align-items:center;gap:12px}
 .sk-name{font-size:19px;font-weight:900}
 .sk-name b{color:var(--green)}
@@ -64,7 +68,8 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
 .sk-sub{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--txt);
   border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:4px}
 .sk-sub::before{content:"◆";color:var(--green);font-size:9px}
-.stat{display:flex;justify-content:space-between;padding:8px 2px;border-bottom:1px solid rgba(38,43,56,.6);font-size:13px}
+.stat{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;margin-bottom:7px;
+  background:#141924;border:1px solid #242b3b;border-radius:10px;font-size:13px}
 .stat .k{color:var(--sub)}
 .stat .v{font-weight:900;color:var(--green)}
 .stat .v.plain{color:var(--txt)}
@@ -81,11 +86,17 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
 #shotView.on{opacity:1;pointer-events:auto}
 #shotView img{max-width:100%;max-height:76vh;border-radius:10px;background:#fff}
 #shotView p{font-size:12px;color:var(--sub);text-align:center;line-height:1.6;max-width:340px}
+/* 프로필 크게 보기 */
+#profileView{position:fixed;inset:0;z-index:96;background:rgba(0,0,0,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .25s}
+#profileView.on{opacity:1;pointer-events:auto}
+#profileView img{width:min(78vw,340px);height:min(78vw,340px);object-fit:cover;border-radius:50%;border:2.5px solid var(--purple);box-shadow:0 0 46px rgba(139,108,240,.35)}
+#profileView b{margin-top:16px;font-size:16px}
+#profileView span{font-size:12px;color:var(--sub);margin-top:4px}
 /* 스킬 그리드 — 생활 스킬 UI 스타일: 다크 카드 + 원형 게이지 + 흰색 아이콘 + 레벨 */
 .skillgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
 .skcell{background:#161a24;border:1.5px solid #212635;border-radius:14px;padding:13px 4px 11px;
   display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;font-family:inherit;color:var(--txt)}
-.skcell.on{border-color:var(--purple);box-shadow:0 0 16px rgba(139,108,240,.3)}
+.skcell.on{border-color:#5fca4e;box-shadow:0 0 16px rgba(126,227,106,.35)}
 .skcell .ring{position:relative;width:48px;height:48px}
 .skcell .ring>svg{position:absolute;inset:0;transform:rotate(-90deg)}
 .skcell .ring circle{fill:none;stroke-width:3.5}
@@ -101,7 +112,7 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
 /* ── 내 정보 ── */
 .char{border:1.5px solid var(--line);border-radius:14px;background:var(--panel);padding:18px 16px;margin-bottom:14px}
 .char .row1{display:flex;gap:14px;align-items:center}
-.char img{width:74px;height:74px;border-radius:50%;object-fit:cover;border:2px solid var(--purple)}
+.char img{width:74px;height:74px;border-radius:50%;object-fit:cover;border:2px solid var(--purple);cursor:pointer}
 .char .who b{font-size:18px}
 .char .who span{display:block;font-size:12px;color:var(--sub);margin-top:4px;line-height:1.6}
 .char .quote{margin-top:14px;font-size:13px;line-height:1.8;color:#c3c9d8;border-top:1px solid var(--line);padding-top:12px}
@@ -140,6 +151,15 @@ h2.ptitle{font-size:13px;letter-spacing:.22em;color:var(--sub);font-weight:700;m
 .tabbar button.on{color:#fff}
 .tabbar button.on .ic{color:#fff}
 .tabbar button.on::after{content:"";width:36px;height:3px;border-radius:2px;background:var(--purple);margin-top:3px}
+/* 메뉴별 고유 색: 내 정보=블루, 프로젝트=그린, 자동화 툴=퍼플, 업적=골드 */
+.tabbar button[data-pg="pg-me"].on .ic{color:#4ea0e0}
+.tabbar button[data-pg="pg-me"].on::after{background:#4ea0e0}
+.tabbar button[data-pg="pg-battle"].on .ic{color:var(--green)}
+.tabbar button[data-pg="pg-battle"].on::after{background:var(--green)}
+.tabbar button[data-pg="pg-life"].on .ic{color:var(--purple)}
+.tabbar button[data-pg="pg-life"].on::after{background:var(--purple)}
+.tabbar button[data-pg="pg-class"].on .ic{color:var(--gold)}
+.tabbar button[data-pg="pg-class"].on::after{background:var(--gold)}
 
 /* 모노크롬 아이콘 — 컬러 이모지 대신 흰색 계열(살짝 어두운) SVG */
 .ic svg,.mi svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block}
@@ -288,6 +308,7 @@ footer a{color:var(--purple)}
 </div>
 
 <div id="shotView"><img src="" alt="확대 이미지"><p></p></div>
+<div id="profileView"><img src="img/profile.png" alt="김우신 프로필"><b>김우신 · Shinozaki Masanobu</b><span>콘솔 라이브 서비스 운영 · 일본어 담당</span></div>
 
 <script>
 /* ───── 프로젝트 = 전투 스킬 데이터 ───── */
@@ -384,6 +405,11 @@ card.addEventListener('click',e=>{
   sv.classList.add('on');
 });
 sv.addEventListener('click',()=>sv.classList.remove('on'));
+
+/* 프로필 이미지 탭 → 프로필 크게 보기 */
+const pv=document.getElementById('profileView');
+document.querySelector('.char img').addEventListener('click',()=>pv.classList.add('on'));
+pv.addEventListener('click',()=>pv.classList.remove('on'));
 
 /* ───── 탭바 ───── */
 document.querySelectorAll('.tabbar button').forEach(b=>{
